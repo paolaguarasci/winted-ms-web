@@ -1,2 +1,55 @@
 /* You can add global styles to this file, and also import other style files */
 @import "primeicons/primeicons.css";
+
+app-v1-footer a {
+  text-decoration: none;
+  color: var(--surface-600);
+}
+
+app-v1-footer a:hover {
+  text-decoration-line: underline;
+}
+
+app-v1-header-bar1 .p-dropdown.p-component {
+  width: 100% !important;
+}
+
+app-v1-header-bar2 .p-megamenu.p-component.p-megamenu-horizontal {
+  background: none;
+}
+
+html {
+  font-family: "Maison Neue", "Helvetica Neue", "Helvetica-Neue", "Arial",
+    sans-serif;
+  font-size: 16px;
+  line-height: 22px;
+  font-weight: 400;
+}
+
+app-v1-header-bar2 .p-submenu-icon {
+  display: none !important;
+}
+
+.p-megamenu {
+  padding: 0.5rem 1rem 0.5rem 0;
+}
+.p-megamenu .p-menuitem-link {
+  padding: 0.5rem 0.8rem !important;
+  font-size: 0.9rem;
+  border-radius: 0px !important;
+}
+
+.p-megamenu .p-megamenu-root-list > .p-menuitem > .p-menuitem-link:focus {
+  box-shadow: none;
+  border-bottom: 0.15rem solid var(--primary-600);
+  padding: 0.5rem 0.8rem 0.35rem 0.8rem !important;
+}
+
+
+.content {
+  min-height: calc(100vh - 454px);
+}
+
+.footer {
+  height: 454px;
+}
