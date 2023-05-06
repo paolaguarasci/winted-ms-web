@@ -1,0 +1,20 @@
+<div *ngIf="!isLogged">
+  <app-hero></app-hero>
+</div>
+
+<div class="card w-12">
+  <div class="flex flex-column card-container green-container">
+    <div class="flex align-items-center justify-content-start my-3 w-12">
+      <app-most-wanted></app-most-wanted>
+    </div>
+    <div class="flex align-items-center justify-content-start my-3 w-12">
+      <app-buy-brands></app-buy-brands>
+    </div>
+    <div class="flex align-items-center justify-content-start my-3 w-12">
+      <app-recearch-suggested></app-recearch-suggested>
+    </div>
+    <div class="flex align-items-center justify-content-start my-3 w-12">
+      <app-feed></app-feed>
+    </div>
+  </div>
+</div>

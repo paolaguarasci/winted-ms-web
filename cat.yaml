@@ -1,0 +1,135 @@
+donna:
+  vestiti:
+    - maglioni e pullover
+    - abiti
+    - top e tshirt
+    - pantaloni e leggings
+    - tute jumpsuit e playsuit
+    - lingerie e indumenti da notte
+    - abbigliamento sportivo
+    - altri capi di abbigliamento
+    - abbigliamento da esterno
+    - completi e blazer
+    - gonne
+    - jeans
+    - pantaloncini e pantaloni corti
+    - costumi da bagno
+    - vestiti premaman
+    - costumi e vestiti speciali
+  scarpe:
+    - zoccoli e sabot
+    - infradito, sandali e ciabatte
+    - pantofole
+    - scarpe da ginnastica
+    - stivali
+    - scarpe basse
+    - scape con tacchi alti
+    - scarpe sportive
+  borse:
+    - borse a spalla
+    - borse in tela
+    - portafogli
+    - borse cartella
+    - borse con motivi e ricami
+    - bagagli e valigie
+    - borsette
+    - zaini
+    - pochette
+    - pochette per il make-up
+    - marsupio
+    - borsoni da viaggio
+    - altre borse
+  accessori:
+    - orologi
+    - occhiali da sole
+    - guanti
+    - accessori per capelli
+    - ombrelli
+    - altri accessori
+    - gioielli
+    - cinture
+    - sciarpe e scialli
+    - cappelli e berretti
+    - accessori tecnologici
+    - portachiavi
+  bellezza:
+    - profumi
+    - accessori di bellezza
+    - cura delle unghie
+    - cura dei capelli
+    - make-up
+    - cura del viso
+    - cura delle mani
+    - cura del corpo
+    - altri prodotti di bellezza
+uomo:
+  vestiti:
+    - abbigliamento da esterno
+    - completi e blazer
+    - pantaloni
+    - calzini e intimo
+    - abbigliamento sportivo
+    - altri capi da uomo
+    - jeans
+    - top e t-shirt
+    - maglioni e pullover
+    - pantaloncini
+    - costumi da bagno
+    - costumi e vestiti speciali
+  scarpe:
+    - stivali
+    - infradito, sandali e ciabatte
+    - pantofole
+    - scarpe da ginnastica
+    - scarpe da barca loafer e mocassini
+    - espadrillas
+    - scarpe formali
+    - scarpe sportive
+  accessori:
+    - borse e zaini
+    - cinture
+    - occhiali da sole
+    - sciarpe e scialli
+    - altro
+    - cravatte e fazzoletti da taschino
+    - gioielli
+    - orologi
+    - cappelli e berretti
+    - guanti
+  cura del corpo:
+    - strumenti e accessori
+    - cura del corpo
+    - dopobarba e colonia
+    - kit per la rasatura
+    - cura del viso
+    - cura dei capelli
+    - cura delle mani e delle unghie
+    - make-up
+    - altri articoli di bellezza
+bambini:
+  abbigliamento bambina:
+  abbigliamento bambino:
+  giochi:
+  cura dei bambini:
+  passeggino:
+  giocattoli da cavalcare:
+  sedute e seggiolini per auto:
+  mobili per bambini:
+  occorrente per la scuola:
+  altri articoli per bambini:
+casa:
+  tessili:
+  accessori per la casa:
+  stoviglie:
+intrattenimento:
+  videogiochi:
+  giochi e rompicapo:
+  musica e video:
+  libri:
+animali:
+  cani:
+  gatti:
+  piccoli animali:
+  pesci:
+  uccelli:
+  rettili:

@@ -13,11 +13,14 @@ import { DropdownModule } from 'primeng/dropdown';
 import { Example1Component } from './example1/example1.component';
 import { ExampleComponent } from './example/example.component';
 import { FormsModule } from '@angular/forms';
+import { HomepageComponent } from './homepage/homepage.component';
+import { ImageModule } from 'primeng/image';
 import { InputTextModule } from 'primeng/inputtext';
 import { MegaMenuModule } from 'primeng/megamenu';
 import { MenuModule } from 'primeng/menu';
 import { MenubarModule } from 'primeng/menubar';
 import { NgModule } from '@angular/core';
+import { ProductCardComponent } from './product-card/product-card.component';
 import { RadioButtonModule } from 'primeng/radiobutton';
 import { SplitButtonModule } from 'primeng/splitbutton';
 import { ToastModule } from 'primeng/toast';
@@ -31,6 +34,14 @@ import { V1HeaderBar2Component } from './_layout/v1-header-bar2/v1-header-bar2.c
 import { V1HeaderComponent } from './_layout/v1-header/v1-header.component';
 import { V1LayoutComponent } from './_layout/v1-layout/v1-layout.component';
 import { V1ModalLoginComponent } from './_layout/v1-modal-login/v1-modal-login.component';
+import { ArmadioEvidenzaComponent } from './armadio-evidenza/armadio-evidenza.component';
+import { MostWantedComponent } from './most-wanted/most-wanted.component';
+import { BuyBrandsComponent } from './buy-brands/buy-brands.component';
+import { RecearchSuggestedComponent } from './recearch-suggested/recearch-suggested.component';
+import { FeedComponent } from './feed/feed.component';
+import { HeroComponent } from './hero/hero.component';
+import { BuyBrandsSingleBrandsComponent } from './buy-brands-single-brands/buy-brands-single-brands.component';
+import { RecearchSuggestedSingleComponent } from './recearch-suggested-single/recearch-suggested-single.component';
 
 @NgModule({
   declarations: [
@@ -45,7 +56,17 @@ import { V1ModalLoginComponent } from './_layout/v1-modal-login/v1-modal-login.c
     V1FooterLine1Component,
     V1FooterLine2Component,
     V1FooterLine3Component,
-    V1ModalLoginComponent
+    V1ModalLoginComponent,
+    HomepageComponent,
+    ProductCardComponent,
+    ArmadioEvidenzaComponent,
+    MostWantedComponent,
+    BuyBrandsComponent,
+    RecearchSuggestedComponent,
+    FeedComponent,
+    HeroComponent,
+    BuyBrandsSingleBrandsComponent,
+    RecearchSuggestedSingleComponent
   ],
   imports: [
     BrowserModule,
@@ -66,7 +87,8 @@ import { V1ModalLoginComponent } from './_layout/v1-modal-login/v1-modal-login.c
     ToolbarModule,
     MenubarModule,
     SplitButtonModule,
-    DialogModule
+    DialogModule,
+    ImageModule
   ],
   providers: [],
   bootstrap: [AppComponent]

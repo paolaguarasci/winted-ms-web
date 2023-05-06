@@ -1,0 +1,8 @@
+<div class="card w-12">
+  <p class="text-3xl w-12">Articoli più richiesti</p>
+  <div class="flex flex-row flex-wrap justify-content-between card-container blue-container w-12">
+    <div *ngFor="let product of products;" class="flex align-items-center justify-content-center w-13rem my-3">
+      <product-card [product]="product" [showUser]="showUser"></product-card>
+    </div>
+  </div>
+</div>

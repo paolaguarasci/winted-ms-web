@@ -1,0 +1,17 @@
+<div class="card w-13rem text-sm">
+  <div class="flex text-600 flex-column card-container">
+    <div *ngIf="showUser" class="flex align-items-center justify-content-start h-3rem m-1">
+      <p-avatar [image]=product.user.image styleClass="mr-2" shape="circle"></p-avatar>
+      {{ product.user.name }}
+    </div>
+    <div class="flex align-items-center justify-content-center m-1">
+      <p-image [src]="product.img" alt="Image"></p-image>
+    </div>
+    <div class="flex text-900 font-bold align-items-center justify-content-between h-1rem m-1">
+      {{product.price}} &#8364;<span class="text-500">{{product.prefered}} <i class="pi pi-heart mr-1"></i> </span></div>
+    <div class="flex align-items-center text-600 justify-content-start h-1rem m-1">
+      {{product.size}}</div>
+    <div class="flex align-items-center text-600 justify-content-start h-1rem m-1">
+      {{product.brand}}</div>
+  </div>
+</div>
