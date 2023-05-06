@@ -44,3 +44,12 @@ app-v1-header-bar2 .p-submenu-icon {
   border-bottom: 0.15rem solid var(--primary-600);
   padding: 0.5rem 0.8rem 0.35rem 0.8rem !important;
 }
+
+
+.content {
+  min-height: calc(100vh - 454px);
+}
+
+.footer {
+  height: 454px;
+}
