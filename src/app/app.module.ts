@@ -8,6 +8,7 @@ import { BrowserModule } from '@angular/platform-browser';
 import { ButtonModule } from 'primeng/button';
 import { CheckboxModule } from 'primeng/checkbox';
 import { ColorPickerModule } from 'primeng/colorpicker';
+import { DialogModule } from 'primeng/dialog';
 import { DropdownModule } from 'primeng/dropdown';
 import { Example1Component } from './example1/example1.component';
 import { ExampleComponent } from './example/example.component';
@@ -29,6 +30,7 @@ import { V1HeaderBar1Component } from './_layout/v1-header-bar1/v1-header-bar1.c
 import { V1HeaderBar2Component } from './_layout/v1-header-bar2/v1-header-bar2.component';
 import { V1HeaderComponent } from './_layout/v1-header/v1-header.component';
 import { V1LayoutComponent } from './_layout/v1-layout/v1-layout.component';
+import { V1ModalLoginComponent } from './_layout/v1-modal-login/v1-modal-login.component';
 
 @NgModule({
   declarations: [
@@ -42,7 +44,8 @@ import { V1LayoutComponent } from './_layout/v1-layout/v1-layout.component';
     V1HeaderBar2Component,
     V1FooterLine1Component,
     V1FooterLine2Component,
-    V1FooterLine3Component
+    V1FooterLine3Component,
+    V1ModalLoginComponent
   ],
   imports: [
     BrowserModule,
@@ -62,7 +65,8 @@ import { V1LayoutComponent } from './_layout/v1-layout/v1-layout.component';
     ToastModule,
     ToolbarModule,
     MenubarModule,
-    SplitButtonModule
+    SplitButtonModule,
+    DialogModule
   ],
   providers: [],
   bootstrap: [AppComponent]
