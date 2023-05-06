@@ -1,7 +1,6 @@
 /* You can add global styles to this file, and also import other style files */
 @import "primeicons/primeicons.css";
 
-
 app-v1-footer a {
   text-decoration: none;
   color: var(--surface-700);
@@ -9,4 +8,12 @@ app-v1-footer a {
 
 app-v1-footer a:hover {
   text-decoration-line: underline;
+}
+
+app-v1-header-bar1 .p-dropdown.p-component {
+  width: 100% !important;
+}
+
+app-v1-header-bar2 .p-megamenu.p-component.p-megamenu-horizontal {
+  background: none;
 }

@@ -1,7 +1,7 @@
 import { Component, OnInit } from '@angular/core';
 import { MenuItem, MessageService } from 'primeng/api';
 
-interface City {
+interface SearchModes {
   name: string;
   code: string;
 }
@@ -13,9 +13,9 @@ interface City {
 })
 export class V1HeaderBar1Component implements OnInit {
   value!: string;
-  cities!: City[];
+  searchModes!: SearchModes[];
 
-  selectedCity!: City;
+  selectedSearchModes!: SearchModes;
 
   items!: MenuItem[];
   langs!: MenuItem[];
@@ -23,12 +23,9 @@ export class V1HeaderBar1Component implements OnInit {
   constructor(private messageService: MessageService) {}
 
   ngOnInit() {
-    this.cities = [
-      { name: 'New York', code: 'NY' },
-      { name: 'Rome', code: 'RM' },
-      { name: 'London', code: 'LDN' },
-      { name: 'Istanbul', code: 'IST' },
-      { name: 'Paris', code: 'PRS' },
+    this.searchModes = [
+      { name: 'Catalogo', code: 'cat' },
+      { name: 'Utenti', code: 'user' },
     ];
     this.items = [
       {
