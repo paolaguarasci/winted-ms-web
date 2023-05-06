@@ -1,41 +1,8 @@
-<div class="card my-3">
-  <p class="text-3xl w-10 mb-3">Ricerche suggerite</p>
-  <div class="flex flex-row flex-wrap card-container blue-container">
-    <div class="flex align-items-center justify-content-center my-1">
-      <app-recearch-suggested-single></app-recearch-suggested-single>
-    </div>
-    <div class="flex align-items-center justify-content-center my-1">
-      <app-recearch-suggested-single></app-recearch-suggested-single>
-    </div>
-    <div class="flex align-items-center justify-content-center my-1">
-      <app-recearch-suggested-single></app-recearch-suggested-single>
-    </div>
-    <div class="flex align-items-center justify-content-center my-1">
-      <app-recearch-suggested-single></app-recearch-suggested-single>
-    </div>
-    <div class="flex align-items-center justify-content-center my-1">
-      <app-recearch-suggested-single></app-recearch-suggested-single>
-    </div>
-    <div class="flex align-items-center justify-content-center my-1">
-      <app-recearch-suggested-single></app-recearch-suggested-single>
-    </div>
-    <div class="flex align-items-center justify-content-center my-1">
-      <app-recearch-suggested-single></app-recearch-suggested-single>
-    </div>
-    <div class="flex align-items-center justify-content-center my-1">
-      <app-recearch-suggested-single></app-recearch-suggested-single>
-    </div>
-    <div class="flex align-items-center justify-content-center my-1">
-      <app-recearch-suggested-single></app-recearch-suggested-single>
-    </div>
-    <div class="flex align-items-center justify-content-center my-1">
-      <app-recearch-suggested-single></app-recearch-suggested-single>
-    </div>
-    <div class="flex align-items-center justify-content-center my-1">
-      <app-recearch-suggested-single></app-recearch-suggested-single>
-    </div>
-    <div class="flex align-items-center justify-content-center my-1">
-      <app-recearch-suggested-single></app-recearch-suggested-single>
+<div class="card my-3 w-12">
+  <p class="text-3xl w-12 mb-3">Ricerche suggerite</p>
+  <div class="flex flex-row flex-wrap card-container blue-container w-12 justify-content-between">
+    <div *ngFor="let suggested of suggesteds;" class="flex align-items-center justify-content-center my-1">
+      <app-recearch-suggested-single [name]="suggested.name" [view]="suggested.view"></app-recearch-suggested-single>
     </div>
   </div>
 </div>

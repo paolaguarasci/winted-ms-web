@@ -1,4 +1,4 @@
-import { Component, OnInit } from '@angular/core';
+import { Component, Input, OnInit } from '@angular/core';
 
 @Component({
   selector: 'app-recearch-suggested-single',
@@ -6,10 +6,7 @@ import { Component, OnInit } from '@angular/core';
   styleUrls: ['./recearch-suggested-single.component.scss'],
 })
 export class RecearchSuggestedSingleComponent implements OnInit {
-  name!: string;
-  view!: string;
-  ngOnInit(): void {
-    this.name = 'Borse';
-    this.view = "8.45M"
-  }
+  @Input() name!: string;
+  @Input() view!: string;
+  ngOnInit(): void {}
 }

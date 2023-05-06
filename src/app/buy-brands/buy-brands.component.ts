@@ -12,37 +12,11 @@ interface Brand {
 export class BuyBrandsComponent implements OnInit {
   brands!: Brand[];
   ngOnInit(): void {
-    this.brands = [
-      {
+    this.brands = [];
+    for (let i = 0; i < 25; i++) {
+      this.brands.push({
         name: 'almost',
-      },
-      {
-        name: 'dead',
-      },
-      {
-        name: 'slight',
-      },
-      {
-        name: 'whistle',
-      },
-      {
-        name: 'almost',
-      },
-      {
-        name: 'replace',
-      },
-      {
-        name: 'select',
-      },
-      {
-        name: 'salmon',
-      },
-      {
-        name: 'hay',
-      },
-      {
-        name: 'fight',
-      },
-    ];
+      });
+    }
   }
 }

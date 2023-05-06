@@ -62,4 +62,9 @@ app-v1-header-bar2 .p-submenu-icon {
   top: 0;
   left: 0;
   width: 100%;
+  z-index: 1000;
+}
+
+app-most-wanted {
+  width: 100%;
 }

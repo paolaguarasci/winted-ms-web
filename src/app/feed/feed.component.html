@@ -1,6 +1,6 @@
-<div class="card">
-  <p class="text-3xl w-10">Feed</p>
-  <div class="flex flex-row flex-wrap card-container blue-container">
+<div class="card w-12">
+  <p class="text-3xl w-12">Feed</p>
+  <div class="flex flex-row flex-wrap card-container blue-container justify-content-between w-12">
     <div *ngFor="let product of products;" class="flex align-items-center justify-content-center w-13rem my-3">
       <product-card [product]="product" [showUser]="showUser"></product-card>
     </div>
