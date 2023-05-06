@@ -20,9 +20,12 @@ export class V1HeaderBar1Component implements OnInit {
   items!: MenuItem[];
   langs!: MenuItem[];
 
+  isLogged!: boolean;
+
   constructor(private messageService: MessageService) {}
 
   ngOnInit() {
+    this.isLogged = true;
     this.searchModes = [
       { name: 'Catalogo', code: 'cat' },
       { name: 'Utenti', code: 'user' },

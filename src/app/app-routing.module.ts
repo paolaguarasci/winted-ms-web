@@ -9,7 +9,10 @@ const routes: Routes = [
   {
     path: '',
     component: V1LayoutComponent,
-    children: [{ path: '', component: ExampleComponent, pathMatch: 'full' }],
+    children: [
+      { path: '', component: ExampleComponent, pathMatch: 'full' },
+      { path: 'ex', component: Example1Component },
+    ],
   },
   { path: 'example1', component: Example1Component },
   { path: '**', redirectTo: '' },
