@@ -32,7 +32,7 @@
             "styles": [
               "node_modules/primeflex/primeflex.css",
               "node_modules/primeng/resources/primeng.min.css",
-              "node_modules/primeng/resources/themes/bootstrap4-light-blue/theme.css",
+              "src/theme.css",
               "src/styles.scss"
             ],
             "scripts": []
