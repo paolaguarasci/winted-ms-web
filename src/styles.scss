@@ -47,9 +47,11 @@ app-v1-header-bar2 .p-submenu-icon {
 
 
 .content {
-  min-height: calc(100vh - 454px);
+  min-height: calc(100vh - 28rem);
 }
 
 .footer {
-  height: 454px;
+  height: 28rem;
+  margin: 0;
+  padding: 0;
 }
