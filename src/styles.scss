@@ -47,6 +47,7 @@ app-v1-header-bar2 .p-submenu-icon {
 
 
 .content {
+  padding-top: 120px;
   min-height: calc(100vh - 28.5rem);
 }
 
@@ -54,4 +55,11 @@ app-v1-header-bar2 .p-submenu-icon {
   height: 28.5rem;
   margin: 0;
   padding: 0;
+}
+
+.header {
+  position: fixed;
+  top: 0;
+  left: 0;
+  width: 100%;
 }
