@@ -42,7 +42,7 @@ import { FeedComponent } from './components/feed/feed.component';
 import { HeroComponent } from './components/hero/hero.component';
 import { BuyBrandsSingleBrandsComponent } from './components/buy-brands-single-brands/buy-brands-single-brands.component';
 import { RecearchSuggestedSingleComponent } from './components/recearch-suggested-single/recearch-suggested-single.component';
-
+import { HttpClientModule} from '@angular/common/http'
 @NgModule({
   declarations: [
     AppComponent,
@@ -70,6 +70,7 @@ import { RecearchSuggestedSingleComponent } from './components/recearch-suggeste
   ],
   imports: [
     BrowserModule,
+    HttpClientModule,
     AppRoutingModule,
     BrowserAnimationsModule,
     ButtonModule,
