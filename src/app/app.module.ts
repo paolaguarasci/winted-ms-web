@@ -1,4 +1,4 @@
-import { Badge, BadgeModule } from 'primeng/badge';
+import { BadgeModule } from 'primeng/badge';
 
 import { AppComponent } from './app.component';
 import { AppRoutingModule } from './app-routing.module';
@@ -10,17 +10,17 @@ import { CheckboxModule } from 'primeng/checkbox';
 import { ColorPickerModule } from 'primeng/colorpicker';
 import { DialogModule } from 'primeng/dialog';
 import { DropdownModule } from 'primeng/dropdown';
-import { Example1Component } from './example1/example1.component';
-import { ExampleComponent } from './example/example.component';
+import { Example1Component } from './pages/example1/example1.component';
+import { ExampleComponent } from './pages/example/example.component';
 import { FormsModule } from '@angular/forms';
-import { HomepageComponent } from './homepage/homepage.component';
+import { HomepageComponent } from './pages/homepage/homepage.component';
 import { ImageModule } from 'primeng/image';
 import { InputTextModule } from 'primeng/inputtext';
 import { MegaMenuModule } from 'primeng/megamenu';
 import { MenuModule } from 'primeng/menu';
 import { MenubarModule } from 'primeng/menubar';
 import { NgModule } from '@angular/core';
-import { ProductCardComponent } from './product-card/product-card.component';
+import { ProductCardComponent } from './components/product-card/product-card.component';
 import { RadioButtonModule } from 'primeng/radiobutton';
 import { SplitButtonModule } from 'primeng/splitbutton';
 import { ToastModule } from 'primeng/toast';
@@ -34,14 +34,14 @@ import { V1HeaderBar2Component } from './_layout/v1-header-bar2/v1-header-bar2.c
 import { V1HeaderComponent } from './_layout/v1-header/v1-header.component';
 import { V1LayoutComponent } from './_layout/v1-layout/v1-layout.component';
 import { V1ModalLoginComponent } from './_layout/v1-modal-login/v1-modal-login.component';
-import { ArmadioEvidenzaComponent } from './armadio-evidenza/armadio-evidenza.component';
-import { MostWantedComponent } from './most-wanted/most-wanted.component';
-import { BuyBrandsComponent } from './buy-brands/buy-brands.component';
-import { RecearchSuggestedComponent } from './recearch-suggested/recearch-suggested.component';
-import { FeedComponent } from './feed/feed.component';
-import { HeroComponent } from './hero/hero.component';
-import { BuyBrandsSingleBrandsComponent } from './buy-brands-single-brands/buy-brands-single-brands.component';
-import { RecearchSuggestedSingleComponent } from './recearch-suggested-single/recearch-suggested-single.component';
+import { ArmadioEvidenzaComponent } from './components/armadio-evidenza/armadio-evidenza.component';
+import { MostWantedComponent } from './components/most-wanted/most-wanted.component';
+import { BuyBrandsComponent } from './components/buy-brands/buy-brands.component';
+import { RecearchSuggestedComponent } from './components/recearch-suggested/recearch-suggested.component';
+import { FeedComponent } from './components/feed/feed.component';
+import { HeroComponent } from './components/hero/hero.component';
+import { BuyBrandsSingleBrandsComponent } from './components/buy-brands-single-brands/buy-brands-single-brands.component';
+import { RecearchSuggestedSingleComponent } from './components/recearch-suggested-single/recearch-suggested-single.component';
 
 @NgModule({
   declarations: [
@@ -66,7 +66,7 @@ import { RecearchSuggestedSingleComponent } from './recearch-suggested-single/re
     FeedComponent,
     HeroComponent,
     BuyBrandsSingleBrandsComponent,
-    RecearchSuggestedSingleComponent
+    RecearchSuggestedSingleComponent,
   ],
   imports: [
     BrowserModule,
@@ -88,9 +88,9 @@ import { RecearchSuggestedSingleComponent } from './recearch-suggested-single/re
     MenubarModule,
     SplitButtonModule,
     DialogModule,
-    ImageModule
+    ImageModule,
   ],
   providers: [],
-  bootstrap: [AppComponent]
+  bootstrap: [AppComponent],
 })
-export class AppModule { }
+export class AppModule {}
