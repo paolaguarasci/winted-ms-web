@@ -327,5 +327,12 @@
       </segment>
     </unit>
 
+    <unit id="1840060452287279076">
+      <segment>
+        <source>Winted | Vendi e acquista vestiti, scarpe e accessori</source>
+        <target>Winted | Sell and buy clothes, shoes and accessories</target>
+      </segment>
+    </unit>
+
   </file>
 </xliff>

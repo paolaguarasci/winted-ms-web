@@ -324,5 +324,11 @@
         <target>Esci</target>
       </segment>
     </unit>
+    <unit id="1840060452287279076">
+      <segment state="initial">
+        <source>Winted | Vendi e acquista vestiti, scarpe e accessori</source>
+        <target>Winted | Vendi e acquista vestiti, scarpe e accessori</target>
+      </segment>
+    </unit>
   </file>
 </xliff>
