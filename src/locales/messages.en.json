@@ -1,0 +1,328 @@
+<xliff version="2.0" xmlns="urn:oasis:names:tc:xliff:document:2.0" srcLang="it" trgLang="en">
+  <file original="ng.template" id="ngi18n">
+    <unit id="969887555178115686">
+      <segment state="initial">
+        <source>Winted</source>
+        <target>Winted</target>
+      </segment>
+    </unit>
+    <unit id="1763642922374597515">
+      <segment state="initial">
+        <source>Chi siamo</source>
+        <target>Chi siamo</target>
+      </segment>
+    </unit>
+    <unit id="3709109943365858732">
+      <segment state="initial">
+        <source>Lavori</source>
+        <target>Lavori</target>
+      </segment>
+    </unit>
+    <unit id="5979111287156979555">
+      <segment state="initial">
+        <source>La sostenibilità</source>
+        <target>La sostenibilità</target>
+      </segment>
+    </unit>
+    <unit id="316665161226237840">
+      <segment state="initial">
+        <source>Stampa</source>
+        <target>Stampa</target>
+      </segment>
+    </unit>
+    <unit id="7451445741311643702">
+      <segment state="initial">
+        <source>Pubblicità</source>
+        <target>Pubblicità</target>
+      </segment>
+    </unit>
+    <unit id="1434443999166485564">
+      <segment state="initial">
+        <source>Scopri</source>
+        <target>Scopri</target>
+      </segment>
+    </unit>
+    <unit id="498543048618813793">
+      <segment state="initial">
+        <source>Come funziona</source>
+        <target>Come funziona</target>
+      </segment>
+    </unit>
+    <unit id="1557788921109450048">
+      <segment state="initial">
+        <source>App mobili</source>
+        <target>App mobili</target>
+      </segment>
+    </unit>
+    <unit id="5069644740747026403">
+      <segment state="initial">
+        <source>Centro assistenza</source>
+        <target>Centro assistenza</target>
+      </segment>
+    </unit>
+    <unit id="3309657220407417433">
+      <segment state="initial">
+        <source>Notizie</source>
+        <target>Notizie</target>
+      </segment>
+    </unit>
+    <unit id="7240950260950392915">
+      <segment state="initial">
+        <source>Vinted Pro</source>
+        <target>Vinted Pro</target>
+      </segment>
+    </unit>
+    <unit id="128653012569649407">
+      <segment state="initial">
+        <source>Guida a Vinted Pro</source>
+        <target>Guida a Vinted Pro</target>
+      </segment>
+    </unit>
+    <unit id="1031009984976864524">
+      <segment state="initial">
+        <source>Assistenza</source>
+        <target>Assistenza</target>
+      </segment>
+    </unit>
+    <unit id="2145543535550565086">
+      <segment state="initial">
+        <source>Vendere</source>
+        <target>Vendere</target>
+      </segment>
+    </unit>
+    <unit id="1344130387891492514">
+      <segment state="initial">
+        <source>Acquistare</source>
+        <target>Acquistare</target>
+      </segment>
+    </unit>
+    <unit id="979977320866658274">
+      <segment state="initial">
+        <source>Sicurezza e affidabilità</source>
+        <target>Sicurezza e affidabilità</target>
+      </segment>
+    </unit>
+    <unit id="1274247756500564795">
+      <segment state="initial">
+        <source>Community</source>
+        <target>Community</target>
+      </segment>
+    </unit>
+    <unit id="1961103453220395122">
+      <segment state="initial">
+        <source>Forum</source>
+        <target>Forum</target>
+      </segment>
+    </unit>
+    <unit id="7101588338588729836">
+      <segment state="initial">
+        <source>I miei topic</source>
+        <target>I miei topic</target>
+      </segment>
+    </unit>
+    <unit id="6830734600549961338">
+      <segment state="initial">
+        <source>Informativa sulla privacy</source>
+        <target>Informativa sulla privacy</target>
+      </segment>
+    </unit>
+    <unit id="9222428230070439823">
+      <segment state="initial">
+        <source>Informativa sui cookie</source>
+        <target>Informativa sui cookie</target>
+      </segment>
+    </unit>
+    <unit id="8749431896507060116">
+      <segment state="initial">
+        <source>Termini e condizioni</source>
+        <target>Termini e condizioni</target>
+      </segment>
+    </unit>
+    <unit id="4503612718378792066">
+      <segment state="initial">
+        <source>La nostra piattaforma</source>
+        <target>La nostra piattaforma</target>
+      </segment>
+    </unit>
+    <unit id="1819050025562809366">
+      <segment state="initial">
+        <source>Condizioni di vendita Pro</source>
+        <target>Condizioni di vendita Pro</target>
+      </segment>
+    </unit>
+    <unit id="7426621002142423382">
+      <segment state="initial">
+        <source>Condizioni d’utilizzo Pro</source>
+        <target>Condizioni d’utilizzo Pro</target>
+      </segment>
+    </unit>
+    <unit id="9140000544682711311">
+      <segment state="initial">
+        <source>Iscriviti | Accedi</source>
+        <target>Iscriviti | Accedi</target>
+      </segment>
+    </unit>
+    <unit id="8770493469023862174">
+      <segment state="initial">
+        <source>Vendi subito</source>
+        <target>Vendi subito</target>
+      </segment>
+    </unit>
+    <unit id="5598690201724522254">
+      <segment state="initial">
+        <source>IT</source>
+        <target>IT</target>
+      </segment>
+    </unit>
+    <unit id="1768284462814389847">
+      <segment state="initial">
+        <source>Che bello rivederti!</source>
+        <target>Che bello rivederti!</target>
+      </segment>
+    </unit>
+    <unit id="4996465314248607810">
+      <segment state="initial">
+        <source>Accedi con Facebokk</source>
+        <target>Accedi con Facebokk</target>
+      </segment>
+    </unit>
+    <unit id="4676793681076122628">
+      <segment state="initial">
+        <source>Accedi con Goolge</source>
+        <target>Accedi con Goolge</target>
+      </segment>
+    </unit>
+    <unit id="3219274604312816132">
+      <segment state="initial">
+        <source>Accedi con Apple</source>
+        <target>Accedi con Apple</target>
+      </segment>
+    </unit>
+    <unit id="3867992099920486533">
+      <segment state="initial">
+        <source>Oppure accedi con</source>
+        <target>Oppure accedi con</target>
+      </segment>
+    </unit>
+    <unit id="8472220277988462813">
+      <segment state="initial">
+        <source>e-mail</source>
+        <target>e-mail</target>
+      </segment>
+    </unit>
+    <unit id="2228324222510326006">
+      <segment state="initial">
+        <source>Non hai ancora un account?</source>
+        <target>Non hai ancora un account?</target>
+      </segment>
+    </unit>
+    <unit id="1651655024330645562">
+      <segment state="initial">
+        <source>Iscriviti</source>
+        <target>Iscriviti</target>
+      </segment>
+    </unit>
+    <unit id="3062117707956593271">
+      <segment state="initial">
+        <source>Armadio in evidenza</source>
+        <target>Armadio in evidenza</target>
+      </segment>
+    </unit>
+    <unit id="7211720443164479216">
+      <segment state="initial">
+        <source>Acquista per brand</source>
+        <target>Acquista per brand</target>
+      </segment>
+    </unit>
+    <unit id="642534594356440342">
+      <segment state="initial">
+        <source>Feed</source>
+        <target>Feed</target>
+      </segment>
+    </unit>
+    <unit id="201099810297950658">
+      <segment state="initial">
+        <source>14 anni / 164 cm</source>
+        <target>14 anni / 164 cm</target>
+      </segment>
+    </unit>
+    <unit id="3148791372438324444">
+      <segment state="initial">
+        <source>È arrivato il momento di liberare l’armadio!</source>
+        <target>È arrivato il momento di liberare l’armadio!</target>
+      </segment>
+    </unit>
+    <unit id="1884727183917125094">
+      <segment state="initial">
+        <source>sed do eiusmod tempor incididunt ut labore et dolore magna aliqua.</source>
+        <target>sed do eiusmod tempor incididunt ut labore et dolore magna aliqua.</target>
+      </segment>
+    </unit>
+    <unit id="1328998568619751853">
+      <segment state="initial">
+        <source>Scopri come funziona</source>
+        <target>Scopri come funziona</target>
+      </segment>
+    </unit>
+    <unit id="5991834519885839237">
+      <segment state="initial">
+        <source>Articoli più richiesti</source>
+        <target>Articoli più richiesti</target>
+      </segment>
+    </unit>
+    <unit id="1380477621314067835">
+      <segment state="initial">
+        <source>visualizzazioni</source>
+        <target>visualizzazioni</target>
+      </segment>
+    </unit>
+    <unit id="8929345178007634672">
+      <segment state="initial">
+        <source>Ricerche suggerite</source>
+        <target>Ricerche suggerite</target>
+      </segment>
+    </unit>
+    <unit id="4372428151297379090">
+      <segment state="initial">
+        <source>Catalogo</source>
+        <target>Catalogo</target>
+      </segment>
+    </unit>
+    <unit id="7062165667677938789">
+      <segment state="initial">
+        <source>Utenti</source>
+        <target>Utenti</target>
+      </segment>
+    </unit>
+    <unit id="7196610899623868928">
+      <segment state="initial">
+        <source>Profilo</source>
+        <target>Profilo</target>
+      </segment>
+    </unit>
+    <unit id="8502305771103286072">
+      <segment state="initial">
+        <source>Impostazioni</source>
+        <target>Impostazioni</target>
+      </segment>
+    </unit>
+    <unit id="581328968301413634">
+      <segment state="initial">
+        <source>Personalizzazione</source>
+        <target>Personalizzazione</target>
+      </segment>
+    </unit>
+    <unit id="801414271842096206">
+      <segment state="initial">
+        <source>Donazioni</source>
+        <target>Donazioni</target>
+      </segment>
+    </unit>
+    <unit id="5885983071514428492">
+      <segment state="initial">
+        <source>Esci</source>
+        <target>Esci</target>
+      </segment>
+    </unit>
+  </file>
+</xliff>

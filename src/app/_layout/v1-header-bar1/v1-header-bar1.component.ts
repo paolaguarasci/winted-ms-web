@@ -23,44 +23,48 @@ export class V1HeaderBar1Component implements OnInit {
   isLogged!: boolean;
   visible!: boolean;
 
+  localesList = [
+    { code: 'en', label: 'English' },
+    { code: 'it', label: 'Italiano' },
+  ];
+
   showDialog() {
     this.visible = true;
   }
   constructor(private messageService: MessageService) {}
 
   ngOnInit() {
-    this.isLogged = false;
+    this.isLogged = true;
     this.searchModes = [
-      { name: 'Catalogo', code: 'cat' },
-      { name: 'Utenti', code: 'user' },
+      { name: $localize`Catalogo`, code: 'cat' },
+      { name: $localize`Utenti`, code: 'user' },
     ];
     this.items = [
       {
         label: 'Account',
         items: [
           {
-            label: 'Profilo',
-            routerLink: '/fileupload',
+            label: $localize`Profilo`,
+            routerLink: '/profile',
           },
           {
-            label: 'Impostazioni',
-            routerLink: '/fileupload',
+            label: $localize`Impostazioni`,
+            routerLink: '/setup',
           },
           {
-            label: 'Personalizzazione',
-            routerLink: '/fileupload',
+            label: $localize`Personalizzazione`,
+            routerLink: '/personalize',
           },
           // {
-          //   label: 'Saldo',
+          //   label: $localize`Saldo`,
           //   routerLink: '/fileupload',
           // },
           {
-            label: 'Donazioni',
-            routerLink: '/fileupload',
+            label: $localize`Donazioni`,
+            routerLink: '/donation',
           },
           {
-            label: 'Esci',
-            style: 'color: red;',
+            label: $localize`Esci`,
             command: () => {
               this.update();
             },
@@ -72,11 +76,11 @@ export class V1HeaderBar1Component implements OnInit {
     this.langs = [
       {
         label: 'Italiano',
-        routerLink: '/fileupload',
+        routerLink: '/it',
       },
       {
         label: 'Inglese',
-        routerLink: '/fileupload',
+        routerLink: '/en',
       },
     ];
   }

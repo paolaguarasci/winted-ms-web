@@ -1,5 +1,7 @@
 import { Component, OnInit } from '@angular/core';
 
+import { CurrencyPipe } from '@angular/common';
+
 interface Product {
   img: string;
   price: string;
@@ -16,11 +18,14 @@ interface User {
 @Component({
   selector: 'app-feed',
   templateUrl: './feed.component.html',
+  providers: [CurrencyPipe],
   styleUrls: ['./feed.component.scss'],
 })
 export class FeedComponent implements OnInit {
   products!: Product[];
   showUser!: boolean;
+
+  constructor(private currencyPipe: CurrencyPipe) {}
 
   ngOnInit(): void {
     this.showUser = true;
@@ -32,9 +37,10 @@ export class FeedComponent implements OnInit {
           image: 'https://i.pravatar.cc/300',
         },
         img: 'https://fakeimg.pl/200x300',
-        price: '10.00',
+        price:
+          this.currencyPipe.transform(10.0, 'EUR', 'symbol', '.2') ?? '',
         prefered: 3,
-        size: '14 anni / 164 cm',
+        size: $localize`14 anni / 164 cm`,
         brand: 'H&M',
       });
     }

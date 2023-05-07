@@ -1,0 +1,275 @@
+<?xml version="1.0" encoding="UTF-8" ?>
+<xliff version="2.0" xmlns="urn:oasis:names:tc:xliff:document:2.0" srcLang="it">
+  <file id="ngi18n" original="ng.template">
+    <unit id="1031009984976864524">
+      <segment>
+        <source>Assistenza</source>
+      </segment>
+    </unit>
+    <unit id="1274247756500564795">
+      <segment>
+        <source>Community</source>
+      </segment>
+    </unit>
+    <unit id="128653012569649407">
+      <segment>
+        <source>Guida a Vinted Pro</source>
+      </segment>
+    </unit>
+    <unit id="1328998568619751853">
+      <segment>
+        <source>Scopri come funziona</source>
+      </segment>
+    </unit>
+    <unit id="1344130387891492514">
+      <segment>
+        <source>Acquistare</source>
+      </segment>
+    </unit>
+    <unit id="1380477621314067835">
+      <segment>
+        <source>visualizzazioni</source>
+      </segment>
+    </unit>
+    <unit id="1434443999166485564">
+      <segment>
+        <source>Scopri</source>
+      </segment>
+    </unit>
+    <unit id="1557788921109450048">
+      <segment>
+        <source>App mobili</source>
+      </segment>
+    </unit>
+    <unit id="1651655024330645562">
+      <segment>
+        <source>Iscriviti</source>
+      </segment>
+    </unit>
+    <unit id="1763642922374597515">
+      <segment>
+        <source>Chi siamo</source>
+      </segment>
+    </unit>
+    <unit id="1768284462814389847">
+      <segment>
+        <source>Che bello rivederti!</source>
+      </segment>
+    </unit>
+    <unit id="1819050025562809366">
+      <segment>
+        <source>Condizioni di vendita Pro</source>
+      </segment>
+    </unit>
+    <unit id="1884727183917125094">
+      <segment>
+        <source>sed do eiusmod tempor incididunt ut labore et dolore magna aliqua.</source>
+      </segment>
+    </unit>
+    <unit id="1961103453220395122">
+      <segment>
+        <source>Forum</source>
+      </segment>
+    </unit>
+    <unit id="201099810297950658">
+      <segment>
+        <source>14 anni / 164 cm</source>
+      </segment>
+    </unit>
+    <unit id="2145543535550565086">
+      <segment>
+        <source>Vendere</source>
+      </segment>
+    </unit>
+    <unit id="2228324222510326006">
+      <segment>
+        <source>Non hai ancora un account?</source>
+      </segment>
+    </unit>
+    <unit id="3062117707956593271">
+      <segment>
+        <source>Armadio in evidenza</source>
+      </segment>
+    </unit>
+    <unit id="3148791372438324444">
+      <segment>
+        <source>È arrivato il momento di liberare l’armadio!</source>
+      </segment>
+    </unit>
+    <unit id="316665161226237840">
+      <segment>
+        <source>Stampa</source>
+      </segment>
+    </unit>
+    <unit id="3219274604312816132">
+      <segment>
+        <source>Accedi con Apple</source>
+      </segment>
+    </unit>
+    <unit id="3309657220407417433">
+      <segment>
+        <source>Notizie</source>
+      </segment>
+    </unit>
+    <unit id="3709109943365858732">
+      <segment>
+        <source>Lavori</source>
+      </segment>
+    </unit>
+    <unit id="3867992099920486533">
+      <segment>
+        <source>Oppure accedi con</source>
+      </segment>
+    </unit>
+    <unit id="4503612718378792066">
+      <segment>
+        <source>La nostra piattaforma</source>
+      </segment>
+    </unit>
+    <unit id="4676793681076122628">
+      <segment>
+        <source>Accedi con Goolge</source>
+      </segment>
+    </unit>
+    <unit id="498543048618813793">
+      <segment>
+        <source>Come funziona</source>
+      </segment>
+    </unit>
+    <unit id="4996465314248607810">
+      <segment>
+        <source>Accedi con Facebokk</source>
+      </segment>
+    </unit>
+    <unit id="5069644740747026403">
+      <segment>
+        <source>Centro assistenza</source>
+      </segment>
+    </unit>
+    <unit id="5598690201724522254">
+      <segment>
+        <source>IT</source>
+      </segment>
+    </unit>
+    <unit id="5979111287156979555">
+      <segment>
+        <source>La sostenibilità</source>
+      </segment>
+    </unit>
+    <unit id="5991834519885839237">
+      <segment>
+        <source>Articoli più richiesti</source>
+      </segment>
+    </unit>
+    <unit id="642534594356440342">
+      <segment>
+        <source>Feed</source>
+      </segment>
+    </unit>
+    <unit id="6830734600549961338">
+      <segment>
+        <source>Informativa sulla privacy</source>
+      </segment>
+    </unit>
+    <unit id="7101588338588729836">
+      <segment>
+        <source>I miei topic</source>
+      </segment>
+    </unit>
+    <unit id="7211720443164479216">
+      <segment>
+        <source>Acquista per brand</source>
+      </segment>
+    </unit>
+    <unit id="7240950260950392915">
+      <segment>
+        <source>Vinted Pro</source>
+      </segment>
+    </unit>
+    <unit id="7426621002142423382">
+      <segment>
+        <source>Condizioni d’utilizzo Pro</source>
+      </segment>
+    </unit>
+    <unit id="7451445741311643702">
+      <segment>
+        <source>Pubblicità</source>
+      </segment>
+    </unit>
+    <unit id="8472220277988462813">
+      <segment>
+        <source>e-mail</source>
+      </segment>
+    </unit>
+    <unit id="8749431896507060116">
+      <segment>
+        <source>Termini e condizioni</source>
+      </segment>
+    </unit>
+    <unit id="8770493469023862174">
+      <segment>
+        <source>Vendi subito</source>
+      </segment>
+    </unit>
+    <unit id="8929345178007634672">
+      <segment>
+        <source>Ricerche suggerite</source>
+      </segment>
+    </unit>
+    <unit id="9140000544682711311">
+      <segment>
+        <source>Iscriviti | Accedi</source>
+      </segment>
+    </unit>
+    <unit id="9222428230070439823">
+      <segment>
+        <source>Informativa sui cookie</source>
+      </segment>
+    </unit>
+    <unit id="969887555178115686">
+      <segment>
+        <source>Winted</source>
+      </segment>
+    </unit>
+    <unit id="979977320866658274">
+      <segment>
+        <source>Sicurezza e affidabilità</source>
+      </segment>
+    </unit>
+    <unit id="4372428151297379090">
+      <segment>
+        <source>Catalogo</source>
+      </segment>
+    </unit>
+    <unit id="581328968301413634">
+      <segment>
+        <source>Personalizzazione</source>
+      </segment>
+    </unit>
+    <unit id="5885983071514428492">
+      <segment>
+        <source>Esci</source>
+      </segment>
+    </unit>
+    <unit id="7062165667677938789">
+      <segment>
+        <source>Utenti</source>
+      </segment>
+    </unit>
+    <unit id="7196610899623868928">
+      <segment>
+        <source>Profilo</source>
+      </segment>
+    </unit>
+    <unit id="801414271842096206">
+      <segment>
+        <source>Donazioni</source>
+      </segment>
+    </unit>
+    <unit id="8502305771103286072">
+      <segment>
+        <source>Impostazioni</source>
+      </segment>
+    </unit>
+  </file>
+</xliff>

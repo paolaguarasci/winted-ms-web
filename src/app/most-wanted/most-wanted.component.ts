@@ -1,5 +1,7 @@
 import { Component, OnInit } from '@angular/core';
 
+import { CurrencyPipe } from '@angular/common';
+
 interface Product {
   img: string;
   price: string;
@@ -14,26 +16,28 @@ interface User {
 }
 @Component({
   selector: 'app-most-wanted',
+  providers: [CurrencyPipe],
   templateUrl: './most-wanted.component.html',
   styleUrls: ['./most-wanted.component.scss'],
 })
 export class MostWantedComponent implements OnInit {
   products!: Product[];
   showUser!: boolean;
-
+  constructor(private currencyPipe: CurrencyPipe) {}
   ngOnInit(): void {
     this.showUser = false;
     this.products = [];
     for (let i = 0; i < 6; i++) {
       this.products.push({
         user: {
-          name: 'ciccio',
+          name: 'user',
           image: 'https://i.pravatar.cc/300',
         },
         img: 'https://fakeimg.pl/200x300',
-        price: '10.00',
+        price:
+          this.currencyPipe.transform(10.0, 'EUR', 'symbol', '.2') ?? '',
         prefered: 3,
-        size: '14 anni / 164 cm',
+        size: $localize`14 anni / 164 cm`,
         brand: 'H&M',
       });
     }

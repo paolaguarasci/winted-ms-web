@@ -8,6 +8,6 @@ import { Component, OnInit } from '@angular/core';
 export class HomepageComponent implements OnInit {
   isLogged!: boolean;
   ngOnInit(): void {
-    this.isLogged = false;
+    this.isLogged = true;
   }
 }
