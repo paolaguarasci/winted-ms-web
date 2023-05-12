@@ -1,6 +1,6 @@
+import { ActivatedRoute, Router } from '@angular/router';
 import { Component, OnInit } from '@angular/core';
 import { MenuItem, MessageService } from 'primeng/api';
-
 interface SearchModes {
   name: string;
   code: string;
@@ -31,7 +31,7 @@ export class V1HeaderBar1Component implements OnInit {
   showDialog() {
     this.visible = true;
   }
-  constructor(private messageService: MessageService) {}
+  constructor(private messageService: MessageService, private router: Router, private route: ActivatedRoute) {}
 
   ngOnInit() {
     this.isLogged = true;
@@ -99,5 +99,8 @@ export class V1HeaderBar1Component implements OnInit {
       summary: 'Delete',
       detail: 'Data Deleted',
     });
+  }
+  goToInbox() {
+    this.router.navigate(['inbox']);
   }
 }
