@@ -31,7 +31,11 @@ export class V1HeaderBar1Component implements OnInit {
   showDialog() {
     this.visible = true;
   }
-  constructor(private messageService: MessageService, private router: Router, private route: ActivatedRoute) {}
+  constructor(
+    private messageService: MessageService,
+    private router: Router,
+    private route: ActivatedRoute
+  ) {}
 
   ngOnInit() {
     this.isLogged = true;
@@ -102,5 +106,9 @@ export class V1HeaderBar1Component implements OnInit {
   }
   goToInbox() {
     this.router.navigate(['inbox']);
+  }
+
+  goToHome() {
+    this.router.navigate(['']);
   }
 }
