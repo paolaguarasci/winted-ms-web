@@ -1,65 +1,93 @@
-.container {  display: grid;
-  grid-template-columns: 0.3fr 1.7fr;
-  grid-template-rows: 0.1fr 0.2fr 3.5fr 0.2fr;
+.container {
+  margin-top: 15px;
+  min-height: calc(100vh - 150px);
+}
+
+.container {
+  display: grid;
+  grid-template-columns: 0.5fr 1.5fr;
+  grid-template-rows: 0.2fr 0.2fr 3.5fr 0.2fr;
   gap: 0px 0px;
-  grid-auto-flow: row;
   grid-template-areas:
-    ". altroutente"
-    ". prodotto"
-    "preview conversazione"
-    "preview areatesto";
+    "top-preview  altroutente"
+    "preview      prodotto"
+    "preview      conversazione"
+    "preview      areatesto";
   width: 100%;
   height: 100%;
+  border: 1px solid #c6c6c6;
+  border-radius: 5px;
+  grid-gap: 0px;
+  margin-bottom: 30px;
 }
-
+.container > div {
+  background-color: white;
+  // padding: 15px;
+  text-align: center;
+  // border: 1px solid #c6c6c6;
+}
 .preview {
-  justify-self: stretch;
-  align-self: start;
   grid-area: preview;
-}
-
-.altroutente {
-  justify-self: center;
-  align-self: center;
-  grid-area: altroutente;
-}
-
-.prodotto {
+  // border: 1px solid red;
   justify-self: stretch;
   align-self: stretch;
+  border-right: 1px solid #c6c6c6;
+  padding: 0px;
+  max-width: min-content;
+}
+.top-preview {
+  grid-area: top-preview;
+  justify-self: stretch;
+  align-self: stretch;
+  border-right: 1px solid #c6c6c6;
+  border-bottom: 1px solid #c6c6c6;
+  display: flex;
+  padding: 15px;
+}
+
+.top-preview-scritta {
+  flex: 1 1 auto;
+  text-align: left;
+}
+
+.top-preview-icona {
+  flex: 0 1 auto;
+}
+.altroutente {
+  grid-area: altroutente;
+  justify-self: stretch;
+  align-self: stretch;
+  padding: 15px;
+  border-bottom: 1px solid #c6c6c6;
+}
+.prodotto {
   grid-area: prodotto;
+  justify-self: stretch;
+  align-self: stretch;
+  border-bottom: 1px solid #c6c6c6;
 }
-
-.areatesto { grid-area: areatesto; }
-
+.areatesto {
+  grid-area: areatesto;
+  justify-self: stretch;
+  align-self: stretch;
+  border-top: 1px solid #c6c6c6;
+  padding: 15px;
+}
 .conversazione {
-  justify-self: center;
-  align-self: start;
   grid-area: conversazione;
+  justify-self: stretch;
+  align-self: stretch;
+  padding: 15px;
 }
 
-
-html, body {
-  height: 100%;
-  margin: 0;
+.myInputArea-2 {
+  flex: 1 1 auto;
 }
 
-/* For presentation only, no need to copy the code below */
-
-.container * {
-  border: 1px solid red;
-  position: relative;
+.myInputArea-1 {
+  flex: 0 1 auto;
 }
 
-.container *:after {
-  content:attr(class);
-  position: absolute;
-  top: 0;
-  left: 0;
+.area1 {
   width: 100%;
-  height: 100%;
-  display: grid;
-  align-items: center;
-  justify-content: center;
 }
-

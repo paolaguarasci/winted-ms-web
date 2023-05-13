@@ -44,6 +44,8 @@ import { V1HeaderBar2Component } from './_layout/v1-header-bar2/v1-header-bar2.c
 import { V1HeaderComponent } from './_layout/v1-header/v1-header.component';
 import { V1LayoutComponent } from './_layout/v1-layout/v1-layout.component';
 import { V1ModalLoginComponent } from './_layout/v1-modal-login/v1-modal-login.component';
+import { InboxPreviewItemComponent } from './components/inbox-preview-item/inbox-preview-item.component';
+import { InboxConversationItemComponent } from './components/inbox-conversation-item/inbox-conversation-item.component';
 
 @NgModule({
   declarations: [
@@ -70,6 +72,8 @@ import { V1ModalLoginComponent } from './_layout/v1-modal-login/v1-modal-login.c
     BuyBrandsSingleBrandsComponent,
     RecearchSuggestedSingleComponent,
     InboxComponent,
+    InboxPreviewItemComponent,
+    InboxConversationItemComponent,
   ],
   imports: [
     BrowserModule,

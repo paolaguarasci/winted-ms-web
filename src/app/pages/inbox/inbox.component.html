@@ -1,8 +1,21 @@
-<div class="container">
-  <div class="preview"></div>
-  <div class="top-preview"></div>
-  <div class="altroutente"></div>
+<div class="container container-inbox w-10">
+  <div class="top-preview">
+    <div class="top-preview-scritta">Inbox</div>
+    <div class="top-preview-icona">
+      <i class="pi pi-pencil" style="font-size: 1rem"></i>
+    </div>
+  </div>
+  <div class="preview">
+    <app-inbox-preview-item *ngFor="let anteprima of inbox.anteprime" [anteprima]="anteprima" />
+  </div>
+  <div class="altroutente">{{conversazione.altroUtente}}</div>
   <div class="prodotto"></div>
-  <div class="areatesto"></div>
+  <div class="areatesto flex flex-row ">
+      <p-button icon="pi pi-image" styleClass="p-button-lg p-button-rounded p-button-text myInputArea-1 mr-3" ></p-button>
+      <span class="p-input-icon-right myInputArea-2">
+        <i class="pi pi-arrow-right"></i>
+        <input type="text" pInputText [(ngModel)]="newMessage" class="area1" />
+      </span>
+  </div>
   <div class="conversazione"></div>
 </div>

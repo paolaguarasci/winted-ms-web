@@ -1,4 +1,8 @@
 import { Component, OnInit } from '@angular/core';
+import {
+  MessaggioConversazione,
+  MessaggioConversazioneTipi,
+} from './../../models/MessaggioConversazione';
 
 import { AnteprimaInbox } from './../../models/AnteprimaInbox';
 import { ConversationService } from './../../services/conversation.service';
@@ -14,7 +18,8 @@ import { InboxService } from 'src/app/services/inbox.service';
 export class InboxComponent implements OnInit {
   inbox!: Inbox;
   conversazione!: Conversazione;
-
+  loggedUserName!: string;
+  newMessage!: string;
   constructor(
     private inboxService: InboxService,
     private conversationService: ConversationService
@@ -23,7 +28,7 @@ export class InboxComponent implements OnInit {
   ngOnInit(): void {
     this.inbox = new Inbox();
     this.inbox.anteprime = [];
-
+    this.loggedUserName = "paola"
     for (let i = 0; i < 10; i++) {
       this.inbox.anteprime.push({
         imgUrl: 'https://eu.ui-avatars.com/api/?name=John+Doe&size=250',
@@ -33,5 +38,24 @@ export class InboxComponent implements OnInit {
         prodottoCorrelato: '',
       });
     }
+
+    this.conversazione = new Conversazione({
+      altroUtente: 'margheritapietro',
+      ratingAltroUtente: 5,
+      prodottoCorrelato: '',
+      messaggi: [],
+    });
+
+    this.conversazione.messaggi.push(
+      new MessaggioConversazione({
+        corpo: '',
+        mittente: 'paola',
+        destinatario: '',
+        tipo: MessaggioConversazioneTipi.testo,
+        timestamp: '',
+        timeAgo: '',
+        visto: false,
+      })
+    );
   }
 }
