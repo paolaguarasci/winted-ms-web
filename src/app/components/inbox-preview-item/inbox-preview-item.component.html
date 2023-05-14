@@ -1,10 +1,10 @@
 <div class="card inbox-item-preview flex justify-content-start">
   <div class="align-items-center justify-content-center m-1">
-    <p-avatar [image]="anteprima.imgUrl" size="large" shape="circle"></p-avatar>
+    <p-avatar [image]="anteprima.altroUtente.image" size="large" shape="circle"></p-avatar>
   </div>
   <div class="flex-grow-1 flex-column align-items-center justify-content-start text-left m-1 dati">
     <div class="flex align-items-center justify-content-start text-left flex flew-row flew-wrap mb-2">
-      <span class="min-w-max mr-2 font-semibold">{{ anteprima.altroUtente }}</span>
+      <span class="min-w-max mr-2 font-semibold">{{ anteprima.altroUtente.name }}</span>
       <span class="min-w-max mr-1 text-600">{{ anteprima.timeAgo }}</span>
     </div>
     <div class="flex align-items-center justify-content-start text-left text-700">{{ anteprima.lastMessage }}</div>

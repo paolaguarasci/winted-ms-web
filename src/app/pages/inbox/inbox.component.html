@@ -8,18 +8,16 @@
   <div class="preview">
     <app-inbox-preview-item *ngFor="let anteprima of inbox.anteprime" [anteprima]="anteprima" />
   </div>
-  <div class="altroutente">{{conversazione.altroUtente}}</div>
+  <div class="altroutente">{{conversazione.altroUtente.name}}</div>
   <div class="prodotto"></div>
   <div class="areatesto flex flex-row ">
     <p-button icon="pi pi-image" styleClass="p-button-lg p-button-rounded p-button-text myInputArea-1 mr-3"></p-button>
     <span class="p-input-icon-right myInputArea-2">
       <i class="pi pi-arrow-right"></i>
-      <input type="text" pInputText [(ngModel)]="newMessage" class="area1" />
+      <input type="text" pInputText [(ngModel)]="newMessage" class="area1" (keydown.enter)="sendTextMessage($event)" />
     </span>
   </div>
   <div class="conversazione">
-
-    <app-inbox-conversation-item *ngFor="let msg of conversazione.messaggi;" [msg]="msg"/>
-
+    <app-inbox-conversation-item *ngFor="let msg of conversazione.messaggi;" [msg]="msg" />
   </div>
 </div>

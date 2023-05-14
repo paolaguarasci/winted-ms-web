@@ -1,6 +1,7 @@
+import { User } from "./User";
+
 export interface AnteprimaInbox {
-  imgUrl: string;
-  altroUtente: string;
+  altroUtente: User;
   timeAgo: string;
   lastMessage: string;
   prodottoCorrelato: string;

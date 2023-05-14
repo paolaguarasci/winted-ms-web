@@ -11,11 +11,13 @@ export class InboxConversationItemComponent implements OnInit {
   @Input() msg!: MessaggioConversazione;
   loggedUsername!: string;
   inviato!: boolean;
+  loggedImage!: string;
 
   ngOnInit(): void {
     this.loggedUsername = "paola"
+    this.loggedImage = "https://primefaces.org/cdn/primeng/images/demo/avatar/onyamalimba.png"
     this.inviato = false;
-    if (this.msg.mittente === this.loggedUsername) {
+    if (this.msg.mittente.name === this.loggedUsername) {
       this.inviato = true;
     }
   }
