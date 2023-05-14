@@ -28,7 +28,7 @@ export class InboxComponent implements OnInit {
   ngOnInit(): void {
     this.inbox = new Inbox();
     this.inbox.anteprime = [];
-    this.loggedUserName = "paola"
+    this.loggedUserName = 'paola';
     for (let i = 0; i < 10; i++) {
       this.inbox.anteprime.push({
         imgUrl: 'https://eu.ui-avatars.com/api/?name=John+Doe&size=250',
@@ -48,9 +48,33 @@ export class InboxComponent implements OnInit {
 
     this.conversazione.messaggi.push(
       new MessaggioConversazione({
-        corpo: '',
+        corpo: 'ciao',
         mittente: 'paola',
-        destinatario: '',
+        destinatario: 'margheritapietro',
+        tipo: MessaggioConversazioneTipi.testo,
+        timestamp: '',
+        timeAgo: '1 minuto fa',
+        visto: false,
+      })
+    );
+
+    this.conversazione.messaggi.push(
+      new MessaggioConversazione({
+        corpo: 'come va?',
+        mittente: 'paola',
+        destinatario: 'margheritapietro',
+        tipo: MessaggioConversazioneTipi.testo,
+        timestamp: '',
+        timeAgo: '1 minuto fa',
+        visto: false,
+      })
+    );
+
+    this.conversazione.messaggi.push(
+      new MessaggioConversazione({
+        corpo: 'ciao! tutto bene',
+        mittente: 'margheritapietro',
+        destinatario: 'paola',
         tipo: MessaggioConversazioneTipi.testo,
         timestamp: '',
         timeAgo: '',

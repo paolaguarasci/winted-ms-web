@@ -10,6 +10,7 @@ import { AnteprimaInbox } from 'src/app/models/AnteprimaInbox';
 export class InboxPreviewItemComponent implements OnInit {
 
   @Input() anteprima!: AnteprimaInbox;
+ngOnInit(): void {
 
-  ngOnInit(): void {}
+}
 }
