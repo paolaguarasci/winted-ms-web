@@ -12,6 +12,12 @@ import { MessageService } from 'primeng/api';
 export class NewProductComponent implements OnInit {
   uploadedFiles: any[] = [];
   formGroup!: FormGroup;
+
+  boxSizes: any[] = [
+    { name: 'Piccola', key: 'S' },
+    { name: 'Media', key: 'M' },
+    { name: 'Grande', key: 'L' },
+  ];
   //#f2f2f2
   constructor(private messageService: MessageService) {}
   ngOnInit(): void {
@@ -19,7 +25,8 @@ export class NewProductComponent implements OnInit {
       title: new FormControl<string | null>(null),
       description: new FormControl<string | null>(null),
       files: new FormControl<File | null>(null),
-      price: new FormControl<number | null>(null)
+      price: new FormControl<number | null>(null),
+      selectedSize: new FormControl()
     });
   }
 
