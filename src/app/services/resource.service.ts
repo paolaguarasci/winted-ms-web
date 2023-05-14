@@ -1,7 +1,7 @@
 import { HttpClient } from '@angular/common/http';
 import { Observable } from 'rxjs';
-import { map } from 'rxjs/operators';
 import { Resource } from '../models/Resource';
+import { map } from 'rxjs/operators';
 
 export abstract class ResourceService<T extends Resource<T>> {
   constructor(

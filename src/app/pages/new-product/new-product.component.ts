@@ -2,6 +2,7 @@ import { Component, OnInit } from '@angular/core';
 import { FormControl, FormGroup } from '@angular/forms';
 
 import { MessageService } from 'primeng/api';
+import { ProductService } from 'src/app/services/product.service';
 
 @Component({
   selector: 'app-new-product',
@@ -19,7 +20,7 @@ export class NewProductComponent implements OnInit {
     { name: 'Grande', key: 'L' },
   ];
   //#f2f2f2
-  constructor(private messageService: MessageService) {}
+  constructor(private messageService: MessageService, private productService: ProductService) {}
   ngOnInit(): void {
     this.formGroup = new FormGroup({
       title: new FormControl<string | null>(null),
@@ -37,8 +38,17 @@ export class NewProductComponent implements OnInit {
     // salva publico
     console.log(this.formGroup)
     console.log(this.selectedFiles)
+    let dataToSend = {
+      title: this.formGroup.get('title') ,
+      description: this.formGroup.get('description'),
+      price: this.formGroup.get('price'),
+      selectedSize: this.formGroup.get('selectedSize'),
+      files: this.selectedFiles
+    }
+    console.log("dataToSend ", dataToSend);
+    this.productService.create(dataToSend).subscribe(res => console.log(res))
 
-    
+
   }
 
   handleSaveInBozza() {
