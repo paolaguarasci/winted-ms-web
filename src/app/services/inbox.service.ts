@@ -1,11 +1,11 @@
 import { HttpClient } from '@angular/common/http';
+import { Inbox } from '../models/Inbox';
 import { Injectable } from '@angular/core';
-import { Product } from '../models/Product';
 import { ResourceService } from './resource.service';
 
 @Injectable({ providedIn: 'root' })
-export class ProductService extends ResourceService<Product> {
+export class InboxService extends ResourceService<Inbox> {
   constructor(private http: HttpClient) {
-    super(http, Product, `https://dummyjson.com/products`);
+    super(http, Inbox, `https://dummyjson.com/inboxs`);
   }
 }

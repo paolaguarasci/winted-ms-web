@@ -1,0 +1,19 @@
+.inbox-item-preview {
+  margin: 0;
+  padding: 15px 5px;
+  border-bottom: 1px solid gray;
+  width: 265px;
+  cursor: pointer;
+}
+
+.inbox-item-preview:hover {
+  background-color: #f1efef;
+}
+
+.inbox-item-preview-selected {
+  background-color: lightgray !important;
+}
+
+.myflex {
+  flex-wrap: wrap;
+}

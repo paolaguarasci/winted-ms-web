@@ -1,5 +1,5 @@
-import { User } from './User';
 import { Resource } from './Resource';
+import { User } from './User';
 
 export class Product extends Resource<Product> {
   public img!: string;

@@ -1,0 +1,98 @@
+.container {
+  margin-top: 15px;
+  min-height: calc(100vh - 150px);
+  max-height: calc(100vh - 150px);
+}
+
+.container {
+  display: grid;
+  grid-template-columns: 0.5fr 1.5fr;
+  grid-template-rows: 0.2fr 0.2fr 3.5fr 0.2fr;
+  gap: 0px 0px;
+  grid-template-areas:
+    "top-preview  altroutente"
+    "preview      prodotto"
+    "preview      conversazione"
+    "preview      areatesto";
+  width: 100%;
+  height: 100%;
+  border: 1px solid #c6c6c6;
+  border-radius: 5px;
+  grid-gap: 0px;
+  margin-bottom: 30px;
+}
+.container > div {
+  background-color: white;
+  // padding: 15px;
+  text-align: center;
+  // border: 1px solid #c6c6c6;
+}
+.preview {
+  grid-area: preview;
+  // border: 1px solid red;
+  justify-self: stretch;
+  align-self: stretch;
+  border-right: 1px solid #c6c6c6;
+  padding: 0px;
+  max-width: min-content;
+  overflow-x: hidden;
+  overflow-y: scroll;
+}
+.top-preview {
+  grid-area: top-preview;
+  justify-self: stretch;
+  align-self: stretch;
+  border-right: 1px solid #c6c6c6;
+  border-bottom: 1px solid #c6c6c6;
+  display: flex;
+  padding: 15px;
+}
+
+.top-preview-scritta {
+  flex: 1 1 auto;
+  text-align: left;
+}
+
+.top-preview-icona {
+  flex: 0 1 auto;
+}
+.altroutente {
+  grid-area: altroutente;
+  justify-self: stretch;
+  align-self: stretch;
+  padding: 15px;
+  border-bottom: 1px solid #c6c6c6;
+}
+.prodotto {
+  grid-area: prodotto;
+  justify-self: stretch;
+  align-self: stretch;
+  border-bottom: 1px solid #c6c6c6;
+}
+.areatesto {
+  grid-area: areatesto;
+  justify-self: stretch;
+  align-self: stretch;
+  border-top: 1px solid #c6c6c6;
+  padding: 15px;
+}
+.conversazione {
+  grid-area: conversazione;
+  justify-self: stretch;
+  align-self: stretch;
+  padding: 15px;
+  overflow-x: wrap;
+  overflow-y: scroll;
+}
+
+.myInputArea-2 {
+  flex: 1 1 auto;
+}
+
+.myInputArea-1 {
+  flex: 0 1 auto;
+}
+
+.area1 {
+  width: 100%;
+}
