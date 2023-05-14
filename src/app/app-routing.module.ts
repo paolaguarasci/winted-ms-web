@@ -4,6 +4,7 @@ import { HomepageComponent } from './pages/homepage/homepage.component';
 import { InboxComponent } from './pages/inbox/inbox.component';
 import { NewProductComponent } from './pages/new-product/new-product.component';
 import { NgModule } from '@angular/core';
+import { ProductDetailsComponent } from './pages/product-details/product-details.component';
 import { V1LayoutComponent } from './_layout/v1-layout/v1-layout.component';
 import { V2LayoutComponent } from './_layout/v2-layout/v2-layout.component';
 import { V3LayoutComponent } from './_layout/v3-layout/v3-layout.component';
@@ -25,7 +26,8 @@ const routes: Routes = [
   {
     path: '',
     component: V3LayoutComponent,
-    children: [{ path: 'sell', component: NewProductComponent }],
+
+    children: [{ path: 'sell', component: NewProductComponent }, { path: 'product/:id', component: ProductDetailsComponent }],
   },
   { path: 'sell', component: NewProductComponent },
   { path: '**', redirectTo: '' },

@@ -1,1 +1,7 @@
-<p>product-details works!</p>
+<div *ngIf="product">
+  <div>{{ product.name }}</div>
+  <div>{{ product.description }}</div>
+  <div *ngFor="let item of product.resources">
+    <img [src]="'http://localhost:8080/api/v1/resource/image/'+item" alt="">
+  </div>
+</div>
