@@ -5,4 +5,5 @@ export interface AnteprimaInbox {
   timeAgo: string;
   lastMessage: string;
   prodottoCorrelato: string;
+  conversationId: string;
 }

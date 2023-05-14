@@ -14,6 +14,7 @@ const routes: Routes = [
     children: [
       { path: '', component: HomepageComponent, pathMatch: 'full' },
       { path: 'inbox', component: InboxComponent },
+      { path: 'inbox/:id', component: InboxComponent },
     ],
   },
   { path: 'example1', component: Example1Component },
