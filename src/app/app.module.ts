@@ -51,6 +51,10 @@ import { V1HeaderBar2Component } from './_layout/v1-header-bar2/v1-header-bar2.c
 import { V1HeaderComponent } from './_layout/v1-header/v1-header.component';
 import { V1LayoutComponent } from './_layout/v1-layout/v1-layout.component';
 import { V1ModalLoginComponent } from './_layout/v1-modal-login/v1-modal-login.component';
+import { V1FooterLightComponent } from './_layout/v1-footer-light/v1-footer-light.component';
+import { V2FooterLightComponent } from './_layout/v2-footer-light/v2-footer-light.component';
+import { V2LayoutComponent } from './_layout/v2-layout/v2-layout.component';
+import { V3LayoutComponent } from './_layout/v3-layout/v3-layout.component';
 @NgModule({
   declarations: [
     AppComponent,
@@ -79,6 +83,10 @@ import { V1ModalLoginComponent } from './_layout/v1-modal-login/v1-modal-login.c
     InboxPreviewItemComponent,
     InboxConversationItemComponent,
     NewProductComponent,
+    V1FooterLightComponent,
+    V2FooterLightComponent,
+    V2LayoutComponent,
+    V3LayoutComponent,
   ],
   imports: [
     BrowserModule,

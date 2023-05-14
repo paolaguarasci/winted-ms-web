@@ -5,17 +5,27 @@ import { InboxComponent } from './pages/inbox/inbox.component';
 import { NewProductComponent } from './pages/new-product/new-product.component';
 import { NgModule } from '@angular/core';
 import { V1LayoutComponent } from './_layout/v1-layout/v1-layout.component';
+import { V2LayoutComponent } from './_layout/v2-layout/v2-layout.component';
+import { V3LayoutComponent } from './_layout/v3-layout/v3-layout.component';
 
 const routes: Routes = [
   {
     path: '',
     component: V1LayoutComponent,
+    children: [{ path: '', component: HomepageComponent, pathMatch: 'full' }],
+  },
+  {
+    path: '',
+    component: V2LayoutComponent,
     children: [
-      { path: '', component: HomepageComponent, pathMatch: 'full' },
       { path: 'inbox', component: InboxComponent },
       { path: 'inbox/:id', component: InboxComponent },
-      { path: 'sell', component: NewProductComponent },
     ],
+  },
+  {
+    path: '',
+    component: V3LayoutComponent,
+    children: [{ path: 'sell', component: NewProductComponent }],
   },
   { path: 'sell', component: NewProductComponent },
   { path: '**', redirectTo: '' },

@@ -12,7 +12,7 @@ import { MessageService } from 'primeng/api';
 export class NewProductComponent implements OnInit {
   uploadedFiles: any[] = [];
   formGroup!: FormGroup;
-
+  //#f2f2f2
   constructor(private messageService: MessageService) {}
   ngOnInit(): void {
     this.formGroup = new FormGroup({
