@@ -94,6 +94,7 @@ export class InboxComponent implements OnInit {
   }
 
   sendTextMessage(event) {
+    if (this.newMessage.length == 0) { return; }
     this.conversazione.messaggi.push(
       new MessaggioConversazione({
         corpo: this.newMessage,
@@ -105,7 +106,7 @@ export class InboxComponent implements OnInit {
         visto: false,
       })
     );
-
+    this.newMessage = '';
     this.conversationService.update(this.conversazione).subscribe((result) => {
       this.newMessage = '';
       this.conversazione = result;

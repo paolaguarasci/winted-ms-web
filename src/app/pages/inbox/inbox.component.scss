@@ -1,6 +1,7 @@
 .container {
   margin-top: 15px;
   min-height: calc(100vh - 150px);
+  max-height: calc(100vh - 150px);
 }
 
 .container {
@@ -78,6 +79,8 @@
   justify-self: stretch;
   align-self: stretch;
   padding: 15px;
+  overflow-x: wrap;
+  overflow-y: scroll;
 }
 
 .myInputArea-2 {

@@ -1,4 +1,4 @@
-<div *ngIf="inviato;else ricevuto_template" class="flex justify-content-start flex-wrap card-container">
+<div *ngIf="!inviato;else ricevuto_template" class="flex justify-content-start flex-wrap card-container">
   <div class="flex align-items-center justify-content-center">
     <p-avatar [image]="msg.mittente.image" shape="circle"></p-avatar>
   </div>
