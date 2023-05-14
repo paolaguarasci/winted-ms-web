@@ -1,0 +1,70 @@
+<p-toast></p-toast>
+<div class="card w-9 mt-3">
+  <div class="flex flex-column card-container justify-content-center align-items-center w-12">
+    <form [formGroup]="formGroup " class="w-12">
+      <div class="formgrid bg-white grid mb-4 p-3 w-12">
+        <div class="flex align-items-center justify-content-center my-3 w-12">
+          <div class="card flex justify-content-center align-items-center w-12">
+            <p-fileUpload [customUpload]="true" name="files[]" [multiple]="true" accept="image/*" [showUploadButton]=false [showCancelButton]=false
+              [fileLimit]=20 [multiple]=true (onSelect)="dealWithFiles($event)">
+            </p-fileUpload>
+          </div>
+        </div>
+      </div>
+
+      <div class="formgrid bg-white grid mb-4 p-3">
+        <div class="field col font-semibold">
+          <label for="title">Titolo</label>
+        </div>
+        <div class="field col">
+          <input id="title" type="text" formControlName="title"
+            class="text-base text-color surface-overlay p-2 border-1 border-solid surface-border border-round appearance-none outline-none focus:border-primary w-full">
+        </div>
+      </div>
+      <div class="formgrid bg-white grid mb-4 p-3">
+        <div class="field col font-semibold">
+          <label for="description">Descrivi il tuo articolo</label>
+        </div>
+        <div class="field col">
+          <textarea rows="5" pInputTextarea formControlName="description"
+            class="w-full max-h-20rem min-h-full"></textarea>
+        </div>
+      </div>
+
+      <div class="formgrid bg-white grid mb-4 p-3">
+        <div class="field col font-semibold">
+          <label for="price">Prezzo</label>
+        </div>
+        <div class="field col">
+          <p-inputNumber formControlName="price" mode="currency" currency="EUR" locale="it-IT" class="w-full">
+          </p-inputNumber>
+        </div>
+      </div>
+
+
+      <div class="formgrid bg-white grid mb-4 p-3">
+        <div class="field col-12 font-light text-sm text-500">
+          <label for="size">Seleziona la dimensione del pacco</label>
+        </div>
+        <div class="grid w-12" *ngFor="let size of boxSizes">
+          <div class="field col-2">
+            <label [for]="size.key" class="ml-2">{{ size.name }}</label>
+          </div>
+          <div class="field col-1">
+            <p-radioButton [inputId]="size.key" [value]="size" formControlName="selectedSize"></p-radioButton>
+          </div>
+        </div>
+      </div>
+
+
+      <div class="formgrid grid text-right">
+        <div class="field col">
+          <p-button (onClick)="handleSaveInBozza()" label="Salva bozza" styleClass="p-button-lg p-button-outlined"
+            class="mr-2"></p-button>
+          <p-button (onClick)="handleSave()" label="Carica" styleClass="p-button-lg" class="ml-2"></p-button>
+        </div>
+      </div>
+
+    </form>
+  </div>
+</div>
