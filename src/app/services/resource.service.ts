@@ -19,7 +19,7 @@ export abstract class ResourceService<T extends Resource<T>> {
   public get(): Observable<T[]> {
     return this.httpClient
       .get<T[]>(`${this.apiUrl}`)
-      .pipe(map((result) => result['products'].map((i) => new this.tConstructor(i))));
+      .pipe(map((result) => result.map((i) => new this.tConstructor(i))));
   }
 
   public getById(id: number): Observable<T> {

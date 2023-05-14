@@ -7,21 +7,24 @@ import { Observable } from 'rxjs';
 @Injectable({ providedIn: 'root' })
 export class ProductService extends ResourceService<Product> {
   constructor(private http: HttpClient) {
-    super(http, Product, `https://dummyjson.com/products`);
+    super(http, Product, `http://localhost:8080/api/v1/product`);
   }
 
   public override create(data): Observable<Product> {
     const formData = new FormData();
 
-    data.files.forEach((file: File) => {
-      formData.append('files', file);
-    });
-
-    formData.append('title', data.title);
+    formData.append('name', data.title);
     formData.append('description', data.description);
     formData.append('price', data.price);
 
-    const url: string = 'http://localhost:8080/product';
+    // data.files.forEach((file: File) => {
+    //   formData.append('file', file[0]);
+    // });
+
+    formData.append('file', data.files[0]);
+
+
+    const url: string = 'http://localhost:8080/api/v1/product';
 
     return this.http.post<any>(url, formData);
   }

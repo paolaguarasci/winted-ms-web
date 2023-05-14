@@ -3,6 +3,7 @@ import { FormControl, FormGroup } from '@angular/forms';
 
 import { MessageService } from 'primeng/api';
 import { ProductService } from 'src/app/services/product.service';
+import { Router } from '@angular/router';
 
 @Component({
   selector: 'app-new-product',
@@ -19,14 +20,17 @@ export class NewProductComponent implements OnInit {
     { name: 'Media', key: 'M' },
     { name: 'Grande', key: 'L' },
   ];
-  //#f2f2f2
-  constructor(private messageService: MessageService, private productService: ProductService) {}
+  constructor(
+    private messageService: MessageService,
+    private productService: ProductService,
+    private router: Router
+  ) {}
   ngOnInit(): void {
     this.formGroup = new FormGroup({
       title: new FormControl<string | null>(null),
       description: new FormControl<string | null>(null),
       price: new FormControl<number | null>(null),
-      selectedSize: new FormControl()
+      selectedSize: new FormControl(),
     });
   }
 
@@ -36,19 +40,23 @@ export class NewProductComponent implements OnInit {
 
   handleSave() {
     // salva publico
-    console.log(this.formGroup)
-    console.log(this.selectedFiles)
+    console.log(this.formGroup);
+    console.log(this.selectedFiles);
     let dataToSend = {
-      title: this.formGroup.get('title') ,
-      description: this.formGroup.get('description'),
-      price: this.formGroup.get('price'),
-      selectedSize: this.formGroup.get('selectedSize'),
-      files: this.selectedFiles
-    }
-    console.log("dataToSend ", dataToSend);
-    this.productService.create(dataToSend).subscribe(res => console.log(res))
-
-
+      title: this.formGroup.get('title')?.value,
+      description: this.formGroup.get('description')?.value,
+      price: this.formGroup.get('price')?.value,
+      selectedSize: this.formGroup.get('selectedSize')?.value.key,
+      files: this.selectedFiles,
+    };
+    this.productService.create(dataToSend).subscribe((res) => {
+      this.messageService.add({
+        severity: 'success',
+        summary: 'Success',
+        detail: 'Prodotto salvato!',
+      });
+      this.router.navigate(['product', res.id]);
+    });
   }
 
   handleSaveInBozza() {
@@ -56,6 +64,6 @@ export class NewProductComponent implements OnInit {
   }
   dealWithFiles(event) {
     this.selectedFiles = event.currentFiles;
-    console.log(event)
+    console.log(event);
   }
 }
