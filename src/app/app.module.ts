@@ -15,20 +15,27 @@ import { DropdownModule } from 'primeng/dropdown';
 import { Example1Component } from './pages/example1/example1.component';
 import { ExampleComponent } from './pages/example/example.component';
 import { FeedComponent } from './components/feed/feed.component';
+import { FileUploadModule } from 'primeng/fileupload';
 import { FormsModule } from '@angular/forms';
 import { HeroComponent } from './components/hero/hero.component';
 import { HomepageComponent } from './pages/homepage/homepage.component';
 import { HttpClientModule } from '@angular/common/http';
 import { ImageModule } from 'primeng/image';
-import { InboxComponent } from './pages/inbox/inbox.component'
+import { InboxComponent } from './pages/inbox/inbox.component';
+import { InboxConversationItemComponent } from './components/inbox-conversation-item/inbox-conversation-item.component';
+import { InboxPreviewItemComponent } from './components/inbox-preview-item/inbox-preview-item.component';
+import { InputNumberModule } from 'primeng/inputnumber';
 import { InputTextModule } from 'primeng/inputtext';
+import { InputTextareaModule } from 'primeng/inputtextarea';
 import { MegaMenuModule } from 'primeng/megamenu';
 import { MenuModule } from 'primeng/menu';
 import { MenubarModule } from 'primeng/menubar';
 import { MostWantedComponent } from './components/most-wanted/most-wanted.component';
+import { NewProductComponent } from './pages/new-product/new-product.component';
 import { NgModule } from '@angular/core';
 import { ProductCardComponent } from './components/product-card/product-card.component';
 import { RadioButtonModule } from 'primeng/radiobutton';
+import { ReactiveFormsModule } from '@angular/forms';
 import { RecearchSuggestedComponent } from './components/recearch-suggested/recearch-suggested.component';
 import { RecearchSuggestedSingleComponent } from './components/recearch-suggested-single/recearch-suggested-single.component';
 import { SplitButtonModule } from 'primeng/splitbutton';
@@ -44,10 +51,6 @@ import { V1HeaderBar2Component } from './_layout/v1-header-bar2/v1-header-bar2.c
 import { V1HeaderComponent } from './_layout/v1-header/v1-header.component';
 import { V1LayoutComponent } from './_layout/v1-layout/v1-layout.component';
 import { V1ModalLoginComponent } from './_layout/v1-modal-login/v1-modal-login.component';
-import { InboxPreviewItemComponent } from './components/inbox-preview-item/inbox-preview-item.component';
-import { InboxConversationItemComponent } from './components/inbox-conversation-item/inbox-conversation-item.component';
-import { NewProductComponent } from './pages/new-product/new-product.component';
-
 @NgModule({
   declarations: [
     AppComponent,
@@ -99,7 +102,11 @@ import { NewProductComponent } from './pages/new-product/new-product.component';
     SplitButtonModule,
     DialogModule,
     ImageModule,
-    SplitterModule
+    SplitterModule,
+    FileUploadModule,
+    ReactiveFormsModule,
+    InputNumberModule,
+    InputTextareaModule
   ],
   providers: [],
   bootstrap: [AppComponent],
