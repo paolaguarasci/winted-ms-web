@@ -10,7 +10,7 @@ import { MessageService } from 'primeng/api';
   providers: [MessageService],
 })
 export class NewProductComponent implements OnInit {
-  uploadedFiles: any[] = [];
+  selectedFiles: any[] = [];
   formGroup!: FormGroup;
 
   boxSizes: any[] = [
@@ -24,25 +24,28 @@ export class NewProductComponent implements OnInit {
     this.formGroup = new FormGroup({
       title: new FormControl<string | null>(null),
       description: new FormControl<string | null>(null),
-      files: new FormControl<File | null>(null),
       price: new FormControl<number | null>(null),
       selectedSize: new FormControl()
     });
   }
 
-  onUpload(event) {
-    for (let file of event.files) {
-      this.uploadedFiles.push(file);
-    }
-
-    this.messageService.add({
-      severity: 'info',
-      summary: 'File Uploaded',
-      detail: '',
-    });
-  }
-
   handleSelect() {
     alert('CIAOO');
+  }
+
+  handleSave() {
+    // salva publico
+    console.log(this.formGroup)
+    console.log(this.selectedFiles)
+
+    
+  }
+
+  handleSaveInBozza() {
+    // salva privato
+  }
+  dealWithFiles(event) {
+    this.selectedFiles = event.currentFiles;
+    console.log(event)
   }
 }

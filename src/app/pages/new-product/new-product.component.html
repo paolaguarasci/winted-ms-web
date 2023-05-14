@@ -2,16 +2,11 @@
 <div class="card w-9 mt-3">
   <div class="flex flex-column card-container justify-content-center align-items-center w-12">
     <form [formGroup]="formGroup " class="w-12">
-      <div class="formgrid bg-white grid mb-4 p-3">
+      <div class="formgrid bg-white grid mb-4 p-3 w-12">
         <div class="flex align-items-center justify-content-center my-3 w-12">
-          <div class="card flex justify-content-center align-items-center">
-            <p-fileUpload [multiple]="true" accept="image/*" [showUploadButton]=false [showCancelButton]=false
-              [fileLimit]=20 [multiple]=true>
-              <ng-template pTemplate="content">
-                <ul *ngIf="uploadedFiles.length">
-                  <li *ngFor="let file of uploadedFiles">{{ file.name }} - {{ file.size }} bytes</li>
-                </ul>
-              </ng-template>
+          <div class="card flex justify-content-center align-items-center w-12">
+            <p-fileUpload [customUpload]="true" name="files[]" [multiple]="true" accept="image/*" [showUploadButton]=false [showCancelButton]=false
+              [fileLimit]=20 [multiple]=true (onSelect)="dealWithFiles($event)">
             </p-fileUpload>
           </div>
         </div>
@@ -64,8 +59,9 @@
 
       <div class="formgrid grid text-right">
         <div class="field col">
-          <p-button label="Salva bozza" styleClass="p-button-lg p-button-outlined" class="mr-2"></p-button>
-          <p-button label="Carica" styleClass="p-button-lg" class="ml-2"></p-button>
+          <p-button (onClick)="handleSaveInBozza()" label="Salva bozza" styleClass="p-button-lg p-button-outlined"
+            class="mr-2"></p-button>
+          <p-button (onClick)="handleSave()" label="Carica" styleClass="p-button-lg" class="ml-2"></p-button>
         </div>
       </div>
 
