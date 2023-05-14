@@ -1,7 +1,5 @@
 import { RouterModule, Routes } from '@angular/router';
 
-import { Example1Component } from './pages/example1/example1.component';
-import { ExampleComponent } from './pages/example/example.component';
 import { HomepageComponent } from './pages/homepage/homepage.component';
 import { InboxComponent } from './pages/inbox/inbox.component';
 import { NewProductComponent } from './pages/new-product/new-product.component';
@@ -16,6 +14,7 @@ const routes: Routes = [
       { path: '', component: HomepageComponent, pathMatch: 'full' },
       { path: 'inbox', component: InboxComponent },
       { path: 'inbox/:id', component: InboxComponent },
+      { path: 'sell', component: NewProductComponent },
     ],
   },
   { path: 'sell', component: NewProductComponent },
