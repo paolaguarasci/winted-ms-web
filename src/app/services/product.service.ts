@@ -17,11 +17,11 @@ export class ProductService extends ResourceService<Product> {
     formData.append('description', data.description);
     formData.append('price', data.price);
 
-    // data.files.forEach((file: File) => {
-    //   formData.append('file', file[0]);
-    // });
+    data.files.forEach((file: File) => {
+      formData.append('files', file);
+    });
 
-    formData.append('file', data.files[0]);
+    // formData.append('file', data.files[0]);
 
 
     const url: string = 'http://localhost:8080/api/v1/product';
