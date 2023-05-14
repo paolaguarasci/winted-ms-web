@@ -55,6 +55,7 @@ import { V1FooterLightComponent } from './_layout/v1-footer-light/v1-footer-ligh
 import { V2FooterLightComponent } from './_layout/v2-footer-light/v2-footer-light.component';
 import { V2LayoutComponent } from './_layout/v2-layout/v2-layout.component';
 import { V3LayoutComponent } from './_layout/v3-layout/v3-layout.component';
+import { ProductDetailsComponent } from './pages/product-details/product-details.component';
 @NgModule({
   declarations: [
     AppComponent,
@@ -87,6 +88,7 @@ import { V3LayoutComponent } from './_layout/v3-layout/v3-layout.component';
     V2FooterLightComponent,
     V2LayoutComponent,
     V3LayoutComponent,
+    ProductDetailsComponent,
   ],
   imports: [
     BrowserModule,
