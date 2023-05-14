@@ -1,9 +1,11 @@
-<div class="card inbox-item-preview flex justify-content-start">
+<div class="card inbox-item-preview flex justify-content-start" (click)="handleClick()"
+[ngClass]="{'inbox-item-preview-selected': anteprima.conversationId === routerId}"
+>
   <div class="align-items-center justify-content-center m-1">
     <p-avatar [image]="anteprima.altroUtente.image" size="large" shape="circle"></p-avatar>
   </div>
   <div class="flex-grow-1 flex-column align-items-center justify-content-start text-left m-1 dati">
-    <div class="flex align-items-center justify-content-start text-left flex flew-row flew-wrap mb-2">
+    <div class="flex flew-row flew-wrap align-items-center justify-content-start text-left mb-2 myflex">
       <span class="min-w-max mr-2 font-semibold">{{ anteprima.altroUtente.name }}</span>
       <span class="min-w-max mr-1 text-600">{{ anteprima.timeAgo }}</span>
     </div>

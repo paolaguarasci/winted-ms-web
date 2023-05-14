@@ -6,7 +6,7 @@
     </div>
   </div>
   <div class="preview">
-    <app-inbox-preview-item *ngFor="let anteprima of inbox.anteprime" [anteprima]="anteprima" />
+    <app-inbox-preview-item *ngFor="let anteprima of inbox.anteprime" [anteprima]="anteprima" [routerId]="this.id" />
   </div>
   <div class="altroutente">{{conversazione.altroUtente.name}}</div>
   <div class="prodotto"></div>

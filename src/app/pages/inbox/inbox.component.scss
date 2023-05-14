@@ -35,6 +35,8 @@
   border-right: 1px solid #c6c6c6;
   padding: 0px;
   max-width: min-content;
+  overflow-x: hidden;
+  overflow-y: scroll;
 }
 .top-preview {
   grid-area: top-preview;

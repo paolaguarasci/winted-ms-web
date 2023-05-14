@@ -33,7 +33,6 @@ export class InboxComponent implements OnInit {
   ngOnInit(): void {
     this.route.paramMap.subscribe((params) => {
       this.id = params.get('id');
-      alert(this.id);
       this.update();
     });
 
@@ -50,16 +49,15 @@ export class InboxComponent implements OnInit {
     });
 
     this.update();
-
   }
 
-update() {
-  this.getPreview();
-  if (!this.id) {
-    this.id = this.inbox.anteprime[0].conversationId;
+  update() {
+    this.getPreview();
+    if (!this.id) {
+      this.id = this.inbox.anteprime[0].conversationId;
+    }
+    this.getConversation(this.id);
   }
-  this.getConversation(this.id);
-}
 
   getPreview() {
     // this.conversationService.getById(id).subscribe((res) => {
@@ -70,7 +68,7 @@ update() {
     this.inbox.anteprime = [];
     for (let i = 0; i < 10; i++) {
       this.inbox.anteprime.push({
-        conversationId: '1',
+        conversationId: '' + i,
         altroUtente: this.otherUser,
         timeAgo: '1 settimana fa',
         lastMessage: 'Ciao Zu',
