@@ -13,3 +13,13 @@ img {
 .galleriamia {
   overflow: hidden;
 }
+
+.userbox {
+  cursor: pointer;
+  min-height: 30px;
+}
+
+a {
+  text-decoration: none;
+  color: var(--primary-600);
+}

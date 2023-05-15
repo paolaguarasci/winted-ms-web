@@ -3,6 +3,7 @@ import { Component, OnInit } from '@angular/core';
 import { ActivatedRoute } from '@angular/router';
 import { Product } from 'src/app/models/Product';
 import { ProductService } from 'src/app/services/product.service';
+import { User } from 'src/app/models/User';
 
 @Component({
   selector: 'app-product-details',
@@ -56,6 +57,24 @@ export class ProductDetailsComponent implements OnInit {
   update() {
     this.productService.getById(this.productId).subscribe((res) => {
       this.product = res;
+
+
+      let r1 = this.product.resources[0];
+      let r2 = this.product.resources[1];
+
+      this.product.resources.push(r1);
+      this.product.resources.push(r2);
+      this.product.resources.push(r1);
+      this.product.resources.push(r2);
+
+      let newUser = new User({
+        name: "Ciccio Pasticcio",
+        image: "https://primefaces.org/cdn/primeng/images/demo/avatar/onyamalimba.png",
+        rating: 4
+      });
+
+      this.product.owner = newUser
+
       this.images = [];
       this.images.push({
         // itemImageSrc: 'http://localhost:8080/api/v1/resource/image/' + this.product.resources[0],
@@ -66,5 +85,9 @@ export class ProductDetailsComponent implements OnInit {
         title: 'Title 1',
       });
    });
+  }
+
+  goToProfile() {
+    // go to user profile
   }
 }

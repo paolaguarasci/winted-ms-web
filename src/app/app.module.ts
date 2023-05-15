@@ -39,6 +39,7 @@ import { ProductCardComponent } from './components/product-card/product-card.com
 import { ProductDetailsComponent } from './pages/product-details/product-details.component';
 import { ProductGalleryComponent } from './components/product-gallery/product-gallery.component';
 import { RadioButtonModule } from 'primeng/radiobutton';
+import { RatingModule } from 'primeng/rating';
 import { ReactiveFormsModule } from '@angular/forms';
 import { RecearchSuggestedComponent } from './components/recearch-suggested/recearch-suggested.component';
 import { RecearchSuggestedSingleComponent } from './components/recearch-suggested-single/recearch-suggested-single.component';
@@ -123,7 +124,8 @@ import { V3LayoutComponent } from './_layout/v3-layout/v3-layout.component';
     InputNumberModule,
     InputTextareaModule,
     GalleriaModule,
-    DividerModule
+    DividerModule,
+    RatingModule
   ],
   providers: [],
   bootstrap: [AppComponent],
