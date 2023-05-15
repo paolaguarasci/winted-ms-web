@@ -1,19 +1,9 @@
 import { Component, OnInit } from '@angular/core';
 
 import { CurrencyPipe } from '@angular/common';
+import { Product } from 'src/app/models/Product';
+import { User } from 'src/app/models/User';
 
-interface Product {
-  img: string;
-  price: string;
-  prefered: number;
-  size: string;
-  brand: string;
-  user: User;
-}
-interface User {
-  name: string;
-  image: string;
-}
 @Component({
   selector: 'app-most-wanted',
   providers: [CurrencyPipe],
@@ -25,21 +15,25 @@ export class MostWantedComponent implements OnInit {
   showUser!: boolean;
   constructor(private currencyPipe: CurrencyPipe) {}
   ngOnInit(): void {
+    let demoUser = new User({
+      name: '',
+      image: '',
+      rating: 4,
+    });
     this.showUser = false;
     this.products = [];
     for (let i = 0; i < 6; i++) {
-      this.products.push({
-        user: {
-          name: 'user',
-          image: 'https://i.pravatar.cc/300',
-        },
-        img: 'https://fakeimg.pl/200x300',
-        price:
-          this.currencyPipe.transform(10.0, 'EUR', 'symbol', '.2') ?? '',
+      this.products.push(new Product({
+        featured: "https://fakeimg.pl/200x300",
+        description: "descrizione",
+        resources: ['https://fakeimg.pl/200x300'],
+        name: "titolo",
+        owner: demoUser,
+        price: this.currencyPipe.transform(10.0, 'EUR', 'symbol', '.2') ?? '',
         prefered: 3,
         size: $localize`14 anni / 164 cm`,
         brand: 'H&M',
-      });
+      }));
     }
   }
 }

@@ -7,12 +7,15 @@ export class Product extends Resource<Product> {
   public size!: string;
   public brand!: string;
   public owner!: User;
-  public img!: string;
+  public featured!: string;
   public description!: string;
   public resources!: string[];
   public name!: string;
 
   constructor(model?: Partial<Product>) {
     super(model);
+    if (!model?.prefered) {
+      this.prefered = 0;
+    }
   }
 }

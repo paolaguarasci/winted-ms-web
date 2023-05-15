@@ -1,5 +1,8 @@
 import { Component, OnInit } from '@angular/core';
+
+import { Product } from 'src/app/models/Product';
 import { ProductService } from 'src/app/services/product.service';
+
 @Component({
   selector: 'app-homepage',
   templateUrl: './homepage.component.html',
@@ -8,6 +11,7 @@ import { ProductService } from 'src/app/services/product.service';
 
 export class HomepageComponent implements OnInit {
   isLogged!: boolean;
+  products!: Product[];
 
   constructor(private productService: ProductService) {}
 
@@ -15,7 +19,7 @@ export class HomepageComponent implements OnInit {
   ngOnInit(): void {
     this.isLogged = true;
     this.productService.get().subscribe((results) => {
-      console.log(results);
+      this.products = results;
     });
   }
 

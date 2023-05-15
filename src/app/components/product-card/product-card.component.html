@@ -1,11 +1,11 @@
 <div class="card w-13rem text-sm">
   <div class="flex text-600 flex-column card-container">
-    <div *ngIf="showUser" class="flex align-items-center justify-content-start h-3rem m-1">
-      <p-avatar [image]=product.user.image styleClass="mr-2" shape="circle"></p-avatar>
-      {{ product.user.name }}
+    <div *ngIf="showUser && product.owner" class="flex align-items-center justify-content-start h-3rem m-1">
+      <p-avatar [image]=product.owner.image styleClass="mr-2" shape="circle"></p-avatar>
+      {{ product.owner.name }}
     </div>
-    <div class="flex align-items-center justify-content-center m-1">
-      <p-image [src]="product.img" alt="Image"></p-image>
+    <div class="flex border-1 border-gray-200 align-items-center justify-content-center m-1" style="height: 300px;width: 200px;">
+      <p-image [src]="product.featured" alt="Image" width="200" height="300"></p-image>
     </div>
     <div class="flex text-900 font-bold align-items-center justify-content-between h-1rem m-1">
       {{product.price}}<span class="text-500">{{product.prefered}} <i class="pi pi-heart mr-1"></i> </span></div>

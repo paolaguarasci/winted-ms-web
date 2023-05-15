@@ -21,9 +21,6 @@ export class ProductService extends ResourceService<Product> {
       formData.append('files', file);
     });
 
-    // formData.append('file', data.files[0]);
-
-
     const url: string = 'http://localhost:8080/api/v1/product';
 
     return this.http.post<any>(url, formData);
