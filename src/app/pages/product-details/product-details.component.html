@@ -1,20 +1,20 @@
-<div *ngIf="product">
-  <div>{{ product.name }}</div>
-  <div>{{ product.description }}</div>
-  <div class="card">
-    <div *ngIf="images" class="grid">
-      <div *ngFor="let image of images; let index = index" class="col-3" key="index">
-        <img [src]="image.thumbnailImageSrc" [alt]="image.alt" style="width: 200px;" style="cursor: pointer"
-          (click)="imageClick(index)" />
+<div class="card mt-3" *ngIf="product">
+
+  <div class="grid">
+    <div class="col-8">
+      <div class="galleriamia">
+        <img *ngFor="let res of product.resources;" [src]="'http://localhost:8080/api/v1/resource/image/' + res" alt="product image" />
       </div>
     </div>
-    <p-galleria [value]="images" [(visible)]="displayCustom" [(activeIndex)]="activeIndex"
-      [responsiveOptions]="responsiveOptions" [containerStyle]="{ 'max-width': '350px' }" [numVisible]="6"
-      [circular]="true" [fullScreen]="false" [showItemNavigators]="true" [showThumbnails]="true">
-      <ng-template pTemplate="item" let-item>
-        <img [src]="item.itemImageSrc" style="width: 100%; display: block;" />
-      </ng-template>
-    </p-galleria>
+    <div class="col-4">
+
+      <div>{{ product.price }}</div>
+      <div>{{ product.name }}</div>
+      <div>{{ product.description }}</div>
+
+    </div>
   </div>
+
+
 
 </div>

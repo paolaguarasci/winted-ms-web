@@ -57,17 +57,14 @@ export class ProductDetailsComponent implements OnInit {
     this.productService.getById(this.productId).subscribe((res) => {
       this.product = res;
       this.images = [];
-      console.log(this.product.resources[0]);
       this.images.push({
-        itemImageSrc:
-          'http://localhost:8080/api/v1/resource/image/' +
-          this.product.resources[0],
-        thumbnailImageSrc:
-          'http://localhost:8080/api/v1/resource/image/' +
-          this.product.resources[0],
+        // itemImageSrc: 'http://localhost:8080/api/v1/resource/image/' + this.product.resources[0],
+        // thumbnailImageSrc: 'http://localhost:8080/api/v1/resource/image/' + this.product.resources[0],
+        itemImageSrc: 'https://placehold.co/600x400.png',
+        thumbnailImageSrc: 'https://placehold.co/600x400.png',
         alt: 'Description for Image 1',
         title: 'Title 1',
       });
-    });
+   });
   }
 }

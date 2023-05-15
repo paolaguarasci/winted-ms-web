@@ -36,6 +36,7 @@ import { NewProductComponent } from './pages/new-product/new-product.component';
 import { NgModule } from '@angular/core';
 import { ProductCardComponent } from './components/product-card/product-card.component';
 import { ProductDetailsComponent } from './pages/product-details/product-details.component';
+import { ProductGalleryComponent } from './components/product-gallery/product-gallery.component';
 import { RadioButtonModule } from 'primeng/radiobutton';
 import { ReactiveFormsModule } from '@angular/forms';
 import { RecearchSuggestedComponent } from './components/recearch-suggested/recearch-suggested.component';
@@ -91,6 +92,7 @@ import { V3LayoutComponent } from './_layout/v3-layout/v3-layout.component';
     V2LayoutComponent,
     V3LayoutComponent,
     ProductDetailsComponent,
+    ProductGalleryComponent,
   ],
   imports: [
     BrowserModule,
