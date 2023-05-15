@@ -1,4 +1,4 @@
-<div class="card w-13rem text-sm">
+<div class="card w-13rem text-sm prodcard" (click)="handleClick()">
   <div class="flex text-600 flex-column card-container">
     <div *ngIf="showUser && product.owner" class="flex align-items-center justify-content-start h-3rem m-1">
       <p-avatar [image]=product.owner.image styleClass="mr-2" shape="circle"></p-avatar>
