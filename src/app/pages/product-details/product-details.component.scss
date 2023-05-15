@@ -1,14 +1,15 @@
+.longbutton {
+  width: 100% !important;
+}
+
+img {
+  object-fit: cover;
+  width: 100%;
+  height: 100%;
+  vertical-align: middle;
+  border-radius: 5px;
+}
+
 .galleriamia {
-  border: 1px solid red;
-  display: grid;
-  grid-auto-flow: row dense;
-  grid-auto-columns: 1fr;
-  grid-auto-rows: 1fr;
-  grid-template-columns: 1fr 1fr 1fr;
-  grid-template-rows: 1fr 1fr 1fr;
-  gap: 0px 0px;
-  grid-template-areas:
-    ". . ."
-    ". . ."
-    ". . .";
+  overflow: hidden;
 }

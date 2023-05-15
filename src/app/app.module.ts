@@ -11,6 +11,7 @@ import { BuyBrandsSingleBrandsComponent } from './components/buy-brands-single-b
 import { CheckboxModule } from 'primeng/checkbox';
 import { ColorPickerModule } from 'primeng/colorpicker';
 import { DialogModule } from 'primeng/dialog';
+import { DividerModule } from 'primeng/divider';
 import { DropdownModule } from 'primeng/dropdown';
 import { Example1Component } from './pages/example1/example1.component';
 import { ExampleComponent } from './pages/example/example.component';
@@ -121,7 +122,8 @@ import { V3LayoutComponent } from './_layout/v3-layout/v3-layout.component';
     ReactiveFormsModule,
     InputNumberModule,
     InputTextareaModule,
-    GalleriaModule
+    GalleriaModule,
+    DividerModule
   ],
   providers: [],
   bootstrap: [AppComponent],

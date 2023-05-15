@@ -1,20 +1,63 @@
 <div class="card mt-3" *ngIf="product">
-
   <div class="grid">
     <div class="col-8">
-      <div class="galleriamia">
-        <img *ngFor="let res of product.resources;" [src]="'http://localhost:8080/api/v1/resource/image/' + res" alt="product image" />
+      <div class="galleriamia flex flex-row flex-wrap h-30rem border-1 border-red-500 ">
+        <div class="border-round-sm align-items-center justify-content-center" *ngFor="let res of product.resources;">
+          <img [src]="'http://localhost:8080/api/v1/resource/image/' + res" alt="product image" class="w-6" />
+          <img [src]="'http://localhost:8080/api/v1/resource/image/' + res" alt="product image" class="w-6 h-2" />
+          <img [src]="'http://localhost:8080/api/v1/resource/image/' + res" alt="product image" class="w-5rem h-auto" />
+          <img [src]="'http://localhost:8080/api/v1/resource/image/' + res" alt="product image" class="w-5rem h-auto" />
+          <img [src]="'http://localhost:8080/api/v1/resource/image/' + res" alt="product image" class="w-5rem h-auto" />
+          <img [src]="'http://localhost:8080/api/v1/resource/image/' + res" alt="product image" class="w-5rem h-auto" />
+        </div>
+      </div>
+
+      <div class="articolisimili my-3 p-3 border-round-sm text-600 bg-white">
+        <div>
+          Articoli dell'utente (n)
+        </div>
+        <p-divider></p-divider>
+        <div class="flex flex-row">
+          <div class="flex-grow-1 align-items-center justify-content-center">
+            <div class="font-semibold my-1">Acquista set</div>
+            <div>Risparmia sulle spese di spedizione</div>
+          </div>
+          <div class="flex-shrink-0 align-items-center justify-content-center">
+            <p-button class="" label="Acquista" />
+          </div>
+        </div>
+      </div>
+
+      <div class="articolisimili my-3 p-3 border-round-sm text-600 bg-white">
+
+      </div>
+
+      <div class="articolisimili my-3 p-3 border-round-sm text-600 bg-white">
+        <span>
+          Articoli simili
+        </span>
       </div>
     </div>
-    <div class="col-4">
-
-      <div>{{ product.price }}</div>
-      <div>{{ product.name }}</div>
-      <div>{{ product.description }}</div>
-
+    <div class="col-3">
+      <div class="bg-white p-2 border-round-sm">
+        <div class="text-3xl font-semibold">{{ product.price | currency: 'EUR'}}</div>
+        <p-divider></p-divider>
+        <div class="text-xl font-semibold">{{ product.name }}</div>
+        <p-divider></p-divider>
+        <div class="text-xl">{{ product.description }}</div>
+        <p-divider></p-divider>
+        <div class="buttoncols flex flex-column">
+          <div class="w-full mb-2"><p-button class="block longbutton w-full h-full p-1 text-xs"
+              label="Acquista"></p-button></div>
+          <div class="w-full mb-2"><p-button class="block longbutton w-full h-full p-1 text-xs" label="Fai un'offerta"
+              styleClass="p-button-outlined"></p-button></div>
+          <div class="w-full mb-2"><p-button class="block longbutton w-full h-full p-1 text-xs" label="Chiedi info"
+              styleClass="p-button-outlined"></p-button></div>
+          <div class="w-full mb-2"><p-button class="block longbutton w-full h-full p-1 text-xs"
+              label="Aggiungi ai preferiti" styleClass="p-button-outlined p-button-secondary"
+              icon="pi pi-heart"></p-button></div>
+        </div>
+      </div>
     </div>
   </div>
-
-
-
 </div>
