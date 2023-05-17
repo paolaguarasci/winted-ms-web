@@ -60,6 +60,7 @@ import { V1ModalLoginComponent } from './_layout/v1-modal-login/v1-modal-login.c
 import { V2FooterLightComponent } from './_layout/v2-footer-light/v2-footer-light.component';
 import { V2LayoutComponent } from './_layout/v2-layout/v2-layout.component';
 import { V3LayoutComponent } from './_layout/v3-layout/v3-layout.component';
+import { ProfileComponent } from './pages/profile/profile.component';
 
 @NgModule({
   declarations: [
@@ -95,6 +96,7 @@ import { V3LayoutComponent } from './_layout/v3-layout/v3-layout.component';
     V3LayoutComponent,
     ProductDetailsComponent,
     ProductGalleryComponent,
+    ProfileComponent,
   ],
   imports: [
     BrowserModule,

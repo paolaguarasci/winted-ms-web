@@ -1,6 +1,6 @@
+import { ActivatedRoute, Router } from '@angular/router';
 import { Component, OnInit } from '@angular/core';
 
-import { ActivatedRoute } from '@angular/router';
 import { Product } from 'src/app/models/Product';
 import { ProductService } from 'src/app/services/product.service';
 import { ProfileService } from 'src/app/services/profile.service';
@@ -19,7 +19,8 @@ export class ProductDetailsComponent implements OnInit {
   articoliSimili!: Product[];
 
   constructor(
-    private route: ActivatedRoute,
+    private router: ActivatedRoute,
+    private route: Router,
     private productService: ProductService,
     private profileService: ProfileService
   ) {}
@@ -27,7 +28,7 @@ export class ProductDetailsComponent implements OnInit {
   ngOnInit(): void {
     this.ownerProducts = [];
     this.articoliSimili = [];
-    this.route.paramMap.subscribe((params) => {
+    this.router.paramMap.subscribe((params) => {
       this.productId = params.get('id');
       this.update();
     });
@@ -52,6 +53,32 @@ export class ProductDetailsComponent implements OnInit {
   }
 
   goToProfile() {
-    // go to user profile
+    this.route.navigate(['profile', this.owner.username])
+  }
+
+  goToMessagge() {
+    this.route.navigate(['inbox'])
+  }
+
+  addToPreferred() {
+    this.profileService.addPreferred(this.productId).subscribe((res) => {
+      console.log("add to preferred", res)
+    })
+  }
+
+  makeAnOffert() {
+    alert("Make an offert")
+  }
+
+  buy() {
+    alert("Buy")
+  }
+
+  askInfo() {
+    alert("Ask info")
+  }
+
+  follow() {
+    alert("Follow")
   }
 }
