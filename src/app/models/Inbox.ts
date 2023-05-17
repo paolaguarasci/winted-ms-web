@@ -5,7 +5,7 @@ import { User } from './User';
 
 export class Inbox extends Resource<Inbox> {
   public anteprime!: AnteprimaInbox[];
-  public conversaione!: Conversazione;
+  public conversazione!: Conversazione;
 
   constructor(model?: Partial<Inbox>) {
     super(model);
