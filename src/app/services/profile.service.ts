@@ -13,10 +13,18 @@ export class ProfileService extends ResourceService<User> {
     super(http, User, `http://localhost:8080/api/v1/profile`);
   }
 
+  getPreferred() {
+    return this.http.get<any[]>(this.apiUrl + '/preferred');
+  }
+
   addPreferred(productId) {
     return this.http.post(this.apiUrl + '/preferred', {
       product: productId
     });
+  }
+
+  removeToPreferred(productId) {
+    return this.http.delete(this.apiUrl + '/preferred/'+productId);
   }
   
 }

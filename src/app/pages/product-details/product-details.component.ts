@@ -17,6 +17,7 @@ export class ProductDetailsComponent implements OnInit {
   owner!: User;
   ownerProducts!: Product[];
   articoliSimili!: Product[];
+  isPreferred!: boolean;
 
   constructor(
     private router: ActivatedRoute,
@@ -26,6 +27,7 @@ export class ProductDetailsComponent implements OnInit {
   ) {}
 
   ngOnInit(): void {
+    this.isPreferred = false;
     this.ownerProducts = [];
     this.articoliSimili = [];
     this.router.paramMap.subscribe((params) => {
@@ -40,6 +42,13 @@ export class ProductDetailsComponent implements OnInit {
 
       this.productService.getSameById(this.productId).subscribe(res => {
         this.articoliSimili = res;
+      })
+
+      this.profileService.getPreferred().subscribe(res => {
+        let preferiti = res;
+        if (preferiti.indexOf(this.productId) != -1) {
+          this.isPreferred = true;
+        }
       })
 
       this.profileService.getById(this.product.owner).subscribe((res) => {
@@ -61,9 +70,21 @@ export class ProductDetailsComponent implements OnInit {
   }
 
   addToPreferred() {
-    this.profileService.addPreferred(this.productId).subscribe((res) => {
-      console.log("add to preferred", res)
-    })
+    if (!this.isPreferred) {
+      this.profileService.addPreferred(this.productId).subscribe((res) => {
+        console.log("add to preferred", res)
+      })
+      this.update();
+    }
+  }
+
+  removeToPreferred() {
+    if (this.isPreferred) {
+      this.profileService.removeToPreferred(this.productId).subscribe((res) => {
+        console.log("removed to preferred", res)
+      })
+      this.update();
+    }
   }
 
   makeAnOffert() {
