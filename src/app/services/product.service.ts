@@ -29,4 +29,9 @@ export class ProductService extends ResourceService<Product> {
   public getByOwnerId(ownerid): Observable<Product[]> {
     return this.http.get<Product[]>(this.apiUrl + '?owner=' + ownerid);
   }
+
+
+  public getSameById(productId): Observable<Product[]> {
+    return this.http.get<Product[]>(this.apiUrl + '?sameto=' + productId);
+  }
 }

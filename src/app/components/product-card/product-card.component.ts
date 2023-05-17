@@ -3,6 +3,7 @@ import { Component, Input, OnInit } from '@angular/core';
 import { CurrencyPipe } from '@angular/common';
 import { MessageService } from 'primeng/api';
 import { Product } from 'src/app/models/Product';
+import { ProfileService } from 'src/app/services/profile.service';
 import { Router } from '@angular/router';
 import { User } from 'src/app/models/User';
 
@@ -16,7 +17,9 @@ export class ProductCardComponent implements OnInit {
   @Input() product!: Product;
   @Input() owner!: User;
   @Input() showUser!: boolean;
-  constructor(private currencyPipe: CurrencyPipe, private router: Router, private messageService: MessageService) {}
+
+  constructor(private currencyPipe: CurrencyPipe, private router: Router, private messageService: MessageService, private profileService: ProfileService) {}
+
   ngOnInit(): void {
     if (!this.product.featured && !this.product.resources) {
       this.product.featured = 'https://fakeimg.pl/200x300';
@@ -28,6 +31,10 @@ export class ProductCardComponent implements OnInit {
     let originalPrice = parseFloat(this.product.price);
     this.product.price =
       this.currencyPipe.transform(originalPrice, 'EUR', 'symbol', '.2') ?? '';
+
+    if (this.owner === null && this.showUser === true) {
+      this.profileService.getById(this.product.owner).subscribe(res => this.owner=res)
+    }
   }
 
   handleClick() {

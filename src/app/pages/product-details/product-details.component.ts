@@ -16,6 +16,7 @@ export class ProductDetailsComponent implements OnInit {
   product!: Product;
   owner!: User;
   ownerProducts!: Product[];
+  articoliSimili!: Product[];
 
   constructor(
     private route: ActivatedRoute,
@@ -25,6 +26,7 @@ export class ProductDetailsComponent implements OnInit {
 
   ngOnInit(): void {
     this.ownerProducts = [];
+    this.articoliSimili = [];
     this.route.paramMap.subscribe((params) => {
       this.productId = params.get('id');
       this.update();
@@ -34,6 +36,11 @@ export class ProductDetailsComponent implements OnInit {
   update() {
     this.productService.getById(this.productId).subscribe((res) => {
       this.product = res;
+
+      this.productService.getSameById(this.productId).subscribe(res => {
+        this.articoliSimili = res;
+      })
+
       this.profileService.getById(this.product.owner).subscribe((res) => {
         this.owner = res;
         this.ownerProducts = [];

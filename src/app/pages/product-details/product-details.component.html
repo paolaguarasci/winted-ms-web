@@ -8,7 +8,7 @@
         </div>
       </div>
 
-      <div class="articolisimili my-3 p-3 border-round-sm text-600 bg-white">
+      <div class="articolisimili my-3 p-3 border-round-sm text-600 bg-white" *ngIf="this.ownerProducts.length > 0">
         <div>
           Articoli dell'utente ({{this.ownerProducts.length}})
         </div>
@@ -23,15 +23,24 @@
           </div>
         </div>
       </div>
-      <div class="articolisimili my-3 p-3 border-round-sm text-600 bg-white">
-        <product-card *ngFor="let product of ownerProducts;" [product]="product"/>
+      <div class="articolisimili my-3 p-3 border-round-sm text-600" *ngIf="this.ownerProducts.length > 0">
+        <product-card *ngFor="let product of ownerProducts;" [product]="product" [owner]="owner" [showUser]="true" />
       </div>
       <div class="articolisimili my-3 p-3 border-round-sm text-600 bg-white">
         <span>
           Articoli simili
         </span>
       </div>
+
+      <div class="flex flex-row flex-wrap card-container blue-container justify-content-between w-12">
+        <div *ngFor="let product of articoliSimili;" class="flex align-items-center justify-content-center w-13rem my-3">
+          <product-card [product]="product" [showUser]="true"></product-card>
+        </div>
+      </div>
     </div>
+
+
+
     <div class="col-3">
       <div class="bg-white p-2 my-3 border-round-sm">
         <div class="text-3xl font-semibold">{{ product.price | currency: 'EUR'}}</div>
