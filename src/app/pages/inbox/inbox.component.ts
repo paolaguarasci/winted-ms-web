@@ -36,6 +36,19 @@ export class InboxComponent implements OnInit {
       this.update();
     });
 
+    this.route.queryParamMap.subscribe((params) => {
+      let offer_to = params.get('offer_to');
+      let offer_price = params.get('offer_price');
+      let info_about = params.get('info_about');
+      if (offer_to && offer_price) {
+        this.makeOffert(offer_to, offer_price)
+      }
+
+      if (info_about) {
+        this.askInfo(info_about);
+      }
+    }
+  );
     this.loggedUser = new User({
       username: 'paola',
       avatar:
@@ -147,5 +160,18 @@ export class InboxComponent implements OnInit {
 
   sendPhotoMessage(event) {
     alert('To be implemented!');
+  }
+
+  makeOffert(productId, price) {
+    this.inboxService.makeAnOffert(productId, price).subscribe((res) => {
+      console.log("Offerta effettuata")
+    })
+  }
+
+
+  askInfo(productId) {
+    this.inboxService.askInfo(productId).subscribe((res) => {
+      console.log("Richiesta effettuata")
+    })
   }
 }

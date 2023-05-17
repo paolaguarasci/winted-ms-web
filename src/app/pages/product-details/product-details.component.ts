@@ -5,6 +5,7 @@ import { Product } from 'src/app/models/Product';
 import { ProductService } from 'src/app/services/product.service';
 import { ProfileService } from 'src/app/services/profile.service';
 import { User } from 'src/app/models/User';
+import { OrderService } from 'src/app/services/order.service';
 
 @Component({
   selector: 'app-product-details',
@@ -23,7 +24,8 @@ export class ProductDetailsComponent implements OnInit {
     private router: ActivatedRoute,
     private route: Router,
     private productService: ProductService,
-    private profileService: ProfileService
+    private profileService: ProfileService,
+    private orderService: OrderService
   ) {}
 
   ngOnInit(): void {
@@ -40,16 +42,16 @@ export class ProductDetailsComponent implements OnInit {
     this.productService.getById(this.productId).subscribe((res) => {
       this.product = res;
 
-      this.productService.getSameById(this.productId).subscribe(res => {
+      this.productService.getSameById(this.productId).subscribe((res) => {
         this.articoliSimili = res;
-      })
+      });
 
-      this.profileService.getPreferred().subscribe(res => {
+      this.profileService.getPreferred().subscribe((res) => {
         let preferiti = res;
         if (preferiti.indexOf(this.productId) != -1) {
           this.isPreferred = true;
         }
-      })
+      });
 
       this.profileService.getById(this.product.owner).subscribe((res) => {
         this.owner = res;
@@ -62,18 +64,22 @@ export class ProductDetailsComponent implements OnInit {
   }
 
   goToProfile() {
-    this.route.navigate(['profile', this.owner.username])
+    this.route.navigate(['profile', this.owner.username]);
   }
 
   goToMessagge() {
-    this.route.navigate(['inbox'])
+    this.route.navigate(['inbox'], {
+      queryParams: {
+        new: this.owner.id,
+      },
+    });
   }
 
   addToPreferred() {
     if (!this.isPreferred) {
       this.profileService.addPreferred(this.productId).subscribe((res) => {
-        console.log("add to preferred", res)
-      })
+        console.log('add to preferred', res);
+      });
       this.isPreferred = true;
     }
   }
@@ -81,25 +87,41 @@ export class ProductDetailsComponent implements OnInit {
   removeToPreferred() {
     if (this.isPreferred) {
       this.profileService.removeToPreferred(this.productId).subscribe((res) => {
-        console.log("removed to preferred", res)
-      })
+        console.log('removed to preferred', res);
+      });
       this.isPreferred = false;
     }
   }
 
   makeAnOffert() {
-    alert("Make an offert")
+    let offertPrice = 10;
+    this.route.navigate(['inbox'], {
+      queryParams: {
+        offer_to: this.productId,
+        offer_price: offertPrice,
+      },
+    });
   }
 
   buy() {
-    alert("Buy")
+    this.orderService.buy(this.productId).subscribe((res) => {
+      this.route.navigate(['checkout'], {
+        queryParams: {
+          order_id: res.id,
+        },
+      });
+    });
   }
 
   askInfo() {
-    alert("Ask info")
+    this.route.navigate(['inbox'], {
+      queryParams: {
+        info_about: this.productId,
+      },
+    });
   }
 
   follow() {
-    alert("Follow")
+    alert('Follow');
   }
 }

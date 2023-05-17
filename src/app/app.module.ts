@@ -61,6 +61,7 @@ import { V2FooterLightComponent } from './_layout/v2-footer-light/v2-footer-ligh
 import { V2LayoutComponent } from './_layout/v2-layout/v2-layout.component';
 import { V3LayoutComponent } from './_layout/v3-layout/v3-layout.component';
 import { ProfileComponent } from './pages/profile/profile.component';
+import { CheckoutComponent } from './pages/checkout/checkout.component';
 
 @NgModule({
   declarations: [
@@ -97,6 +98,7 @@ import { ProfileComponent } from './pages/profile/profile.component';
     ProductDetailsComponent,
     ProductGalleryComponent,
     ProfileComponent,
+    CheckoutComponent,
   ],
   imports: [
     BrowserModule,
