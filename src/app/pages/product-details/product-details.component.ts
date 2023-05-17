@@ -74,7 +74,7 @@ export class ProductDetailsComponent implements OnInit {
       this.profileService.addPreferred(this.productId).subscribe((res) => {
         console.log("add to preferred", res)
       })
-      this.update();
+      this.isPreferred = true;
     }
   }
 
@@ -83,7 +83,7 @@ export class ProductDetailsComponent implements OnInit {
       this.profileService.removeToPreferred(this.productId).subscribe((res) => {
         console.log("removed to preferred", res)
       })
-      this.update();
+      this.isPreferred = false;
     }
   }
 
