@@ -6,6 +6,6 @@ import { ResourceService } from './resource.service';
 @Injectable({ providedIn: 'root' })
 export class InboxService extends ResourceService<Inbox> {
   constructor(private http: HttpClient) {
-    super(http, Inbox, `https://dummyjson.com/inboxs`);
+    super(http, Inbox, `http://localhost:8080/api/v1/inbox`);
   }
 }

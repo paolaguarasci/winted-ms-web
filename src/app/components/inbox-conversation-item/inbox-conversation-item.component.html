@@ -1,6 +1,6 @@
 <div *ngIf="!inviato;else ricevuto_template" class="flex justify-content-start flex-wrap card-container">
   <div class="flex align-items-center justify-content-center">
-    <p-avatar [image]="msg.from.image" shape="circle"></p-avatar>
+    <p-avatar [image]="msg.from.avatar" shape="circle"></p-avatar>
   </div>
   <div
     class="flex align-items-center justify-content-center border-1 border-black-alpha-30 mx-1 my-2 p-2 min-w-min max-w-30rem border-round-sm">
@@ -15,7 +15,7 @@
       {{ msg.content }}
     </div>
     <div class="flex align-items-center justify-content-center">
-      <p-avatar [image]="msg.from.image" shape="circle"></p-avatar>
+      <p-avatar [image]="msg.from.avatar" shape="circle"></p-avatar>
     </div>
   </div>
 </ng-template>

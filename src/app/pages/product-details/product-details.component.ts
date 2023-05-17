@@ -3,6 +3,7 @@ import { Component, OnInit } from '@angular/core';
 import { ActivatedRoute } from '@angular/router';
 import { Product } from 'src/app/models/Product';
 import { ProductService } from 'src/app/services/product.service';
+import { ProfileService } from 'src/app/services/profile.service';
 import { User } from 'src/app/models/User';
 
 @Component({
@@ -13,6 +14,7 @@ import { User } from 'src/app/models/User';
 export class ProductDetailsComponent implements OnInit {
   productId!: any;
   product!: Product;
+  owner!: User;
 
   displayCustom!: boolean;
   activeIndex: number = 0;
@@ -44,7 +46,8 @@ export class ProductDetailsComponent implements OnInit {
 
   constructor(
     private route: ActivatedRoute,
-    private productService: ProductService
+    private productService: ProductService,
+    private profileService: ProfileService
   ) {}
 
   ngOnInit(): void {
@@ -68,12 +71,12 @@ export class ProductDetailsComponent implements OnInit {
       this.product.resources.push(r2);
 
       let newUser = new User({
-        name: "Ciccio Pasticcio",
-        image: "https://primefaces.org/cdn/primeng/images/demo/avatar/onyamalimba.png",
-        rating: 4
+        username: "cicciopasticcio999",
+        avatar: "https://primefaces.org/cdn/primeng/images/demo/avatar/onyamalimba.png",
+        reputation: 4
       });
 
-      this.product.owner = newUser
+
 
       this.images = [];
       this.images.push({
@@ -84,6 +87,12 @@ export class ProductDetailsComponent implements OnInit {
         alt: 'Description for Image 1',
         title: 'Title 1',
       });
+
+      this.profileService.getById(this.product.owner_id).subscribe((res) => {
+        this.owner = res
+      })
+
+
    });
   }
 

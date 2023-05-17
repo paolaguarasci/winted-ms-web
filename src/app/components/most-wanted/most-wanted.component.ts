@@ -16,9 +16,9 @@ export class MostWantedComponent implements OnInit {
   constructor(private currencyPipe: CurrencyPipe) {}
   ngOnInit(): void {
     let demoUser = new User({
-      name: '',
-      image: '',
-      rating: 4,
+      username: '',
+      avatar: '',
+      reputation: 4,
     });
     this.showUser = false;
     this.products = [];
@@ -28,11 +28,11 @@ export class MostWantedComponent implements OnInit {
         description: "descrizione",
         resources: ['https://fakeimg.pl/200x300'],
         name: "titolo",
-        owner: demoUser,
+        owner_id: demoUser.id,
         price: this.currencyPipe.transform(10.0, 'EUR', 'symbol', '.2') ?? '',
         prefered: 3,
         size: $localize`14 anni / 164 cm`,
-        brand: 'H&M',
+        brand_id: "1",
       }));
     }
   }

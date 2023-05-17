@@ -4,6 +4,7 @@ import { CurrencyPipe } from '@angular/common';
 import { MessageService } from 'primeng/api';
 import { Product } from 'src/app/models/Product';
 import { Router } from '@angular/router';
+import { User } from 'src/app/models/User';
 
 @Component({
   selector: 'product-card',
@@ -13,6 +14,7 @@ import { Router } from '@angular/router';
 })
 export class ProductCardComponent implements OnInit {
   @Input() product!: Product;
+  @Input() owner!: User;
   @Input() showUser!: boolean;
   constructor(private currencyPipe: CurrencyPipe, private router: Router, private messageService: MessageService) {}
   ngOnInit(): void {

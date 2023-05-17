@@ -5,8 +5,9 @@ export class Product extends Resource<Product> {
   public price!: string;
   public prefered!: number;
   public size!: string;
-  public brand!: string;
-  public owner!: User;
+  public brand_id!: string;
+  public owner_id!: string;
+  public category_id!: string;
   public featured!: string;
   public description!: string;
   public resources!: string[];

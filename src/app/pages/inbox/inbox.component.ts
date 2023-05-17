@@ -37,15 +37,15 @@ export class InboxComponent implements OnInit {
     });
 
     this.loggedUser = new User({
-      name: 'paola',
-      image:
+      username: 'paola',
+      avatar:
         'https://primefaces.org/cdn/primeng/images/demo/avatar/onyamalimba.png',
-      rating: 5,
+      reputation: 5,
     });
     this.otherUser = new User({
-      name: 'margheritapietro',
-      image: 'https://eu.ui-avatars.com/api/?name=John+Doe&size=250',
-      rating: 5,
+      username: 'margheritapietro',
+      avatar: 'https://eu.ui-avatars.com/api/?name=John+Doe&size=250',
+      reputation: 5,
     });
 
     this.update();

@@ -56,14 +56,14 @@
       </div>
 
 
-      <div class="bg-white p-2 my-3 border-round-sm" *ngIf="product.owner">
+      <div class="bg-white p-2 my-3 border-round-sm" *ngIf="owner">
         <div class="userbox flex flex-row align-items-center justify-content-start" (click)="goToProfile()">
           <div class="profileimg">
-            <p-avatar [image]="product.owner.image" styleClass="mr-2" size="large" shape="circle"></p-avatar>
+            <p-avatar [image]="owner.avatar" styleClass="mr-2" size="large" shape="circle"></p-avatar>
           </div>
           <div class="username flex flex-column">
-            <div class="">{{product.owner.name}}</div>
-            <p-rating [(ngModel)]="product.owner.rating" [readonly]="true" [cancel]="false"></p-rating>
+            <div class="">{{owner.username}}</div>
+            <p-rating [(ngModel)]="owner.reputation" [readonly]="true" [cancel]="false"></p-rating>
           </div>
         </div>
 
