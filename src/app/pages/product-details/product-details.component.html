@@ -10,7 +10,7 @@
 
       <div class="articolisimili my-3 p-3 border-round-sm text-600 bg-white">
         <div>
-          Articoli dell'utente (n)
+          Articoli dell'utente ({{this.ownerProducts.length}})
         </div>
         <p-divider></p-divider>
         <div class="flex flex-row">
@@ -23,11 +23,9 @@
           </div>
         </div>
       </div>
-
       <div class="articolisimili my-3 p-3 border-round-sm text-600 bg-white">
-
+        <product-card *ngFor="let product of ownerProducts;" [product]="product"/>
       </div>
-
       <div class="articolisimili my-3 p-3 border-round-sm text-600 bg-white">
         <span>
           Articoli simili

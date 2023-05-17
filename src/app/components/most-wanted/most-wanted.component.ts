@@ -28,11 +28,11 @@ export class MostWantedComponent implements OnInit {
         description: "descrizione",
         resources: ['https://fakeimg.pl/200x300'],
         name: "titolo",
-        owner_id: demoUser.id,
+        owner: demoUser.id,
         price: this.currencyPipe.transform(10.0, 'EUR', 'symbol', '.2') ?? '',
         prefered: 3,
         size: $localize`14 anni / 164 cm`,
-        brand_id: "1",
+        brand: "1",
       }));
     }
   }

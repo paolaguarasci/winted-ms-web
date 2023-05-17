@@ -25,4 +25,8 @@ export class ProductService extends ResourceService<Product> {
 
     return this.http.post<any>(url, formData);
   }
+
+  public getByOwnerId(ownerid): Observable<Product[]> {
+    return this.http.get<Product[]>(this.apiUrl + '?owner=' + ownerid);
+  }
 }
