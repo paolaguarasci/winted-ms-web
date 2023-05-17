@@ -9,6 +9,6 @@ import { ResourceService } from './resource.service';
 @Injectable({ providedIn: 'root' })
 export class ConversationService extends ResourceService<Conversazione> {
   constructor(private http: HttpClient) {
-    super(http, Conversazione, `https://dummyjson.com/converazione`);
+    super(http, Conversazione, `http://localhost:8080/api/v1/conversazione`);
   }
 }

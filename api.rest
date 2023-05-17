@@ -1,0 +1,18 @@
+###
+GET http://localhost:8080/api/v1/order
+
+###
+GET http://localhost:8080/api/v1/product
+
+###
+GET http://localhost:8080/api/v1/product?owner=6464d3155ded8d052d323c2a
+
+###
+GET http://localhost:8080/api/v1/product
+
+###
+GET http://localhost:8080/api/v1/profile
+
+###
+
+GET http://localhost:8080/api/v1/profile/6464d3155ded8d052d323c2a

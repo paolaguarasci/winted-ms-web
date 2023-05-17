@@ -39,9 +39,6 @@ export class NewProductComponent implements OnInit {
   }
 
   handleSave() {
-    // salva publico
-    console.log(this.formGroup);
-    console.log(this.selectedFiles);
     let dataToSend = {
       title: this.formGroup.get('title')?.value,
       description: this.formGroup.get('description')?.value,
@@ -64,6 +61,5 @@ export class NewProductComponent implements OnInit {
   }
   dealWithFiles(event) {
     this.selectedFiles = event.currentFiles;
-    console.log(event);
   }
 }

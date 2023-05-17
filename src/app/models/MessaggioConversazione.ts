@@ -8,11 +8,12 @@ export enum MessaggioConversazioneTipi {
 }
 
 export class MessaggioConversazione extends Resource<MessaggioConversazione> {
-  public corpo!: string;
-  public mittente!: User;
-  public destinatario!: User;
-  public tipo!: MessaggioConversazioneTipi;
+  public from!: User;
+  public to!: User;
+  public content!: string;
+  public answer!: string;
   public timestamp!: string;
+  public tipo!: MessaggioConversazioneTipi;
   public timeAgo!: string;
   public visto!: boolean;
 

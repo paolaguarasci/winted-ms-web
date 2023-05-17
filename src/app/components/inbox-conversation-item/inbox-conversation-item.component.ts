@@ -17,7 +17,7 @@ export class InboxConversationItemComponent implements OnInit {
     this.loggedUsername = "paola"
     this.loggedImage = "https://primefaces.org/cdn/primeng/images/demo/avatar/onyamalimba.png"
     this.inviato = false;
-    if (this.msg.mittente.name === this.loggedUsername) {
+    if (this.msg.from.username === this.loggedUsername) {
       this.inviato = true;
     }
   }

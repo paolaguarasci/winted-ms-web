@@ -36,16 +36,29 @@ export class InboxComponent implements OnInit {
       this.update();
     });
 
+    this.route.queryParamMap.subscribe((params) => {
+      let offer_to = params.get('offer_to');
+      let offer_price = params.get('offer_price');
+      let info_about = params.get('info_about');
+      if (offer_to && offer_price) {
+        this.makeOffert(offer_to, offer_price)
+      }
+
+      if (info_about) {
+        this.askInfo(info_about);
+      }
+    }
+  );
     this.loggedUser = new User({
-      name: 'paola',
-      image:
+      username: 'paola',
+      avatar:
         'https://primefaces.org/cdn/primeng/images/demo/avatar/onyamalimba.png',
-      rating: 5,
+      reputation: 5,
     });
     this.otherUser = new User({
-      name: 'margheritapietro',
-      image: 'https://eu.ui-avatars.com/api/?name=John+Doe&size=250',
-      rating: 5,
+      username: 'margheritapietro',
+      avatar: 'https://eu.ui-avatars.com/api/?name=John+Doe&size=250',
+      reputation: 5,
     });
 
     this.update();
@@ -88,9 +101,9 @@ export class InboxComponent implements OnInit {
 
     this.conversazione.messaggi.push(
       new MessaggioConversazione({
-        corpo: 'ciao',
-        mittente: this.loggedUser,
-        destinatario: this.otherUser,
+        content: 'ciao',
+        from: this.loggedUser,
+        to: this.otherUser,
         tipo: MessaggioConversazioneTipi.testo,
         timestamp: '',
         timeAgo: '1 minuto fa',
@@ -100,9 +113,9 @@ export class InboxComponent implements OnInit {
 
     this.conversazione.messaggi.push(
       new MessaggioConversazione({
-        corpo: 'come va?',
-        mittente: this.loggedUser,
-        destinatario: this.otherUser,
+        content: 'come va?',
+        from: this.loggedUser,
+        to: this.otherUser,
         tipo: MessaggioConversazioneTipi.testo,
         timestamp: '',
         timeAgo: '1 minuto fa',
@@ -112,9 +125,9 @@ export class InboxComponent implements OnInit {
 
     this.conversazione.messaggi.push(
       new MessaggioConversazione({
-        corpo: 'ciao! tutto bene',
-        mittente: this.otherUser,
-        destinatario: this.loggedUser,
+        content: 'ciao! tutto bene',
+        from: this.otherUser,
+        to: this.loggedUser,
         tipo: MessaggioConversazioneTipi.testo,
         timestamp: '',
         timeAgo: '',
@@ -129,9 +142,9 @@ export class InboxComponent implements OnInit {
     }
     this.conversazione.messaggi.push(
       new MessaggioConversazione({
-        corpo: this.newMessage,
-        mittente: this.loggedUser,
-        destinatario: this.otherUser,
+        content: this.newMessage,
+        from: this.loggedUser,
+        to: this.otherUser,
         tipo: MessaggioConversazioneTipi.testo,
         timestamp: '',
         timeAgo: '1 minuto fa',
@@ -147,5 +160,18 @@ export class InboxComponent implements OnInit {
 
   sendPhotoMessage(event) {
     alert('To be implemented!');
+  }
+
+  makeOffert(productId, price) {
+    this.inboxService.makeAnOffert(productId, price).subscribe((res) => {
+      console.log("Offerta effettuata")
+    })
+  }
+
+
+  askInfo(productId) {
+    this.inboxService.askInfo(productId).subscribe((res) => {
+      console.log("Richiesta effettuata")
+    })
   }
 }

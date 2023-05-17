@@ -3,6 +3,7 @@ import { Injectable } from '@angular/core';
 import { Product } from '../models/Product';
 import { ResourceService } from './resource.service';
 import { Observable } from 'rxjs';
+import { OffertResponse } from '../models/OffertResponse';
 
 @Injectable({ providedIn: 'root' })
 export class ProductService extends ResourceService<Product> {
@@ -24,5 +25,11 @@ export class ProductService extends ResourceService<Product> {
     const url: string = 'http://localhost:8080/api/v1/product';
 
     return this.http.post<any>(url, formData);
+  }
+  public getByOwnerId(ownerid): Observable<Product[]> {
+    return this.http.get<Product[]>(this.apiUrl + '?owner=' + ownerid);
+  }
+  public getSameById(productId): Observable<Product[]> {
+    return this.http.get<Product[]>(this.apiUrl + '?sameto=' + productId);
   }
 }

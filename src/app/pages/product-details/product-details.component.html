@@ -1,0 +1,101 @@
+<div class="card mt-3" *ngIf="product">
+  <div class="grid">
+    <div class="col-8">
+      <div class="galleriamia flex flex-row flex-wrap h-30rem">
+        <div class="border-round-sm align-items-center justify-content-center w-6 h-full"
+          *ngFor="let res of product.resources;">
+          <img [src]="'http://localhost:8080/api/v1/resource/image/' + res" alt="product image" />
+        </div>
+      </div>
+
+      <div class="articolisimili my-3 p-3 border-round-sm text-600 bg-white" *ngIf="this.ownerProducts.length > 0">
+        <div>
+          Articoli dell'utente ({{this.ownerProducts.length}})
+        </div>
+        <p-divider></p-divider>
+        <div class="flex flex-row">
+          <div class="flex-grow-1 align-items-center justify-content-center">
+            <div class="font-semibold my-1">Acquista set</div>
+            <div>Risparmia sulle spese di spedizione</div>
+          </div>
+          <div class="flex-shrink-0 align-items-center justify-content-center">
+            <p-button class="" label="Acquista" />
+          </div>
+        </div>
+      </div>
+      <div class="articolisimili my-3 p-3 border-round-sm text-600" *ngIf="this.ownerProducts.length > 0">
+        <product-card *ngFor="let product of ownerProducts;" [product]="product" [owner]="owner" [showUser]="true" />
+      </div>
+      <div class="articolisimili my-3 p-3 border-round-sm text-600 bg-white">
+        <span>
+          Articoli simili
+        </span>
+      </div>
+
+      <div class="flex flex-row flex-wrap card-container blue-container justify-content-between w-12">
+        <div *ngFor="let product of articoliSimili;"
+          class="flex align-items-center justify-content-center w-13rem my-3">
+          <product-card [product]="product" [showUser]="true"></product-card>
+        </div>
+      </div>
+    </div>
+
+
+
+    <div class="col-3">
+      <div class="bg-white p-2 my-3 border-round-sm">
+        <div class="text-3xl font-semibold">{{ product.price | currency: 'EUR'}}</div>
+        <p-divider></p-divider>
+        <div class="text-xl font-semibold">{{ product.name }}</div>
+        <p-divider></p-divider>
+        <div class="text-xl">{{ product.description }}</div>
+        <p-divider></p-divider>
+        <div class="buttoncols flex flex-column">
+          <div class="w-full mb-2"><p-button (click)="buy()" class="block longbutton w-full h-full p-1 text-xs"
+              label="Acquista"></p-button></div>
+          <div class="w-full mb-2"><p-button (click)="makeAnOffert()" class="block longbutton w-full h-full p-1 text-xs"
+              label="Fai un'offerta" styleClass="p-button-outlined"></p-button></div>
+          <div class="w-full mb-2"><p-button (click)="askInfo()" class="block longbutton w-full h-full p-1 text-xs"
+              label="Chiedi info" styleClass="p-button-outlined"></p-button></div>
+          <div class="w-full mb-2" *ngIf="!isPreferred"><p-button (click)="addToPreferred()"
+              class="block longbutton w-full h-full p-1 text-xs" label="Aggiungi ai preferiti"
+              styleClass="p-button-outlined p-button-secondary" icon="pi pi-heart"></p-button></div>
+          <div class="w-full mb-2" *ngIf="isPreferred"><p-button (click)="removeToPreferred()"
+              class="block longbutton w-full h-full p-1 text-xs" label="Rimuovi dai preferiti"
+              styleClass="p-button-outlined p-button-secondary" icon="pi pi-heart"></p-button></div>
+        </div>
+      </div>
+
+
+      <div class="bg-white p-2 my-3 border-round-sm" *ngIf="owner">
+        <div class="userbox flex flex-row align-items-center justify-content-start" (click)="goToProfile()">
+          <div class="profileimg">
+            <p-avatar [image]="owner.avatar" styleClass="mr-2" size="large" shape="circle"></p-avatar>
+          </div>
+          <div class="username flex flex-column">
+            <div class="">{{owner.username}}</div>
+            <p-rating [(ngModel)]="owner.reputation" [readonly]="true" [cancel]="false"></p-rating>
+          </div>
+        </div>
+
+        <p-divider></p-divider>
+        <div class="flex flex-column align-items-start justify-content-center">
+
+          <div class="m-2 text-600 flex flex-row align-items-start justify-content-center"><i class="mr-2 pi pi-home"
+              style="color: 'var(--primary-color)'"></i> informazioni sulla
+            posizione</div>
+          <div class="m-2 text-600 flex flex-row align-items-start justify-content-center"><i class="mr-2 pi pi-clock"
+              style="color: 'var(--primary-color)'"></i> ultima volta
+            online</div>
+
+        </div>
+        <p-divider></p-divider>
+        <div class="flex flex-row align-items-center justify-content-start">
+          <div class="w-6 text-center m-4" (click)="goToMessagge()"><a href="">Messaggio</a></div>
+          <p-divider layout="vertical" />
+          <div class="w-6 text-center m-4" (click)="follow()"><a href="">Segui</a></div>
+        </div>
+      </div>
+    </div>
+  </div>
+</div>

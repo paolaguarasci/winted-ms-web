@@ -1,9 +1,9 @@
 import { Resource } from './Resource';
 
 export class User extends Resource<User> {
-  public name!: string;
-  public image!: string;
-  public rating!: number;
+  public username!: string;
+  public avatar!: string;
+  public reputation!: number;
 
   constructor(model?: Partial<User>) {
     super(model);
