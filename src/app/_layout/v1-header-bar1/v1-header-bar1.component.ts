@@ -1,5 +1,6 @@
 import { ActivatedRoute, Router } from '@angular/router';
 import { Component, OnInit } from '@angular/core';
+import { faEnvelope,  } from '@fortawesome/free-regular-svg-icons';
 import { MenuItem, MessageService } from 'primeng/api';
 interface SearchModes {
   name: string;
@@ -14,6 +15,7 @@ interface SearchModes {
 export class V1HeaderBar1Component implements OnInit {
   value!: string;
   searchModes!: SearchModes[];
+  faEnvelope = faEnvelope;
 
   selectedSearchModes!: SearchModes;
 

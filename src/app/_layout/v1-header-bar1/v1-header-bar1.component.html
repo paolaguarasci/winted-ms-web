@@ -14,7 +14,7 @@
       </div>
     </div>
   </div>
-  <div class="col-12 md:col-6 lg:col-4">
+  <div class="col-12 md:col-6 lg:col-6">
     <div class="flex flex-row justify-content-end align-items-center flex-wrap card-container m-3">
       <div class="p-inputgroup ">
         <span class="w-8rem">
@@ -24,7 +24,7 @@
       </div>
     </div>
   </div>
-  <div class="col-12 md:col-6 lg:col-6">
+  <div class="col-12 md:col-6 lg:col-4">
     <div class="card">
 
       <div *ngIf="!isLogged;then content else other_content"></div>
@@ -55,23 +55,21 @@
       <ng-template #other_content>
 
         <div class="flex flex-row justify-content-end align-items-center flex-wrap card-container mt-2">
-          <div
-            class="flex align-items-center justify-content-center w-2rem h-2rem font-bold text-gray border-round m-2">
-            <i (click)="goToInbox()" class="pi pi-inbox" style="font-size: 1.5rem"></i>
-
+          <div class="headericon flex align-items-center justify-content-center w-2rem h-2rem font-bold text-gray border-round m-2">
+            <fa-icon (click)="goToInbox()" [icon]="faEnvelope" class="fa-lg"></fa-icon>
           </div>
           <div
-            class="flex align-items-center justify-content-center w-2rem h-2rem font-bold text-gray border-round m-2">
+            class="headericon flex align-items-center justify-content-center w-2rem h-2rem font-bold text-gray border-round m-2">
             <i class="pi pi-bell" style="font-size: 1.5rem"></i>
           </div>
           <div
-            class="flex align-items-center justify-content-center w-2rem h-2rem font-bold text-gray border-round m-2">
+            class="headericon flex align-items-center justify-content-center w-2rem h-2rem font-bold text-gray border-round m-2">
             <i class="pi pi-heart" style="font-size: 1.5rem"></i>
           </div>
 
           <div
             class="flex align-items-center justify-content-center w-2rem h-2rem font-bold text-gray border-round m-2">
-            <p-avatar (click)="menu.toggle($event)"
+            <p-avatar (click)="menu.toggle($event)" styleClass="profilemenu"
               image="https://primefaces.org/cdn/primeng/images/demo/avatar/onyamalimba.png" shape="circle"></p-avatar>
           </div>
 

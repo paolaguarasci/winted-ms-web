@@ -72,7 +72,50 @@ app-new-product .p-fileupload-buttonbar {
   background-color: white !important;
 }
 
-
 app-product-details .longbutton button {
   width: 100% !important;
+}
+
+app-v1-header-bar1 {
+  .p-dropdown-trigger {
+    rotate: -90deg;
+  }
+
+  .p-dropdown-open .p-dropdown-trigger {
+    rotate: 0deg;
+  }
+  .p-dropdown-label,
+  .p-inputtext.p-inputtext-sm {
+    font-size: 0.8rem !important;
+    line-height: 1.2;
+  }
+
+  .p-dropdown-panel .p-dropdown-items .p-dropdown-item {
+    font-size: 0.8rem;
+  }
+
+
+  .headericon {
+    color: var(--gray-500);
+  }
+
+  .headericon:hover {
+    background-color: var(--primary-50);
+  }
+
+  // TODO Sistemare che non sono troppo convinta dell'aumento delle dimesioni
+  // c'e' qualche px che sfora
+  .profilemenu:hover {
+    border-radius: 50%;
+    border: 2px solid var(--primary-700);
+    width: 34px;
+    height: 34px;
+  }
+}
+
+app-v1-header-bar2 {
+  .p-menuitem:hover {
+    background-color: var(--primary-50);
+  }
+
 }
