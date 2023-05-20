@@ -14,6 +14,7 @@ import { Router } from '@angular/router';
 export class NewProductComponent implements OnInit {
   selectedFiles: any[] = [];
   formGroup!: FormGroup;
+  isDraft!: Boolean;
 
   boxSizes: any[] = [
     { name: 'Piccola', key: 'S' },
@@ -26,6 +27,7 @@ export class NewProductComponent implements OnInit {
     private router: Router
   ) {}
   ngOnInit(): void {
+    this.isDraft = false;
     this.formGroup = new FormGroup({
       title: new FormControl<string | null>(null),
       description: new FormControl<string | null>(null),
@@ -41,6 +43,7 @@ export class NewProductComponent implements OnInit {
   handleSave() {
     let dataToSend = {
       title: this.formGroup.get('title')?.value,
+      
       description: this.formGroup.get('description')?.value,
       price: this.formGroup.get('price')?.value,
       selectedSize: this.formGroup.get('selectedSize')?.value.key,
@@ -57,7 +60,8 @@ export class NewProductComponent implements OnInit {
   }
 
   handleSaveInBozza() {
-    // salva privato
+    this.isDraft = true;
+    this.handleSave();
   }
   dealWithFiles(event) {
     this.selectedFiles = event.currentFiles;
