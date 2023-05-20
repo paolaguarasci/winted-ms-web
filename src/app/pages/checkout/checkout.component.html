@@ -1,7 +1,25 @@
 <div class="card mt-3" *ngIf="order">
-  <p>checkout works! order id {{ orderId }}</p>
-  <button>paga ora</button>
+  <div class="my-3">
+    <div>Order</div>
+    <div>{{ order | json }}</div>
+  </div>
+
+  <div class="my-3">
+    <div>Product</div>
+    <div>{{ product | json }}</div>
+  </div>
+
+  <div class="my-3">
+    <div>Address </div>
+    <div>{{ address | json }}</div>
+  </div>
+
+  <div class="my-3">
+    <div>Payment Method </div>
+    <div>{{ paymentMethod | json }}</div>
+  </div>
+
+  <div class="my-3">
+    <p-button (click)="saveOrder()" label="Submit"></p-button>
+  </div>
 </div>
-
-
-

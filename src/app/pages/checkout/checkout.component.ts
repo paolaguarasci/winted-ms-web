@@ -51,6 +51,7 @@ export class CheckoutComponent implements OnInit {
   }
 
   saveOrder() {
+    console.log("PAGA ORA")
     this.order.address = this.address.id ?? '';
     this.order.paymendMethod = this.paymentMethod.id ?? '';
     this.order.owner = this.product.owner;
