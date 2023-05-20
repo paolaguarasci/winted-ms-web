@@ -1,0 +1,22 @@
+<div class="card" *ngIf="review">
+  <div class="flex card-container overflow-hidden">
+    <div *ngIf="reviewAuthor"
+      class="flex-none flex align-items-start justify-content-center m-1 px-2 py-3 border-round">
+      <p-avatar [image]="reviewAuthor.avatar" styleClass="" size="large" shape="circle"></p-avatar>
+    </div>
+    <div class="flex-grow-1 flex align-items-start justify-content-start m-1 px-1 px-2 border-round">
+      <div class="flex flex-column card-container green-container">
+        <div *ngIf="reviewAuthor" class="flex align-items-start justify-content-start border-round m-2">
+          {{reviewAuthor.username}}</div>
+        <div class="flex align-items-start justify-content-start border-round m-2">
+          <p-rating [(ngModel)]="review.star" [readonly]="true" [cancel]="false"></p-rating>
+        </div>
+        <div class="flex align-items-start justify-content-start border-round m-2">
+          {{ review.textMessage }}
+        </div>
+      </div>
+    </div>
+    <div class="flex-none flex align-items-start justify-content-center m-2 px-5 py-3 border-round">
+      {{ review.timesAgo }}</div>
+  </div>
+</div>

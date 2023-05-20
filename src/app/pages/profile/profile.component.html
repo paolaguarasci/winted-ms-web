@@ -1,1 +1,91 @@
-<p>profile works! {{username}}</p>
+<div class="card mt-3" *ngIf="profile">
+  <div class="flex card-container  overflow-hidden">
+    <div class="flex-none flex align-items-center justify-content-center m-2 border-round">
+      <p-avatar [image]="profile.avatar" styleClass="mr-2 w-15rem h-15rem" shape="circle"></p-avatar>
+    </div>
+    <div class="flex-grow-1 flex align-items-center justify-content-start m-2 border-round">
+      <div class="flex flex-column card-container green-container">
+        <div class="flex align-items-center justify-content-start border-round m-2">
+
+          <div class="flex flex-column card-container green-container">
+            <div class="flex align-items-center justify-content-start text-3xl border-round m-2">
+              {{ profile.username }}</div>
+            <div class="flex align-items-center justify-content-start border-round m-2">
+
+              <div *ngIf="profile.reputation">
+                <p-rating [(ngModel)]="profile.reputation" [readonly]="true" [cancel]="false"></p-rating>
+              </div>
+
+              <div *ngIf="!profile.reputation">
+                <span>Nessuna recensione</span>
+              </div>
+            </div>
+          </div>
+        </div>
+        <div class="flex align-items-center justify-content-center border-round m-2">
+          <div class="flex flex-row flex-wrap card-container ">
+            <div class="flex align-items-start justify-content-start border-round m-2">
+
+              <div class="flex flex-column card-container green-container">
+                <div class="flex align-items-start justify-content-start border-round m-2">
+                  Informazioni:</div>
+                <div class="flex align-items-start justify-content-start border-round m-2">
+                  <i class="pi pi-globe pr-2" style="font-size: 1rem; color: var(--gray-500);"></i> {{ profile.position
+                  }}
+                </div>
+                <div class="flex align-items-start justify-content-start border-round m-2">
+                  <i class="pi pi-clock pr-2" style="font-size: 1rem; color: var(--gray-500);"></i> {{ profile.lastVisit
+                  }}
+                </div>
+                <div class="flex align-items-start justify-content-start border-round m-2">
+                  <i class="pi pi-wifi pr-2" style="font-size: 1rem; color: var(--gray-500);"></i> {{ profile.follower
+                  }} follower, {{ profile.seguiti
+                  }} seguiti
+                </div>
+              </div>
+            </div>
+            <div class="flex align-items-start justify-content-start border-round m-2">
+              <div class="flex flex-column card-container green-container">
+                <div class="flex align-items-start justify-content-start border-round m-2">
+                  Informazioni verificate:</div>
+                <div *ngIf="profile.googleVerified && profile.googleVerified === true "
+                  class="flex align-items-start justify-content-start border-round m-2">
+                  <i class="pi pi-check-circle pr-2" style="font-size: 1rem; color: var(--gray-500);"></i> Google
+                </div>
+                <div *ngIf="profile.emailVerified && profile.emailVerified === true "
+                  class="flex align-items-start justify-content-start border-round m-2">
+                  <i class="pi pi-check-circle pr-2" style="font-size: 1rem; color: var(--gray-500);"></i> Email
+                </div>
+                <div *ngIf="profile.facebookVerified && profile.facebookVerified === true "
+                  class="flex align-items-start justify-content-start border-round m-2">
+                  <i class="pi pi-check-circle pr-2" style="font-size: 1rem; color: var(--gray-500);"></i> Facebook
+                </div>
+              </div>
+            </div>
+          </div>
+        </div>
+      </div>
+    </div>
+    <div class="flex-none flex align-items-start justify-content-center m-2 px-5 py-5 border-round">
+      <div *ngIf="loggedUsername === profile.username">
+        <p-button icon="pi pi-pencil" label="Modifica profilo"
+          styleClass="p-button-outlined p-button-secondary"></p-button>
+      </div>
+      <div *ngIf="loggedUsername !== profile.username">
+        <p-button label="Messaggio" styleClass="p-button-outlined p-button-primary ml-2"></p-button>
+        <p-button label="Segui" styleClass="p-button p-button-primary ml-2"></p-button>
+      </div>
+    </div>
+  </div>
+</div>
+
+<div class="card m-2" *ngIf="profile">
+  <p-tabView>
+    <p-tabPanel header="Armadio">
+      <app-profile-wardrobe [user]="profile" />
+    </p-tabPanel>
+    <p-tabPanel header="Recensioni" class="p-0 m-0">
+      <app-profile-review-list [user]="profile" />
+    </p-tabPanel>
+  </p-tabView>
+</div>

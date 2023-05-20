@@ -63,6 +63,10 @@ import { V3LayoutComponent } from './_layout/v3-layout/v3-layout.component';
 import { ProfileComponent } from './pages/profile/profile.component';
 import { CheckoutComponent } from './pages/checkout/checkout.component';
 import { FontAwesomeModule } from '@fortawesome/angular-fontawesome';
+import { TabViewModule } from 'primeng/tabview';
+import { ProfileWardrobeComponent } from './components/profile-wardrobe/profile-wardrobe.component';
+import { ProfileReviewListComponent } from './components/profile-review-list/profile-review-list.component';
+import { ProfileReviewSingleComponent } from './components/profile-review-single/profile-review-single.component';
 
 @NgModule({
   declarations: [
@@ -100,6 +104,9 @@ import { FontAwesomeModule } from '@fortawesome/angular-fontawesome';
     ProductGalleryComponent,
     ProfileComponent,
     CheckoutComponent,
+    ProfileWardrobeComponent,
+    ProfileReviewListComponent,
+    ProfileReviewSingleComponent,
   ],
   imports: [
     BrowserModule,
@@ -108,6 +115,7 @@ import { FontAwesomeModule } from '@fortawesome/angular-fontawesome';
     BrowserAnimationsModule,
     ButtonModule,
     FormsModule,
+    TabViewModule,
     ColorPickerModule,
     MegaMenuModule,
     InputTextModule,
