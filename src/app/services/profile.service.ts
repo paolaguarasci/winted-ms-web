@@ -27,4 +27,7 @@ export class ProfileService extends ResourceService<User> {
     return this.http.delete(this.apiUrl + '/preferred/'+productId);
   }
   
+  getOneByUsername(username) {
+    return this.http.get<User>(this.apiUrl + '/username/'+username)
+  }
 }

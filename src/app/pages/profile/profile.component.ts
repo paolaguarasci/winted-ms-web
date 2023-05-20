@@ -1,19 +1,40 @@
 import { Component, Input, OnInit } from '@angular/core';
 
 import { ActivatedRoute } from '@angular/router';
+import { User } from 'src/app/models/User';
+import { ProfileService } from 'src/app/services/profile.service';
 
 @Component({
   selector: 'app-profile',
   templateUrl: './profile.component.html',
-  styleUrls: ['./profile.component.scss']
+  styleUrls: ['./profile.component.scss'],
 })
 export class ProfileComponent implements OnInit {
   @Input() username!: any;
-  constructor(private router: ActivatedRoute) {}
+  loggedUsername!: string;
+
+  profile!: User;
+  constructor(
+    private router: ActivatedRoute,
+    private profileService: ProfileService
+  ) {}
+  
   ngOnInit(): void {
-    this.router.paramMap.subscribe(params => {
-      this.username = params.get('username')
-    })
+    this.loggedUsername = "paola"
+    this.router.paramMap.subscribe((params) => {
+      this.username = params.get('username');
+      if (!this.username) {
+        this.username = this.loggedUsername;
+      }
+      this.update();
+    });
   }
 
+  update() {
+    if (this.username) {
+      this.profileService.getOneByUsername(this.username).subscribe((res) => {
+        this.profile = res;
+      });
+    }
+  }
 }
