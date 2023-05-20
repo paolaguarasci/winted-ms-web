@@ -20,6 +20,7 @@ export class CheckoutComponent implements OnInit {
   product!: Product;
   address!: Address;
   paymentMethod!: PaymentMethod;
+  metodoSpedizione!: any;
 
   constructor(
     private route: ActivatedRoute,
