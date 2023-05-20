@@ -30,13 +30,13 @@
                 <div class="flex align-items-start justify-content-start border-round m-2">
                   Informazioni:</div>
                 <div class="flex align-items-start justify-content-start border-round m-2">
-                  <i class="pi pi-globe" style="font-size: 1rem"></i> {{ profile.position }}
+                  <i class="pi pi-globe pr-2" style="font-size: 1rem; color: var(--gray-500);"></i> {{ profile.position }}
                 </div>
                 <div class="flex align-items-start justify-content-start border-round m-2">
-                  <i class="pi pi-clock" style="font-size: 1rem"></i> {{ profile.lastVisit }}
+                  <i class="pi pi-clock pr-2" style="font-size: 1rem; color: var(--gray-500);"></i> {{ profile.lastVisit }}
                 </div>
                 <div class="flex align-items-start justify-content-start border-round m-2">
-                  <i class="pi pi-wifi" style="font-size: 1rem"></i> {{ profile.follower }} follower, {{ profile.seguiti
+                  <i class="pi pi-wifi pr-2" style="font-size: 1rem; color: var(--gray-500);"></i> {{ profile.follower }} follower, {{ profile.seguiti
                   }} seguiti
                 </div>
               </div>
@@ -47,15 +47,15 @@
                   Informazioni verificate:</div>
                 <div *ngIf="profile.googleVerified && profile.googleVerified === true "
                   class="flex align-items-start justify-content-start border-round m-2">
-                  <i class="pi pi-check-circle" style="font-size: 1rem"></i> Google
+                  <i class="pi pi-check-circle pr-2" style="font-size: 1rem; color: var(--gray-500);"></i> Google
                 </div>
                 <div *ngIf="profile.emailVerified && profile.emailVerified === true "
                   class="flex align-items-start justify-content-start border-round m-2">
-                  <i class="pi pi-check-circle" style="font-size: 1rem"></i> Email
+                  <i class="pi pi-check-circle pr-2" style="font-size: 1rem; color: var(--gray-500);"></i> Email
                 </div>
                 <div *ngIf="profile.facebookVerified && profile.facebookVerified === true "
                   class="flex align-items-start justify-content-start border-round m-2">
-                  <i class="pi pi-check-circle" style="font-size: 1rem"></i> Facebook
+                  <i class="pi pi-check-circle pr-2" style="font-size: 1rem; color: var(--gray-500);"></i> Facebook
                 </div>
               </div>
             </div>

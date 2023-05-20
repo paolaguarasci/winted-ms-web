@@ -18,9 +18,9 @@ export class ProfileComponent implements OnInit {
     private router: ActivatedRoute,
     private profileService: ProfileService
   ) {}
-  
+
   ngOnInit(): void {
-    this.loggedUsername = "paola"
+    this.loggedUsername = 'paola';
     this.router.paramMap.subscribe((params) => {
       this.username = params.get('username');
       if (!this.username) {
@@ -34,6 +34,10 @@ export class ProfileComponent implements OnInit {
     if (this.username) {
       this.profileService.getOneByUsername(this.username).subscribe((res) => {
         this.profile = res;
+        this.profile.follower = 0;
+        this.profile.seguiti = 0;
+        this.profile.position = 'Rende, Italia';
+        this.profile.lastVisit = 'Ultima visita 1 ora fa';
         this.profile.emailVerified = true;
       });
     }
