@@ -30,13 +30,16 @@
                 <div class="flex align-items-start justify-content-start border-round m-2">
                   Informazioni:</div>
                 <div class="flex align-items-start justify-content-start border-round m-2">
-                  <i class="pi pi-globe pr-2" style="font-size: 1rem; color: var(--gray-500);"></i> {{ profile.position }}
+                  <i class="pi pi-globe pr-2" style="font-size: 1rem; color: var(--gray-500);"></i> {{ profile.position
+                  }}
                 </div>
                 <div class="flex align-items-start justify-content-start border-round m-2">
-                  <i class="pi pi-clock pr-2" style="font-size: 1rem; color: var(--gray-500);"></i> {{ profile.lastVisit }}
+                  <i class="pi pi-clock pr-2" style="font-size: 1rem; color: var(--gray-500);"></i> {{ profile.lastVisit
+                  }}
                 </div>
                 <div class="flex align-items-start justify-content-start border-round m-2">
-                  <i class="pi pi-wifi pr-2" style="font-size: 1rem; color: var(--gray-500);"></i> {{ profile.follower }} follower, {{ profile.seguiti
+                  <i class="pi pi-wifi pr-2" style="font-size: 1rem; color: var(--gray-500);"></i> {{ profile.follower
+                  }} follower, {{ profile.seguiti
                   }} seguiti
                 </div>
               </div>
@@ -71,18 +74,10 @@
 <div class="card m-2">
   <p-tabView>
     <p-tabPanel header="Armadio">
-
-      componente guardaroba (TODO)
-
+      <app-profile-wardrobe [user]="profile"/>
     </p-tabPanel>
     <p-tabPanel header="Recensioni">
-      <div class="nessunarecensione" *ngIf="!profile.reputation">
-        Nessuna recensione, torna piu' tardi!
-      </div>
-
-      <div class="recensionilist" *ngIf="profile.reputation">
-        componente recensioni lista (TODO)
-      </div>
+      <app-profile-review-list [user]="profile"/>
     </p-tabPanel>
   </p-tabView>
 </div>
