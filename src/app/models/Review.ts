@@ -1,7 +1,7 @@
 import { Resource } from "./Resource";
 
 export class Review extends Resource<Review> {
-  public userid!: String;
+  public userid!: string;
   public star!: number;
   public textMessage!: string;
   public timesAgo!: string; 

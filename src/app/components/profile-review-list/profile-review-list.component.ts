@@ -15,6 +15,7 @@ export class ProfileReviewListComponent implements OnInit {
       userid: '123',
       star: 3,
       textMessage: 'Tutto ok!',
+      timesAgo: "1 ora fa"
     });
     this.reviewList = [];
     this.reviewList.push(exampleReview);

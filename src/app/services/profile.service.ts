@@ -3,6 +3,7 @@ import { HttpClient } from '@angular/common/http';
 import { Injectable } from '@angular/core';
 import { ResourceService } from './resource.service';
 import { User } from '../models/User';
+import { Product } from '../models/Product';
 
 @Injectable({
   providedIn: 'root',
@@ -14,20 +15,24 @@ export class ProfileService extends ResourceService<User> {
   }
 
   getPreferred() {
-    return this.http.get<any[]>(this.apiUrl + '/preferred');
+    return this.http.get<Product[]>(this.apiUrl + '/preferred');
+  }
+
+  getWardrobe(username) {
+    return this.http.get<any[]>(this.apiUrl + '/' + username + '/wardrobe');
   }
 
   addPreferred(productId) {
     return this.http.post(this.apiUrl + '/preferred', {
-      product: productId
+      product: productId,
     });
   }
 
   removeToPreferred(productId) {
-    return this.http.delete(this.apiUrl + '/preferred/'+productId);
+    return this.http.delete(this.apiUrl + '/preferred/' + productId);
   }
-  
+
   getOneByUsername(username) {
-    return this.http.get<User>(this.apiUrl + '/username/'+username)
+    return this.http.get<User>(this.apiUrl + '/username/' + username);
   }
 }

@@ -68,7 +68,8 @@
     </div>
     <div class="flex-none flex align-items-start justify-content-center m-2 px-5 py-5 border-round">
       <div *ngIf="loggedUsername === profile.username">
-        <p-button icon="pi pi-pencil" label="Modifica profilo" styleClass="p-button-outlined p-button-secondary"></p-button>
+        <p-button icon="pi pi-pencil" label="Modifica profilo"
+          styleClass="p-button-outlined p-button-secondary"></p-button>
       </div>
       <div *ngIf="loggedUsername !== profile.username">
         <p-button label="Messaggio" styleClass="p-button-outlined p-button-primary ml-2"></p-button>
@@ -78,12 +79,12 @@
   </div>
 </div>
 
-<div class="card m-2">
+<div class="card m-2" *ngIf="profile">
   <p-tabView>
     <p-tabPanel header="Armadio">
       <app-profile-wardrobe [user]="profile" />
     </p-tabPanel>
-    <p-tabPanel header="Recensioni">
+    <p-tabPanel header="Recensioni" class="p-0 m-0">
       <app-profile-review-list [user]="profile" />
     </p-tabPanel>
   </p-tabView>
