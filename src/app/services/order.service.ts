@@ -11,7 +11,12 @@ export class OrderService extends ResourceService<Order> {
   constructor(private http: HttpClient) {
     super(http, Order, `http://localhost:8080/api/v1/order`);
   }
+
   public buy(order: Order): Observable<Order> {
-    return this.http.post<Order>(this.apiUrl, order);
+    return this.http.post<Order>(this.apiUrl + '/confirm', order);
+  }
+
+  public newCheckout(order: Order): Observable<Order> {
+    return this.http.post<Order>(this.apiUrl + '/checkout', order);
   }
 }
