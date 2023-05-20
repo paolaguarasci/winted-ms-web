@@ -34,6 +34,7 @@ export class ProfileComponent implements OnInit {
     if (this.username) {
       this.profileService.getOneByUsername(this.username).subscribe((res) => {
         this.profile = res;
+        this.profile.emailVerified = true;
       });
     }
   }

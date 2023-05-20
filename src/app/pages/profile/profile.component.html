@@ -1,5 +1,88 @@
 <div class="card mt-3" *ngIf="profile">
-  <p>{{ profile | json }}</p>
+  <div class="flex card-container  overflow-hidden">
+    <div class="flex-none flex align-items-center justify-content-center m-2 border-round">
+      <p-avatar [image]="profile.avatar" styleClass="mr-2 w-15rem h-15rem" shape="circle"></p-avatar>
+    </div>
+    <div class="flex-grow-1 flex align-items-center justify-content-start m-2 border-round">
+      <div class="flex flex-column card-container green-container">
+        <div class="flex align-items-center justify-content-start border-round m-2">
+
+          <div class="flex flex-column card-container green-container">
+            <div class="flex align-items-center justify-content-start text-3xl border-round m-2">
+              {{ profile.username }}</div>
+            <div class="flex align-items-center justify-content-start border-round m-2">
+
+              <div *ngIf="profile.reputation">
+                <p-rating [(ngModel)]="profile.reputation" [readonly]="true" [cancel]="false"></p-rating>
+              </div>
+
+              <div *ngIf="!profile.reputation">
+                <span>Nessuna recensione</span>
+              </div>
+            </div>
+          </div>
+        </div>
+        <div class="flex align-items-center justify-content-center border-round m-2">
+          <div class="flex flex-row flex-wrap card-container ">
+            <div class="flex align-items-start justify-content-start border-round m-2">
+
+              <div class="flex flex-column card-container green-container">
+                <div class="flex align-items-start justify-content-start border-round m-2">
+                  Informazioni:</div>
+                <div class="flex align-items-start justify-content-start border-round m-2">
+                  <i class="pi pi-globe" style="font-size: 1rem"></i> {{ profile.position }}
+                </div>
+                <div class="flex align-items-start justify-content-start border-round m-2">
+                  <i class="pi pi-clock" style="font-size: 1rem"></i> {{ profile.lastVisit }}
+                </div>
+                <div class="flex align-items-start justify-content-start border-round m-2">
+                  <i class="pi pi-wifi" style="font-size: 1rem"></i> {{ profile.follower }} follower, {{ profile.seguiti
+                  }} seguiti
+                </div>
+              </div>
+            </div>
+            <div class="flex align-items-start justify-content-start border-round m-2">
+              <div class="flex flex-column card-container green-container">
+                <div class="flex align-items-start justify-content-start border-round m-2">
+                  Informazioni verificate:</div>
+                <div *ngIf="profile.googleVerified && profile.googleVerified === true "
+                  class="flex align-items-start justify-content-start border-round m-2">
+                  <i class="pi pi-check-circle" style="font-size: 1rem"></i> Google
+                </div>
+                <div *ngIf="profile.emailVerified && profile.emailVerified === true "
+                  class="flex align-items-start justify-content-start border-round m-2">
+                  <i class="pi pi-check-circle" style="font-size: 1rem"></i> Email
+                </div>
+                <div *ngIf="profile.facebookVerified && profile.facebookVerified === true "
+                  class="flex align-items-start justify-content-start border-round m-2">
+                  <i class="pi pi-check-circle" style="font-size: 1rem"></i> Facebook
+                </div>
+              </div>
+            </div>
+          </div>
+        </div>
+      </div>
+    </div>
+    <div class="flex-none flex align-items-center justify-content-center m-2 px-5 py-3 border-round">
+      PrimeFlex</div>
+  </div>
 </div>
 
+<div class="card m-2">
+  <p-tabView>
+    <p-tabPanel header="Armadio">
 
+      componente guardaroba (TODO)
+
+    </p-tabPanel>
+    <p-tabPanel header="Recensioni">
+      <div class="nessunarecensione" *ngIf="!profile.reputation">
+        Nessuna recensione, torna piu' tardi!
+      </div>
+
+      <div class="recensionilist" *ngIf="profile.reputation">
+        componente recensioni lista (TODO)
+      </div>
+    </p-tabPanel>
+  </p-tabView>
+</div>
