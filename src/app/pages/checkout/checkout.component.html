@@ -16,11 +16,11 @@
                     <p-avatar [image]="'http://localhost:8080/api/v1/resource/image/' + product.resources[0]"
                       styleClass="" size="large" shape="square"></p-avatar>
                   </div>
-                  <div class="flex-grow-1 flex align-items-center justify-content-start border-round ">
-                    <div class="flex flex-column card-container">
+                  <div class="flex-grow-1 flex align-items-center justify-content-start border-round w-10 ml-2">
+                    <div class="flex flex-column card-container w-6">
                       <div class="flex align-items-start justify-content-start m-1 font-semibold">
                         {{ product.name }}</div>
-                      <div class="flex align-items-start justify-content-start m-1">
+                      <div class="flex align-items-start justify-content-start m-1 flex-wrap">
                         {{ product.description }}</div>
                     </div>
                   </div>
@@ -34,7 +34,7 @@
           </div>
           <div class="flex align-items-start justify-content-start mt-3">
             <div class="flex flex-column card-container  w-12">
-              <div class="flex text-600 align-items-start justify-content-start mb-2 ">
+              <div class="flex text-600 align-items-start justify-content-start mb-3 ">
                 Indirizzo</div>
               <div class="flex align-items-center justify-content-center w-12">
                 <div class="flex w-12">
@@ -60,7 +60,7 @@
           </div>
           <div class="flex align-items-start justify-content-start mt-3">
             <div class="flex flex-column card-container  w-12">
-              <div class="flex align-items-start justify-content-start mb-2 text-600">
+              <div class="flex align-items-start justify-content-start mb-3 text-600">
                 Modalita' di spedizione</div>
               <div class="flex align-items-center justify-content-center w-12">
 
@@ -70,7 +70,7 @@
                     <div class="flex flex-column card-container w-12">
                       <div class="flex align-items-center justify-content-start mb-1 w-12">
                         <div class="card flex  justify-content-center w-12">
-                          <div class="flex flex-column flex-wrap gap-3 w-12">
+                          <div class="flex flex-column flex-wrap gap-2 w-12">
                             <div class="flex align-items-center">
                               <label for="ingredient1" class="flex-grow-1 mr-2 ">Spedizione ad un punto di
                                 ritiro</label>
@@ -96,7 +96,7 @@
           </div>
           <div class="flex align-items-start justify-content-start mt-3 ">
             <div class="flex flex-column card-container  w-12">
-              <div class="flex align-items-start justify-content-start mb-2 text-600">
+              <div class="flex align-items-start justify-content-start mb-3 text-600">
                 Metodo di Pagamento</div>
               <div class="flex align-items-center justify-content-center w-12">
                 <div class="flex w-12">
