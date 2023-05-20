@@ -66,18 +66,25 @@
         </div>
       </div>
     </div>
-    <div class="flex-none flex align-items-center justify-content-center m-2 px-5 py-3 border-round">
-      PrimeFlex</div>
+    <div class="flex-none flex align-items-start justify-content-center m-2 px-5 py-5 border-round">
+      <div *ngIf="loggedUsername === profile.username">
+        <p-button icon="pi pi-pencil" label="Modifica profilo" styleClass="p-button-outlined p-button-secondary"></p-button>
+      </div>
+      <div *ngIf="loggedUsername !== profile.username">
+        <p-button label="Messaggio" styleClass="p-button-outlined p-button-primary ml-2"></p-button>
+        <p-button label="Segui" styleClass="p-button p-button-primary ml-2"></p-button>
+      </div>
+    </div>
   </div>
 </div>
 
 <div class="card m-2">
   <p-tabView>
     <p-tabPanel header="Armadio">
-      <app-profile-wardrobe [user]="profile"/>
+      <app-profile-wardrobe [user]="profile" />
     </p-tabPanel>
     <p-tabPanel header="Recensioni">
-      <app-profile-review-list [user]="profile"/>
+      <app-profile-review-list [user]="profile" />
     </p-tabPanel>
   </p-tabView>
 </div>
