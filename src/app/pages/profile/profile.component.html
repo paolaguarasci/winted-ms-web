@@ -1,1 +1,5 @@
-<p>profile works! {{username}}</p>
+<div class="card mt-3" *ngIf="profile">
+  <p>{{ profile | json }}</p>
+</div>
+
+
