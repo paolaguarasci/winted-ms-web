@@ -13,8 +13,6 @@ import { ColorPickerModule } from 'primeng/colorpicker';
 import { DialogModule } from 'primeng/dialog';
 import { DividerModule } from 'primeng/divider';
 import { DropdownModule } from 'primeng/dropdown';
-import { Example1Component } from './pages/example1/example1.component';
-import { ExampleComponent } from './pages/example/example.component';
 import { FeedComponent } from './components/feed/feed.component';
 import { FileUploadModule } from 'primeng/fileupload';
 import { FormsModule } from '@angular/forms';
@@ -71,11 +69,9 @@ import { ProfileReviewSingleComponent } from './components/profile-review-single
 @NgModule({
   declarations: [
     AppComponent,
-    ExampleComponent,
     V1HeaderComponent,
     V1FooterComponent,
     V1LayoutComponent,
-    Example1Component,
     V1HeaderBar1Component,
     V1HeaderBar2Component,
     V1FooterLine1Component,

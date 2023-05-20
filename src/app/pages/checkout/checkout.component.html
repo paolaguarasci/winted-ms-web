@@ -1,3 +1,153 @@
-<p>checkout works! order id {{ orderId }}</p>
+<div class="card mt-5 text-800" *ngIf="order">
+
+  <div class="card">
+    <div class="flex card-container blue-container overflow-hidden">
+      <div class="flex-grow-1 flex align-items-start justify-content-start mr-5 pb-3 border-round">
+
+        <div class="flex flex-column card-container  w-12">
+          <div class="flex align-items-start justify-content-start ">
+
+            <div class="flex flex-column card-container  w-12">
+              <div class="flex align-items-center justify-content-start  mb-2 text-600">
+                Ordine</div>
+              <div class="flex align-items-start justify-content-start ">
+                <div class="flex flex-row flex-wrap card-container blue-container w-12">
+                  <div class="flex flex-none align-items-center justify-content-center border-round ">
+                    <p-avatar [image]="'http://localhost:8080/api/v1/resource/image/' + product.resources[0]"
+                      styleClass="" size="large" shape="square"></p-avatar>
+                  </div>
+                  <div class="flex-grow-1 flex align-items-center justify-content-start border-round ">
+                    <div class="flex flex-column card-container">
+                      <div class="flex align-items-start justify-content-start m-1 font-semibold">
+                        {{ product.name }}</div>
+                      <div class="flex align-items-start justify-content-start m-1">
+                        {{ product.description }}</div>
+                    </div>
+                  </div>
+                  <div class="flex-none flex align-items-center justify-content-start border-round ">
+                    {{ product.price | currency: 'EUR'}}
+                  </div>
+                </div>
+              </div>
+            </div>
+
+          </div>
+          <div class="flex align-items-start justify-content-start mt-3">
+            <div class="flex flex-column card-container  w-12">
+              <div class="flex text-600 align-items-start justify-content-start mb-2 ">
+                Indirizzo</div>
+              <div class="flex align-items-center justify-content-center w-12">
+                <div class="flex w-12">
+                  <div class="flex-grow-1 flex align-items-center justify-content-start">
+                    <div class="flex flex-column card-container ">
+                      <div class="flex align-items-center justify-content-start mb-1 font-semibold">
+                        {{ address.nome }} {{ address.cognome }}
+                      </div>
+                      <div class="flex align-items-center justify-content-start mb-1">
+                        {{ address.via }}, {{ address.numeroCivico }}
+                      </div>
+                      <div class="flex align-items-center justify-content-start mb-1">
+                        {{ address.cap }} - {{ address.citta }}
+                      </div>
+                    </div>
+                  </div>
+                  <div class="flex-none flex align-items-center justify-content-center">
+                    <i class="pi pi-pencil" style="color: 'var(--primary-color)'"></i>
+                  </div>
+                </div>
+              </div>
+            </div>
+          </div>
+          <div class="flex align-items-start justify-content-start mt-3">
+            <div class="flex flex-column card-container  w-12">
+              <div class="flex align-items-start justify-content-start mb-2 text-600">
+                Modalita' di spedizione</div>
+              <div class="flex align-items-center justify-content-center w-12">
 
 
+                <div class="flex w-12">
+                  <div class="flex-grow-1 flex align-items-center justify-content-start">
+                    <div class="flex flex-column card-container w-12">
+                      <div class="flex align-items-center justify-content-start mb-1 w-12">
+                        <div class="card flex  justify-content-center w-12">
+                          <div class="flex flex-column flex-wrap gap-3 w-12">
+                            <div class="flex align-items-center">
+                              <label for="ingredient1" class="flex-grow-1 mr-2 ">Spedizione ad un punto di
+                                ritiro</label>
+                              <p-radioButton name="spedizione" class="flex-none" value="ritiro"
+                                [(ngModel)]="metodoSpedizione" inputId="ingredient1"></p-radioButton>
+                            </div>
+
+                            <div class="flex align-items-center">
+                              <label for="ingredient2" class="flex-grow-1 mr-2">Consegna a casa</label>
+                              <p-radioButton class="flex-none" name="spedizione" value="casa"
+                                [(ngModel)]="metodoSpedizione" inputId="ingredient2"></p-radioButton>
+                            </div>
+                          </div>
+                        </div>
+                      </div>
+                    </div>
+                  </div>
+                </div>
+
+
+              </div>
+            </div>
+          </div>
+          <div class="flex align-items-start justify-content-start mt-3 ">
+            <div class="flex flex-column card-container  w-12">
+              <div class="flex align-items-start justify-content-start mb-2 text-600">
+                Metodo di Pagamento</div>
+              <div class="flex align-items-center justify-content-center w-12">
+                <div class="flex w-12">
+                  <div class="flex-grow-1 flex align-items-center justify-content-start">
+                    <div class="flex flex-column card-container ">
+                      <div class="flex align-items-center justify-content-start mb-1">
+                        {{ paymentMethod.gestore }} ************{{ paymentMethod.last4Digit }}
+                      </div>
+                    </div>
+                  </div>
+                  <div class="flex-none flex align-items-center justify-content-center">
+                    <i class="pi pi-pencil" style="color: 'var(--primary-color)'"></i>
+                  </div>
+                </div>
+              </div>
+            </div>
+          </div>
+        </div>
+
+      </div>
+      <div class="flex-none flex align-items-start justify-content-start  pb-3">
+        <div class="flex flex-column card-container ">
+          <div class="flex align-items-start justify-content-start mb-3 text-600">
+            Riepilogo dell'ordine</div>
+          <div class="flex flex-column align-items-start justify-content-start ">
+            <div class="flex w-12 mb-2">
+              <div class="flex-grow-1 align-items-center justify-content-start flex pr-2">Ordine</div>
+              <div class="flex-none flex pl-2">{{ product.price | currency: 'EUR'}}</div>
+            </div>
+            <div class="flex w-12 mb-2">
+              <div class="flex-grow-1 flex align-items-center justify-content-start pr-2">Commissione per la protezione
+                acquisti</div>
+              <div class="flex-none flex align-items-center justify-content-end pl-2">{{ 0 | currency: 'EUR'}}</div>
+            </div>
+            <div class="flex w-12 mb-2">
+              <div class="flex-grow-1 flex align-items-center justify-content-start pr-2">Spedizione</div>
+              <div class="flex-none flex align-items-center justify-content-end pl-2">{{ 0 | currency: 'EUR'}}</div>
+            </div>
+            <div class="flex w-12 my-3 font-semibold">
+              <div class="flex-grow-1 flex align-items-center justify-content-start">Totale da pagare</div>
+              <div class="flex-none flex align-items-center justify-content-end ">{{ product.price | currency: 'EUR'}}
+              </div>
+            </div>
+            <div class="flex w-12">
+              <p-button label="Paga ora" style="width: 100%;"></p-button>
+            </div>
+          </div>
+        </div>
+      </div>
+    </div>
+  </div>
+
+
+</div>

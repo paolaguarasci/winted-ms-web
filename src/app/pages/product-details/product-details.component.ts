@@ -6,6 +6,7 @@ import { ProductService } from 'src/app/services/product.service';
 import { ProfileService } from 'src/app/services/profile.service';
 import { User } from 'src/app/models/User';
 import { OrderService } from 'src/app/services/order.service';
+import { Order } from 'src/app/models/Order';
 
 @Component({
   selector: 'app-product-details',
@@ -104,7 +105,10 @@ export class ProductDetailsComponent implements OnInit {
   }
 
   buy() {
-    this.orderService.buy(this.productId).subscribe((res) => {
+    let newOrder = new Order();
+    newOrder.product = this.product.id ?? "";
+    console.log("Nuovo ordine ", newOrder.product)
+    this.orderService.newCheckout(newOrder).subscribe((res) => {
       this.route.navigate(['checkout'], {
         queryParams: {
           order_id: res.id,
