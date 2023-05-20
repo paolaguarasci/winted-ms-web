@@ -23,13 +23,10 @@
 }
 .container > div {
   background-color: white;
-  // padding: 15px;
   text-align: center;
-  // border: 1px solid #c6c6c6;
 }
 .preview {
   grid-area: preview;
-  // border: 1px solid red;
   justify-self: stretch;
   align-self: stretch;
   border-right: 1px solid #c6c6c6;

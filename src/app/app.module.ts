@@ -62,6 +62,7 @@ import { V2LayoutComponent } from './_layout/v2-layout/v2-layout.component';
 import { V3LayoutComponent } from './_layout/v3-layout/v3-layout.component';
 import { ProfileComponent } from './pages/profile/profile.component';
 import { CheckoutComponent } from './pages/checkout/checkout.component';
+import { FontAwesomeModule } from '@fortawesome/angular-fontawesome';
 
 @NgModule({
   declarations: [
@@ -129,7 +130,8 @@ import { CheckoutComponent } from './pages/checkout/checkout.component';
     InputTextareaModule,
     GalleriaModule,
     DividerModule,
-    RatingModule
+    RatingModule,
+    FontAwesomeModule
   ],
   providers: [],
   bootstrap: [AppComponent],
