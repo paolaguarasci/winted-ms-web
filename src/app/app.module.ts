@@ -65,6 +65,8 @@ import { TabViewModule } from 'primeng/tabview';
 import { ProfileWardrobeComponent } from './components/profile-wardrobe/profile-wardrobe.component';
 import { ProfileReviewListComponent } from './components/profile-review-list/profile-review-list.component';
 import { ProfileReviewSingleComponent } from './components/profile-review-single/profile-review-single.component';
+import { NotificheDropDownComponent } from './components/notifiche-drop-down/notifiche-drop-down.component';
+import { NotificheComponent } from './pages/notifiche/notifiche.component';
 
 @NgModule({
   declarations: [
@@ -103,6 +105,8 @@ import { ProfileReviewSingleComponent } from './components/profile-review-single
     ProfileWardrobeComponent,
     ProfileReviewListComponent,
     ProfileReviewSingleComponent,
+    NotificheDropDownComponent,
+    NotificheComponent,
   ],
   imports: [
     BrowserModule,
