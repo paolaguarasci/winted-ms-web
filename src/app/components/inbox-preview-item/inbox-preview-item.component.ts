@@ -17,7 +17,7 @@ export class InboxPreviewItemComponent implements OnInit {
 
   constructor(private router: Router, private route: ActivatedRoute, private profileService: ProfileService) {}
   ngOnInit(): void {
-    this.profileService.getOneByUsername(this.anteprima.altroUtente).subscribe((res) => {
+    this.profileService.getById(this.anteprima.altroUtente).subscribe((res) => {
       this.otherUser = res;
     })
   }

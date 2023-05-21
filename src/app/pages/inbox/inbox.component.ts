@@ -106,13 +106,13 @@ export class InboxComponent implements OnInit {
   }
 
   getLoggedUser() {
-    this.profileService.getOneByUsername("paola").subscribe((res) => {
+    this.profileService.getById("6464d3155ded8d052d323c2a").subscribe((res) => {
       this.loggedUser = res;
     })
   }
 
   getOther() {
-    this.profileService.getOneByUsername(this.conversazione.altroUtente).subscribe((res) => {
+    this.profileService.getById(this.conversazione.altroUtente).subscribe((res) => {
       this.otherUser = res;
     })
   }

@@ -17,7 +17,7 @@ export class InboxConversationItemComponent implements OnInit {
 
   ngOnInit(): void {
     this.inviato = false;
-    if (this.msg.from === this.loggedUser.username) {
+    if (this.msg.from === this.loggedUser.id) {
       this.inviato = true;
       this.authorMsg = this.loggedUser;
     } else {
