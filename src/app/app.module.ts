@@ -67,6 +67,7 @@ import { ProfileReviewListComponent } from './components/profile-review-list/pro
 import { ProfileReviewSingleComponent } from './components/profile-review-single/profile-review-single.component';
 import { NotificheDropDownComponent } from './components/notifiche-drop-down/notifiche-drop-down.component';
 import { NotificheComponent } from './pages/notifiche/notifiche.component';
+import { NotificheSingleRowComponent } from './components/notifiche-single-row/notifiche-single-row.component';
 
 @NgModule({
   declarations: [
@@ -107,6 +108,7 @@ import { NotificheComponent } from './pages/notifiche/notifiche.component';
     ProfileReviewSingleComponent,
     NotificheDropDownComponent,
     NotificheComponent,
+    NotificheSingleRowComponent
   ],
   imports: [
     BrowserModule,

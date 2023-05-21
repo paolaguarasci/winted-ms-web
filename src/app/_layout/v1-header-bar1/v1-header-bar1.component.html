@@ -2,6 +2,8 @@
 <p-menu #menu [model]="items" [popup]="true"></p-menu>
 <p-menu #menu1 [model]="langs" [popup]="true"></p-menu>
 
+
+
 <div class="grid">
   <div class="col-12 md:col-6 lg:col-2">
     <div class="card">
@@ -56,11 +58,17 @@
 
         <div class="flex flex-row justify-content-end align-items-center flex-wrap card-container mt-2">
           <div class="headericon flex align-items-center justify-content-center w-2rem h-2rem font-bold text-gray border-round m-2">
-            <fa-icon (click)="goToInbox()" [icon]="faEnvelope" class="fa-lg"></fa-icon>
+            <i (click)="goToInbox()" class="pi pi-envelope" style="font-size: 1.5rem"></i>
           </div>
           <div
             class="headericon flex align-items-center justify-content-center w-2rem h-2rem font-bold text-gray border-round m-2">
-            <i class="pi pi-bell" style="font-size: 1.5rem"></i>
+            <i *ngIf="!(numNotifiche === '0')" (click)="toggleNotificationArea()" class="pi  pi-bell text-3xl" pBadge [value]="numNotifiche"></i>
+            <i *ngIf="(numNotifiche === '0')" (click)="toggleNotificationArea()" class="pi  pi-bell text-3xl"></i>
+
+            <p-overlay [(visible)]="overlayNotificationAreaVisible" [responsive]="{ breakpoint: '640px', direction: 'bottom', contentStyleClass: 'h-20rem' }" contentStyleClass="p-4 surface-overlay shadow-2 border-round">
+              <app-notifiche-drop-down (numeroNotifiche)="updateNumNotifiche($event)"/>
+            </p-overlay>
+
           </div>
           <div
             class="headericon flex align-items-center justify-content-center w-2rem h-2rem font-bold text-gray border-round m-2">
