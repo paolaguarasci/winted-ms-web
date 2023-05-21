@@ -36,26 +36,23 @@ export class InboxComponent implements OnInit {
   ) {}
 
   ngOnInit(): void {
-
     this.getLoggedUser();
-
     this.route.paramMap.subscribe((params) => {
       this.id = params.get('id');
       this.update();
       this.getPreview();
     });
-
     this.route.queryParamMap.subscribe((params) => {
-      let offer_to = params.get('offer_to');
-      let offer_price = params.get('offer_price');
-      let info_about = params.get('info_about');
-      if (offer_to && offer_price) {
-        this.makeOffert(offer_to, offer_price);
-      }
+      // let offer_to = params.get('offer_to');
+      // let offer_price = params.get('offer_price');
+      // let info_about = params.get('info_about');
+      // if (offer_to && offer_price) {
+      //   this.makeOffert(offer_to, offer_price);
+      // }
 
-      if (info_about) {
-        this.askInfo(info_about);
-      }
+      // if (info_about) {
+      //   this.askInfo(info_about);
+      // }
     });
   }
 
@@ -65,7 +62,6 @@ export class InboxComponent implements OnInit {
     }
     if (this.id) {
       this.getConversation(this.id);
-      
     }
   }
 
@@ -82,8 +78,6 @@ export class InboxComponent implements OnInit {
     });
   }
 
-
-
   getConversation(id) {
     this.conversationService.getById(id).subscribe((res) => {
       this.conversazione = res;
@@ -95,22 +89,29 @@ export class InboxComponent implements OnInit {
     if (this.newMessage.length == 0) {
       return;
     }
-    this.conversazione.messages.push(
-      new MessaggioConversazione({
-        content: this.newMessage,
-        from: this.loggedUser.username,
-        to: this.otherUser.username,
-        tipo: MessaggioConversazioneTipi.testo,
-        timestamp: '',
-        timeAgo: '1 minuto fa',
-        visto: false,
-      })
-    );
+    let newMsg = new MessaggioConversazione({
+      content: this.newMessage,
+      from: this.loggedUser.username,
+      to: this.otherUser.username,
+      tipo: MessaggioConversazioneTipi.testo,
+      timestamp: '',
+    })
+    // this.conversazione.messages.push(
+    //   new MessaggioConversazione({
+    //     content: this.newMessage,
+    //     from: this.loggedUser.username,
+    //     to: this.otherUser.username,
+    //     tipo: MessaggioConversazioneTipi.testo,
+    //     timestamp: '',
+    //   })
+    // );
     this.newMessage = '';
-    this.conversationService.update(this.conversazione).subscribe((result) => {
-      this.newMessage = '';
-      this.conversazione = result;
-    });
+    if (this.conversazione.id) {
+      this.conversationService.addMessage(this.conversazione.id, newMsg).subscribe((result) => {
+        this.newMessage = '';
+        this.conversazione = result;
+      });
+    }
   }
 
   getLoggedUser() {
