@@ -1,5 +1,5 @@
 import { Component, OnInit } from '@angular/core';
-import { ActivatedRoute } from '@angular/router';
+import { ActivatedRoute, Router } from '@angular/router';
 import { Address } from 'src/app/models/Address';
 import { Order } from 'src/app/models/Order';
 import { PaymentMethod } from 'src/app/models/PaymentMethod';
@@ -24,6 +24,7 @@ export class CheckoutComponent implements OnInit {
 
   constructor(
     private route: ActivatedRoute,
+    private router: Router,
     private orderService: OrderService,
     private productService: ProductService,
     private paymentService: PaymentMethodService,
@@ -52,13 +53,13 @@ export class CheckoutComponent implements OnInit {
   }
 
   saveOrder() {
-    console.log("PAGA ORA")
     this.order.address = this.address.id ?? '';
     this.order.paymendMethod = this.paymentMethod.id ?? '';
     this.order.owner = this.product.owner;
 
     this.orderService.buy(this.order).subscribe((res) => {
       console.log('Conferma dal server ', res);
+      // this.router.navigate(['inbox', res.conversationId]);
     });
   }
 }
