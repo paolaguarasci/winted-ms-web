@@ -4,6 +4,7 @@ import { Component, Input, OnInit } from '@angular/core';
 import { AnteprimaInbox } from 'src/app/models/AnteprimaInbox';
 import { ProfileService } from 'src/app/services/profile.service';
 import { User } from 'src/app/models/User';
+import { Product } from 'src/app/models/Product';
 
 @Component({
   selector: 'app-inbox-preview-item',
@@ -14,6 +15,7 @@ export class InboxPreviewItemComponent implements OnInit {
   @Input() anteprima!: AnteprimaInbox;
   @Input() routerId!: string;
   otherUser!: User;
+  @Input() prodottoCorrelato!: Product | null;
 
   constructor(private router: Router, private route: ActivatedRoute, private profileService: ProfileService) {}
   ngOnInit(): void {

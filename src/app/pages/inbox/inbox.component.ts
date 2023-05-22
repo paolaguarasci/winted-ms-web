@@ -14,6 +14,7 @@ import { AnteprimaInbox } from 'src/app/models/AnteprimaInbox';
 import { ProfileService } from 'src/app/services/profile.service';
 import { ProductCardComponent } from 'src/app/components/product-card/product-card.component';
 import { Product } from 'src/app/models/Product';
+import { ProductService } from 'src/app/services/product.service';
 
 @Component({
   selector: 'app-inbox',
@@ -21,21 +22,25 @@ import { Product } from 'src/app/models/Product';
   styleUrls: ['./inbox.component.scss'],
 })
 export class InboxComponent implements OnInit {
-  conversazione!: Conversazione;
+  conversazione!: Conversazione | null;
   inboxPreview!: AnteprimaInbox[];
   loggedUser!: User;
   otherUser!: User;
   newMessage!: string;
   id!: any;
-  prodottoCorrelato!: Product;
+  prodottoCorrelato!: Product | null;
 
   constructor(
     private conversationService: ConversationService,
     private profileService: ProfileService,
-    private route: ActivatedRoute
+    private route: ActivatedRoute,
+    private productService: ProductService
+
   ) {}
 
   ngOnInit(): void {
+    this.prodottoCorrelato = null;
+    this.conversazione = null;
     this.getLoggedUser();
     this.route.paramMap.subscribe((params) => {
       this.id = params.get('id');
@@ -74,8 +79,18 @@ export class InboxComponent implements OnInit {
       }
       if (this.id) {
         this.getConversation(this.id);
+        this.getProduct();
       }
     });
+  }
+
+  getProduct() {
+    this.prodottoCorrelato = null;
+    if(this.conversazione?.prodottoCorrelato) {
+      this.productService.getById(this.conversazione?.prodottoCorrelato).subscribe((res) => {
+        this.prodottoCorrelato = res;
+      })
+    }
   }
 
   getConversation(id) {
@@ -97,8 +112,8 @@ export class InboxComponent implements OnInit {
       timestamp: '',
     })
     this.newMessage = '';
-    if (this.conversazione.id) {
-      this.conversationService.addMessage(this.conversazione.id, newMsg).subscribe((result) => {
+    if (this.conversazione?.id) {
+      this.conversationService.addMessage(this.conversazione?.id, newMsg).subscribe((result) => {
         this.newMessage = '';
         this.conversazione = result;
       });
@@ -112,9 +127,11 @@ export class InboxComponent implements OnInit {
   }
 
   getOther() {
-    this.profileService.getById(this.conversazione.altroUtente).subscribe((res) => {
-      this.otherUser = res;
-    })
+    if (this.conversazione) {
+      this.profileService.getById(this.conversazione?.altroUtente).subscribe((res) => {
+        this.otherUser = res;
+      })
+    }
   }
 
   sendPhotoMessage(event) {
