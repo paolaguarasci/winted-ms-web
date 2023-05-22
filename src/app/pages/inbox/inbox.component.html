@@ -9,7 +9,7 @@
     <app-inbox-preview-item *ngFor="let anteprima of inboxPreview" [anteprima]="anteprima" [routerId]="this.id" />
   </div>
   <div class="altroutente" *ngIf="otherUser">{{otherUser.username}}</div>
-  <div class="prodotto" *ngIf="conversazione.prodottoCorrelato">
+  <div class="prodotto" *ngIf="prodottoCorrelato">
     {{ prodottoCorrelato.name }}
   </div>
   <div class="areatesto flex flex-row ">

@@ -67,11 +67,11 @@
       </div>
     </div>
     <div class="flex-none flex align-items-start justify-content-center m-2 px-5 py-5 border-round">
-      <div *ngIf="loggedUsername === profile.username">
+      <div *ngIf="loggedId === profile.id">
         <p-button icon="pi pi-pencil" label="Modifica profilo"
           styleClass="p-button-outlined p-button-secondary"></p-button>
       </div>
-      <div *ngIf="loggedUsername !== profile.username">
+      <div *ngIf="loggedId !== profile.id">
         <p-button label="Messaggio" styleClass="p-button-outlined p-button-primary ml-2"></p-button>
         <p-button label="Segui" styleClass="p-button p-button-primary ml-2"></p-button>
       </div>
