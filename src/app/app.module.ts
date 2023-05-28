@@ -67,6 +67,7 @@ import { NewProductComponent } from './pages/new-product/new-product.component';
 import { NotificheComponent } from './pages/notifiche/notifiche.component';
 import { ProductDetailsComponent } from './pages/product-details/product-details.component';
 import { ProfileComponent } from './pages/profile/profile.component';
+import { AuthtestComponent } from './pages/authtest/authtest.component';
 
 @NgModule({
   declarations: [
@@ -107,7 +108,8 @@ import { ProfileComponent } from './pages/profile/profile.component';
     ProfileReviewSingleComponent,
     NotificheDropDownComponent,
     NotificheComponent,
-    NotificheSingleRowComponent
+    NotificheSingleRowComponent,
+    AuthtestComponent
   ],
   imports: [
     BrowserModule,
