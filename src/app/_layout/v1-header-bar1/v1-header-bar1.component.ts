@@ -1,3 +1,4 @@
+import { AuthService } from 'src/app/services/auth.service';
 import { ActivatedRoute, Router } from '@angular/router';
 import { Component, OnInit } from '@angular/core';
 import { faEnvelope } from '@fortawesome/free-regular-svg-icons';
@@ -38,12 +39,13 @@ export class V1HeaderBar1Component implements OnInit {
   constructor(
     private messageService: MessageService,
     private router: Router,
-    private route: ActivatedRoute
+    private route: ActivatedRoute,
+    private authService: AuthService
   ) {}
 
   ngOnInit() {
     this.numNotifiche = '0';
-    this.isLogged = true;
+    this.isLogged = this.authService.checkCredentials();
     this.overlayNotificationAreaVisible = false;
     this.searchModes = [
       { name: $localize`Catalogo`, code: 'cat' },
@@ -76,7 +78,7 @@ export class V1HeaderBar1Component implements OnInit {
           {
             label: $localize`Esci`,
             command: () => {
-              this.update();
+              this.logout();
             },
           },
         ],
@@ -124,5 +126,9 @@ export class V1HeaderBar1Component implements OnInit {
 
   updateNumNotifiche(event) {
     this.numNotifiche = event;
+  }
+
+  logout() {
+    this.authService.logout();
   }
 }

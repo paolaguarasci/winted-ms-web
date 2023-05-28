@@ -1,13 +1,13 @@
-import { HttpClient, HttpHeaders } from '@angular/common/http';
+import { HttpClient, HttpHeaders, HttpParams } from '@angular/common/http';
 import { Injectable } from '@angular/core';
-import { Observable } from 'rxjs';
+import { Observable, catchError, map, tap } from 'rxjs';
 import { CookieService } from 'ngx-cookie-service';
 @Injectable({
   providedIn: 'root',
 })
 export class AuthService {
   public clientId = 'winted-web';
-  public redirectUri = 'http://localhost:4200/test';
+  public redirectUri = 'http://localhost:4200/';
   public authServer = 'http://localhost:8000';
   public clientSecret = '0tWCKy4mShRYeQjw8TMMISsGQDEQJmYB';
   public realm = 'winted';
@@ -34,7 +34,8 @@ export class AuthService {
     });
 
     this._http
-      .post('http://localhost:8000/realms/winted/protocol/openid-connect/token',
+      .post(
+        'http://localhost:8000/realms/winted/protocol/openid-connect/token',
         params.toString(),
         { headers: headers }
       )
@@ -49,14 +50,6 @@ export class AuthService {
     window.location.href = this.redirectUri;
   }
 
-  getResource(resourceUrl): Observable<any> {
-    let headers = new HttpHeaders({
-      'Content-type': 'application/x-www-form-urlencoded; charset=utf-8',
-      Authorization: 'Bearer ' + this.cookieService.get('access_token'),
-    });
-    return this._http.get(resourceUrl, { headers: headers });
-  }
-
   checkCredentials() {
     return this.cookieService.check('access_token');
   }
@@ -64,5 +57,18 @@ export class AuthService {
   logout() {
     this.cookieService.delete('access_token');
     window.location.reload();
+  }
+
+  refreshToken(refreshData: any): Observable<any> {
+    this.cookieService.delete('access_token');
+    this.cookieService.delete('refresh_token');
+    const body = new HttpParams()
+      .set('refresh_token', refreshData.refresh_token)
+      .set('grant_type', 'refresh_token');
+    return this._http.post<any>(this.authServer + 'oauth/token', body).pipe(
+      map((res) => {
+        this.saveToken(res);
+      })
+    );
   }
 }

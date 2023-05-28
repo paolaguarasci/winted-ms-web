@@ -1,4 +1,4 @@
-import { HttpClientModule } from '@angular/common/http';
+import { HTTP_INTERCEPTORS, HttpClientModule } from '@angular/common/http';
 import { NgModule } from '@angular/core';
 import { FormsModule, ReactiveFormsModule } from '@angular/forms';
 import { BrowserModule } from '@angular/platform-browser';
@@ -68,6 +68,7 @@ import { NotificheComponent } from './pages/notifiche/notifiche.component';
 import { ProductDetailsComponent } from './pages/product-details/product-details.component';
 import { ProfileComponent } from './pages/profile/profile.component';
 import { AuthtestComponent } from './pages/authtest/authtest.component';
+import { AuthInterceptor } from './interceptor/AuthInterceptor';
 
 @NgModule({
   declarations: [
@@ -144,7 +145,11 @@ import { AuthtestComponent } from './pages/authtest/authtest.component';
     RatingModule,
     FontAwesomeModule
   ],
-  providers: [],
+  providers: [    {
+    provide: HTTP_INTERCEPTORS,
+    useClass: AuthInterceptor,
+    multi: true
+  }],
   bootstrap: [AppComponent],
 })
 export class AppModule {}
