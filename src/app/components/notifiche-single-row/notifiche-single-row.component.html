@@ -1,0 +1,7 @@
+<div *ngIf="notifica.read" class="read">
+  {{ notifica.textMessage }}
+</div>
+
+<div *ngIf="!notifica.read" class="unread"  (click)="handleRead()">
+  {{ notifica.textMessage }}
+</div>

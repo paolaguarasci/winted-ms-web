@@ -1,0 +1,8 @@
+<div class="listanotifiche">
+  <div class="singolanotifica" *ngFor="let notifica of notifiche;">
+    <app-notifiche-single-row [notifica]="notifica" (readNotifica)="handleRead($event, notifica)" />
+  </div>
+  <div class="buttonveditutto">
+
+  </div>
+</div>

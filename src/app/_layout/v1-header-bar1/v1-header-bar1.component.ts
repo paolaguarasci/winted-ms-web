@@ -1,6 +1,6 @@
 import { ActivatedRoute, Router } from '@angular/router';
 import { Component, OnInit } from '@angular/core';
-import { faEnvelope,  } from '@fortawesome/free-regular-svg-icons';
+import { faEnvelope } from '@fortawesome/free-regular-svg-icons';
 import { MenuItem, MessageService } from 'primeng/api';
 interface SearchModes {
   name: string;
@@ -16,6 +16,8 @@ export class V1HeaderBar1Component implements OnInit {
   value!: string;
   searchModes!: SearchModes[];
   faEnvelope = faEnvelope;
+  overlayNotificationAreaVisible!: boolean;
+  numNotifiche!: string;
 
   selectedSearchModes!: SearchModes;
 
@@ -40,7 +42,9 @@ export class V1HeaderBar1Component implements OnInit {
   ) {}
 
   ngOnInit() {
+    this.numNotifiche = '0';
     this.isLogged = true;
+    this.overlayNotificationAreaVisible = false;
     this.searchModes = [
       { name: $localize`Catalogo`, code: 'cat' },
       { name: $localize`Utenti`, code: 'user' },
@@ -112,5 +116,13 @@ export class V1HeaderBar1Component implements OnInit {
 
   goToHome() {
     this.router.navigate(['']);
+  }
+
+  toggleNotificationArea() {
+    this.overlayNotificationAreaVisible = !this.overlayNotificationAreaVisible;
+  }
+
+  updateNumNotifiche(event) {
+    this.numNotifiche = event;
   }
 }

@@ -10,8 +10,8 @@ import { ProfileService } from 'src/app/services/profile.service';
   styleUrls: ['./profile.component.scss'],
 })
 export class ProfileComponent implements OnInit {
-  @Input() username!: any;
-  loggedUsername!: string;
+  @Input() id!: any;
+  loggedId!: string;
 
   profile!: User;
   constructor(
@@ -20,19 +20,19 @@ export class ProfileComponent implements OnInit {
   ) {}
 
   ngOnInit(): void {
-    this.loggedUsername = 'paola';
+    this.loggedId = '6464d3155ded8d052d323c2a';
     this.router.paramMap.subscribe((params) => {
-      this.username = params.get('username');
-      if (!this.username) {
-        this.username = this.loggedUsername;
+      this.id = params.get('id');
+      if (!this.id) {
+        this.id = this.loggedId;
       }
       this.update();
     });
   }
 
   update() {
-    if (this.username) {
-      this.profileService.getOneByUsername(this.username).subscribe((res) => {
+    if (this.id) {
+      this.profileService.getById(this.id).subscribe((res) => {
         this.profile = res;
         this.profile.follower = 0;
         this.profile.seguiti = 0;
