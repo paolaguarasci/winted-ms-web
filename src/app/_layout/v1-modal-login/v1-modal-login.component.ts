@@ -20,7 +20,6 @@ export class V1ModalLoginComponent implements OnInit {
   }
 
   login() {
-    debugger
     window.location.href = this.authService.getServerLogin();
   }
 

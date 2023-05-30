@@ -11,7 +11,7 @@ import { ProfileService } from 'src/app/services/profile.service';
 })
 export class ProfileComponent implements OnInit {
   @Input() id!: any;
-  loggedId!: string;
+  loggedId!: string | undefined;
 
   profile!: User;
   constructor(
@@ -20,25 +20,35 @@ export class ProfileComponent implements OnInit {
   ) {}
 
   ngOnInit(): void {
-    this.loggedId = '6464d3155ded8d052d323c2a';
+
     this.router.paramMap.subscribe((params) => {
       this.id = params.get('id');
       if (!this.id) {
-        this.id = this.loggedId;
+        this.profileService.getLogged().subscribe((res) => {
+          this.loggedId = res.id;
+          this.id = this.loggedId;
+          console.log("Logged id", this.loggedId)
+        });
       }
       this.update();
     });
   }
 
   update() {
+    console.log("Sono qui 1")
     if (this.id) {
+      console.log("Sono qui 2")
       this.profileService.getById(this.id).subscribe((res) => {
+        console.log("Sono qui 3")
+
         this.profile = res;
         this.profile.follower = 0;
         this.profile.seguiti = 0;
         this.profile.position = 'Rende, Italia';
         this.profile.lastVisit = 'Ultima visita 1 ora fa';
         this.profile.emailVerified = true;
+
+        console.log("Logged profile", this.profile)
       });
     }
   }

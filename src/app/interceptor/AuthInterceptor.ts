@@ -39,10 +39,6 @@ export class AuthInterceptor implements HttpInterceptor {
       });
     }
 
-    request = request.clone({
-      headers: request.headers.set('Accept', 'application/json'),
-    });
-
     return next.handle(request).pipe(
       map((event: HttpEvent<any>) => {
         if (event instanceof HttpResponse) {
@@ -53,17 +49,16 @@ export class AuthInterceptor implements HttpInterceptor {
       catchError((error: HttpErrorResponse) => {
         console.log(error.error.error);
         if (error.status === 401) {
-          if (error.error.error === 'invalid_token') {
-            this.authService
-              .refreshToken({ refresh_token: refreshToken })
-              .subscribe(() => {
-                location.reload();
-              });
-          } else {
-            this.router.navigate(['login'])
-            .catch((_) => console.log(_))
-            .then((_) => console.log('redirect to login'));
-          }
+          this.cookieService.delete("access_token")
+          this.cookieService.delete("refresh_token")
+          location.reload();
+          // if (error.error.error === 'invalid_token') {
+          //   this.authService.refreshToken({ refresh_token: refreshToken }).subscribe(() => {location.reload();});
+          // } else {
+          //   this.cookieService.delete("access_token")
+          //   this.cookieService.delete("refresh_token")
+          //   location.reload();
+          // }
         }
         return throwError(() => new Error(error.error.error));
       })
