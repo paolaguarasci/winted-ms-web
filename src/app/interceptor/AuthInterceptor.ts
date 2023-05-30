@@ -31,14 +31,6 @@ export class AuthInterceptor implements HttpInterceptor {
       });
     }
 
-    if (!request.headers.has('Content-Type')) {
-      request = request.clone({
-        setHeaders: {
-          'content-type': 'application/json',
-        },
-      });
-    }
-
     return next.handle(request).pipe(
       map((event: HttpEvent<any>) => {
         if (event instanceof HttpResponse) {
@@ -47,20 +39,12 @@ export class AuthInterceptor implements HttpInterceptor {
         return event;
       }),
       catchError((error: HttpErrorResponse) => {
-        console.log(error.error.error);
-        if (error.status === 401) {
-          this.cookieService.delete("access_token")
-          this.cookieService.delete("refresh_token")
+        if (error.status === 401 && this.cookieService.get('access_token') !== "") {
+          this.cookieService.delete('access_token');
+          this.cookieService.delete('refresh_token');
           location.reload();
-          // if (error.error.error === 'invalid_token') {
-          //   this.authService.refreshToken({ refresh_token: refreshToken }).subscribe(() => {location.reload();});
-          // } else {
-          //   this.cookieService.delete("access_token")
-          //   this.cookieService.delete("refresh_token")
-          //   location.reload();
-          // }
         }
-        return throwError(() => new Error(error.error.error));
+        return throwError(() => new Error(error.message));
       })
     );
   }

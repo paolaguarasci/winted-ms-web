@@ -27,7 +27,7 @@ export class ProfileComponent implements OnInit {
         this.profileService.getLogged().subscribe((res) => {
           this.loggedId = res.id;
           this.id = this.loggedId;
-          console.log("Logged id", this.loggedId)
+          this.update();
         });
       }
       this.update();
@@ -35,20 +35,14 @@ export class ProfileComponent implements OnInit {
   }
 
   update() {
-    console.log("Sono qui 1")
     if (this.id) {
-      console.log("Sono qui 2")
       this.profileService.getById(this.id).subscribe((res) => {
-        console.log("Sono qui 3")
-
         this.profile = res;
-        this.profile.follower = 0;
-        this.profile.seguiti = 0;
+        // this.profile.follower = 0;
+        // this.profile.seguiti = 0;
         this.profile.position = 'Rende, Italia';
         this.profile.lastVisit = 'Ultima visita 1 ora fa';
         this.profile.emailVerified = true;
-
-        console.log("Logged profile", this.profile)
       });
     }
   }
