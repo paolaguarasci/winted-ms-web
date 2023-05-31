@@ -69,6 +69,7 @@ import { ProductDetailsComponent } from './pages/product-details/product-details
 import { ProfileComponent } from './pages/profile/profile.component';
 import { AuthtestComponent } from './pages/authtest/authtest.component';
 import { AuthInterceptor } from './interceptor/AuthInterceptor';
+import { SearchComponent } from './pages/search/search.component';
 
 @NgModule({
   declarations: [
@@ -110,7 +111,8 @@ import { AuthInterceptor } from './interceptor/AuthInterceptor';
     NotificheDropDownComponent,
     NotificheComponent,
     NotificheSingleRowComponent,
-    AuthtestComponent
+    AuthtestComponent,
+    SearchComponent
   ],
   imports: [
     BrowserModule,

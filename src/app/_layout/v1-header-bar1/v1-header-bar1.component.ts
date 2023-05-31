@@ -23,7 +23,7 @@ export class V1HeaderBar1Component implements OnInit {
   numNotifiche!: string;
   userLogged!: User;
   selectedSearchModes!: SearchModes;
-
+  searchtext!: string | null
   items!: MenuItem[];
   langs!: MenuItem[];
 
@@ -138,5 +138,10 @@ export class V1HeaderBar1Component implements OnInit {
 
   logout() {
     this.authService.logout();
+  }
+
+  goToSearch(event) {
+    this.router.navigate(['search'], { queryParams: { t: this.selectedSearchModes.code, s: this.searchtext }});
+    this.searchtext = ""
   }
 }
