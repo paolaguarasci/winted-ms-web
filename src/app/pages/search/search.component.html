@@ -18,9 +18,10 @@
 </dir>
 
 <dir class="utenti" *ngIf="searchMode==='user'">
-  <h1>Utenti</h1>
   <div class="listautenti" *ngIf="utenti && utenti.length > 0">
-    <div class="utente" *ngFor="let utente in utenti;"></div>
+    <div class="utente" *ngFor="let utente of utenti;">
+      <h3>{{ utente.username }}</h3>
+    </div>
   </div>
   <div class="nouser" *ngIf="utenti && utenti.length == 0">
     Non ci sono utenti che corrispondono ai criteri selezionati!
