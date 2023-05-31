@@ -1,4 +1,4 @@
-<div class="container container-inbox w-9" *ngIf="inboxPreview && inboxPreview.length > 0 && conversazione">
+<div class="container container-inbox w-9">
   <div class="top-preview">
     <div class="top-preview-scritta">Inbox</div>
     <div class="top-preview-icona">
@@ -6,7 +6,9 @@
     </div>
   </div>
   <div class="preview">
-    <app-inbox-preview-item *ngFor="let anteprima of inboxPreview" [anteprima]="anteprima" [routerId]="this.id" />
+    <div *ngIf="inboxPreview && inboxPreview.length > 0 && conversazione">
+      <app-inbox-preview-item *ngFor="let anteprima of inboxPreview" [anteprima]="anteprima" [routerId]="this.id" />
+    </div>
   </div>
   <div class="altroutente" *ngIf="otherUser">{{otherUser.username}}</div>
   <div class="prodotto" *ngIf="prodottoCorrelato">
@@ -19,8 +21,10 @@
       <input type="text" pInputText [(ngModel)]="newMessage" class="area1" (keydown.enter)="sendTextMessage($event)" />
     </span>
   </div>
-  <div class="conversazione" *ngIf="loggedUser && otherUser">
-    <app-inbox-conversation-item *ngFor="let msg of conversazione.messages;" [msg]="msg" [loggedUser]="loggedUser"
-      [otherUser]="otherUser" />
+  <div class="conversazione">
+    <div *ngIf="loggedUser && otherUser && conversazione">
+      <app-inbox-conversation-item *ngFor="let msg of conversazione.messages;" [msg]="msg" [loggedUser]="loggedUser"
+        [otherUser]="otherUser" />
+    </div>
   </div>
 </div>
