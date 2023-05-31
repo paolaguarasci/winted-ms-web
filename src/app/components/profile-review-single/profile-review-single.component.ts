@@ -15,8 +15,6 @@ export class ProfileReviewSingleComponent implements OnInit {
   constructor(private profileService: ProfileService) {}
 
   ngOnInit(): void {
-    this.review.userid = "6464d3155ded8d052d323c2a"
-
     this.profileService.getById(this.review.userid).subscribe((res) => {
       this.reviewAuthor = res;
       console.log(res)

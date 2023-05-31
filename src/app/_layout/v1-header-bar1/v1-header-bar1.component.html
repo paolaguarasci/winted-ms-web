@@ -77,8 +77,8 @@
 
           <div
             class="flex align-items-center justify-content-center w-2rem h-2rem font-bold text-gray border-round m-2">
-            <p-avatar (click)="menu.toggle($event)" styleClass="profilemenu"
-              image="https://primefaces.org/cdn/primeng/images/demo/avatar/onyamalimba.png" shape="circle"></p-avatar>
+            <p-avatar (click)="menu.toggle($event)" styleClass="profilemenu" *ngIf="userLogged"
+              [image]="userLogged.avatar" shape="circle"></p-avatar>
           </div>
 
           <div

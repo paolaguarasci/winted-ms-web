@@ -121,7 +121,7 @@ export class InboxComponent implements OnInit {
   }
 
   getLoggedUser() {
-    this.profileService.getById("6464d3155ded8d052d323c2a").subscribe((res) => {
+    this.profileService.getLogged().subscribe((res) => {
       this.loggedUser = res;
     })
   }

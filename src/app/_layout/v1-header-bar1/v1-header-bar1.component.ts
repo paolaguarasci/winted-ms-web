@@ -1,7 +1,10 @@
+import { ProfileService } from './../../services/profile.service';
+import { AuthService } from 'src/app/services/auth.service';
 import { ActivatedRoute, Router } from '@angular/router';
 import { Component, OnInit } from '@angular/core';
 import { faEnvelope } from '@fortawesome/free-regular-svg-icons';
 import { MenuItem, MessageService } from 'primeng/api';
+import { User } from 'src/app/models/User';
 interface SearchModes {
   name: string;
   code: string;
@@ -18,7 +21,7 @@ export class V1HeaderBar1Component implements OnInit {
   faEnvelope = faEnvelope;
   overlayNotificationAreaVisible!: boolean;
   numNotifiche!: string;
-
+  userLogged!: User;
   selectedSearchModes!: SearchModes;
 
   items!: MenuItem[];
@@ -38,12 +41,19 @@ export class V1HeaderBar1Component implements OnInit {
   constructor(
     private messageService: MessageService,
     private router: Router,
-    private route: ActivatedRoute
+    private route: ActivatedRoute,
+    private authService: AuthService,
+    private profileService: ProfileService
   ) {}
 
   ngOnInit() {
     this.numNotifiche = '0';
-    this.isLogged = true;
+    this.isLogged = this.authService.checkCredentials();
+    if (this.isLogged) {
+      this.profileService
+        .getLogged()
+        .subscribe((res) => (this.userLogged = res));
+    }
     this.overlayNotificationAreaVisible = false;
     this.searchModes = [
       { name: $localize`Catalogo`, code: 'cat' },
@@ -76,7 +86,7 @@ export class V1HeaderBar1Component implements OnInit {
           {
             label: $localize`Esci`,
             command: () => {
-              this.update();
+              this.logout();
             },
           },
         ],
@@ -124,5 +134,9 @@ export class V1HeaderBar1Component implements OnInit {
 
   updateNumNotifiche(event) {
     this.numNotifiche = event;
+  }
+
+  logout() {
+    this.authService.logout();
   }
 }

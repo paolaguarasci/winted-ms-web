@@ -1,4 +1,3 @@
-import { Conversazione } from '../models/Conversazione';
 import { HttpClient } from '@angular/common/http';
 import { Injectable } from '@angular/core';
 import { ResourceService } from './resource.service';
@@ -26,6 +25,10 @@ export class ProfileService extends ResourceService<User> {
     return this.http.post(this.apiUrl + '/preferred', {
       product: productId,
     });
+  }
+
+  getLogged() {
+    return this.http.get<User>(this.apiUrl + '/my');
   }
 
   removeToPreferred(productId) {

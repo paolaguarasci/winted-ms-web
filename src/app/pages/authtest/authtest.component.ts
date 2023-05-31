@@ -1,12 +1,12 @@
-import { Component, OnInit } from '@angular/core';
+import { Component } from '@angular/core';
 import { AuthService } from 'src/app/services/auth.service';
 
 @Component({
-  selector: 'app-v1-modal-login',
-  templateUrl: './v1-modal-login.component.html',
-  styleUrls: ['./v1-modal-login.component.scss']
+  selector: 'app-authtest',
+  templateUrl: './authtest.component.html',
+  styleUrls: ['./authtest.component.scss'],
 })
-export class V1ModalLoginComponent implements OnInit {
+export class AuthtestComponent {
   isLoggedIn!: boolean;
 
   constructor(private authService: AuthService) {}
@@ -20,6 +20,7 @@ export class V1ModalLoginComponent implements OnInit {
   }
 
   login() {
+    debugger
     window.location.href = this.authService.getServerLogin();
   }
 
@@ -27,3 +28,7 @@ export class V1ModalLoginComponent implements OnInit {
     this.authService.logout();
   }
 }
+// http://localhost:8000/auth/realms/winted/protocol/openid-connect/auth?
+// response_type=code&
+// client_id=winted-web&
+// redirect_uri=http://localhost:4200/test"
