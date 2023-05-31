@@ -37,4 +37,14 @@ export abstract class ResourceService<T extends Resource<T>> {
   public delete(id: number): Observable<void> {
     return this.httpClient.delete<void>(`${this.apiUrl}/${id}`);
   }
+
+  public search(query: string): Observable<T[]> {
+    return this.httpClient
+      .get<T[]>(`${this.apiUrl}`, {
+        params: {
+          s: query,
+        },
+      })
+      .pipe(map((result) => result.map((i) => new this.tConstructor(i))));
+  }
 }

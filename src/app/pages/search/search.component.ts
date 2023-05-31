@@ -1,5 +1,9 @@
 import { Component, OnInit } from '@angular/core';
 import { ActivatedRoute, Route } from '@angular/router';
+import { Product } from 'src/app/models/Product';
+import { User } from 'src/app/models/User';
+import { ProductService } from 'src/app/services/product.service';
+import { ProfileService } from 'src/app/services/profile.service';
 
 @Component({
   selector: 'app-search',
@@ -8,9 +12,16 @@ import { ActivatedRoute, Route } from '@angular/router';
 })
 export class SearchComponent implements OnInit {
   fullTextSearch!: string | null;
-  searchMode!: string | null;  
+  searchMode!: string | null;
+  prodotti!: Product[] | any[];
+  utenti!: User[] | any[];
 
-  constructor(private router: ActivatedRoute) {}
+  constructor(
+    private router: ActivatedRoute, 
+    private productService: ProductService,
+    private profileService: ProfileService
+
+    ) {}
   ngOnInit(): void {
     this.router.queryParamMap.subscribe((params) => {
       this.fullTextSearch = params.get('s');
@@ -24,11 +35,19 @@ export class SearchComponent implements OnInit {
   }
 
   ricercaUtenti(query) {
+    this.utenti = []
     console.log("Ricerco utenti con la query", query)
+    this.profileService.search(query).subscribe((res) => {
+      this.utenti = res
+    })
   }
 
   ricercaProdotti(query) {
+    this.prodotti = []
     console.log("Ricerco prodotti con la query", query)
+    this.productService.search(query).subscribe((res) => {
+      this.prodotti = res
+    })
   }
   
 }
