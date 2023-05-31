@@ -40,7 +40,7 @@ export abstract class ResourceService<T extends Resource<T>> {
 
   public search(query: string): Observable<T[]> {
     return this.httpClient
-      .get<T[]>(`${this.apiUrl}`, {
+      .get<T[]>(`${this.apiUrl}/search`, {
         params: {
           s: query,
         },

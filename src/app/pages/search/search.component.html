@@ -2,16 +2,27 @@
   <p>Ricerca: {{ fullTextSearch }} ({{ searchMode }})</p>
 </div>
 
-<dir class="prodotti" *ngIf="prodotti && prodotti.length > 0">
-  <h1>Prodotti</h1>
-  <div class="listaprodotti">
-    <div class="prodotto" *ngFor="let prodotto in prodotti;"></div>
+<dir class="prodotti" *ngIf="searchMode==='cat'">
+  <div>
+    <h1>Prodotti</h1>
+  </div>
+  <div class="listaprodotti" *ngIf="prodotti && prodotti.length > 0">
+    <div class="prodotto" *ngFor="let prodotto of prodotti;">
+      <h3>{{ prodotto.name }}</h3>
+      {{ prodotto.description }}
+    </div>
+  </div>
+  <div class="noproduct" *ngIf="prodotti && prodotti.length == 0">
+    Non ci sono prodotti che corrispondono ai criteri selezionati!
   </div>
 </dir>
 
-<dir class="utenti" *ngIf="utenti && utenti.length > 0">
+<dir class="utenti" *ngIf="searchMode==='user'">
   <h1>Utenti</h1>
-  <div class="listautenti">
+  <div class="listautenti" *ngIf="utenti && utenti.length > 0">
     <div class="utente" *ngFor="let utente in utenti;"></div>
+  </div>
+  <div class="nouser" *ngIf="utenti && utenti.length == 0">
+    Non ci sono utenti che corrispondono ai criteri selezionati!
   </div>
 </dir>
