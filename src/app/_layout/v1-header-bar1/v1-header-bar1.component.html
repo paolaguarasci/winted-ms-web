@@ -20,9 +20,9 @@
     <div class="flex flex-row justify-content-end align-items-center flex-wrap card-container m-3">
       <div class="p-inputgroup ">
         <span class="w-8rem">
-          <p-dropdown [options]="searchModes" [(ngModel)]="selectedSearchModes" optionLabel="name"></p-dropdown>
+          <p-dropdown [options]="searchModes" [(ngModel)]="selectedSearchModes" optionLabel="name" ></p-dropdown>
         </span>
-        <input pInputText placeholder="Ricerca" class="p-inputtext-sm" />
+        <input pInputText placeholder="Ricerca" class="p-inputtext-sm" [(ngModel)]="searchtext" (keydown.enter)="goToSearch($event)" />
       </div>
     </div>
   </div>

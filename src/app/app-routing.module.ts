@@ -11,6 +11,7 @@ import { V2LayoutComponent } from './_layout/v2-layout/v2-layout.component';
 import { V3LayoutComponent } from './_layout/v3-layout/v3-layout.component';
 import { CheckoutComponent } from './pages/checkout/checkout.component';
 import { AuthtestComponent } from './pages/authtest/authtest.component';
+import { SearchComponent } from './pages/search/search.component';
 
 const routes: Routes = [
   {
@@ -18,10 +19,10 @@ const routes: Routes = [
     component: V1LayoutComponent,
     children: [
       { path: '', component: HomepageComponent, pathMatch: 'full' },
-      { path: 'test', component: AuthtestComponent, pathMatch: 'full' },
-      { path: 'profile', component: ProfileComponent},
-      { path: 'profile/:username', component: ProfileComponent},
-      { path: 'checkout', component: CheckoutComponent}
+      { path: 'search', component: SearchComponent, pathMatch: 'full' },
+      { path: 'profile', component: ProfileComponent },
+      { path: 'profile/:username', component: ProfileComponent },
+      { path: 'checkout', component: CheckoutComponent },
     ],
   },
   {
@@ -38,7 +39,7 @@ const routes: Routes = [
 
     children: [
       { path: 'sell', component: NewProductComponent },
-      { path: 'product/:id', component: ProductDetailsComponent }
+      { path: 'product/:id', component: ProductDetailsComponent },
     ],
   },
   { path: 'sell', component: NewProductComponent },
