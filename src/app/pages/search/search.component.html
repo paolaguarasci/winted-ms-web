@@ -18,6 +18,9 @@
 </dir>
 
 <dir class="utenti" *ngIf="searchMode==='user'">
+  <div>
+    <h1>Utenti</h1>
+  </div>
   <div class="listautenti" *ngIf="utenti && utenti.length > 0">
     <div class="utente" *ngFor="let utente of utenti;">
       <h3>{{ utente.username }}</h3>
