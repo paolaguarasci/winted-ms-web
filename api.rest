@@ -1,35 +1,59 @@
 ###
-GET http://localhost:8080/api/v1/order
+GET https://localhost:8443/api/v1/order
 
 ###
-GET http://localhost:8080/api/v1/product
+GET https://localhost:8443/api/v1/product
 
 ###
-GET http://localhost:8080/api/v1/product?owner=6464d3155ded8d052d323c2a
+GET https://localhost:8443/api/v1/product?owner=6464d3155ded8d052d323c2a
 
 ###
-GET http://localhost:8080/api/v1/product
+GET https://localhost:8443/api/v1/product
 
 ###
-GET http://localhost:8080/api/v1/profile
+GET https://localhost:8443/api/v1/profile
 
 ###
 
-GET http://localhost:8080/api/v1/profile/6464d3155ded8d052d323c2a
+GET https://localhost:8443/api/v1/profile/6464d3155ded8d052d323c2a
+
+
+#### ADDRESS #####################################################################
 
 ###
-GET http://localhost:8080/api/v1/address
+GET https://localhost:8443/api/v1/address
+Authorization: Bearer eyJhbGciOiJSUzI1NiIsInR5cCIgOiAiSldUIiwia2lkIiA6ICJTR3g3VXIyM2dScU5zWm1LT0xweTRhTmdzNlNNMWNSU3ExX3Z2ck54b1A4In0.eyJleHAiOjE2ODU3MTc0NTQsImlhdCI6MTY4NTcxNzE1NCwiYXV0aF90aW1lIjoxNjg1NzE3MTUzLCJqdGkiOiJjZmZlM2E1OS1kYmI4LTRkYzUtYjNlYy1hNGM2NWJiNGY3NzEiLCJpc3MiOiJodHRwOi8vbG9jYWxob3N0OjgwMDAvcmVhbG1zL3dpbnRlZCIsImF1ZCI6ImFjY291bnQiLCJzdWIiOiJhYmJjNjcwNS1kZjBkLTRiMzgtODFhNC01NDFiYWViMmZhYTAiLCJ0eXAiOiJCZWFyZXIiLCJhenAiOiJ3aW50ZWQtd2ViIiwic2Vzc2lvbl9zdGF0ZSI6IjkyZTg2MmFmLTdmY2EtNDkzYS04MDgwLTQyODJmYWE1YTdmNCIsImFjciI6IjEiLCJhbGxvd2VkLW9yaWdpbnMiOlsiaHR0cHM6Ly9sb2NhbGhvc3Q6NDIwMC8iXSwicmVhbG1fYWNjZXNzIjp7InJvbGVzIjpbIm9mZmxpbmVfYWNjZXNzIiwidW1hX2F1dGhvcml6YXRpb24iLCJBRE1JTiIsIlVTRVIiLCJkZWZhdWx0LXJvbGVzLXdpbnRlZCJdfSwicmVzb3VyY2VfYWNjZXNzIjp7ImFjY291bnQiOnsicm9sZXMiOlsibWFuYWdlLWFjY291bnQiLCJtYW5hZ2UtYWNjb3VudC1saW5rcyIsInZpZXctcHJvZmlsZSJdfX0sInNjb3BlIjoicHJvZmlsZSBlbWFpbCIsInNpZCI6IjkyZTg2MmFmLTdmY2EtNDkzYS04MDgwLTQyODJmYWE1YTdmNCIsImVtYWlsX3ZlcmlmaWVkIjp0cnVlLCJuYW1lIjoiUGFvbGEgR3VhcmFzY2kiLCJwcmVmZXJyZWRfdXNlcm5hbWUiOiJwYW9sYSIsImdpdmVuX25hbWUiOiJQYW9sYSIsImZhbWlseV9uYW1lIjoiR3VhcmFzY2kiLCJlbWFpbCI6InBhb2xhZ3VhcmFzY2lAZ21haWwuY29tIn0.XUBNP1vxeg0UjnJV_CdYKnfjxgLJoCzwEkbMo1zAKnhDqhpU-mryQS8jxsxCzA9l003TW4DnEysepfD57BIa1bc3iTihzSzNK8tKgDedLegX2BNTVKk7lE9KYY2ApCKIYLoi9Wo_wivPj8TefsWDRJ7bAfmjLLE5i73ccThtliWM9D8DdqibVYsLyiXJKTDvEVhzLDoVpNw5ZCOC4m3kteCkS5uG2tlez6juJZLejB9JggT-8qX4of9KzrCEdU2vpYmE91sVZ3faJXTfhot6ucwoTM95AZqTx-EPHnC-e8pNPqerb8mWKzfWgyN3j5n_30o_ZQUBNFDO8yIzfLeXgg
 
 ###
-GET http://localhost:8080/api/v1/paymentmethod
+POST https://localhost:8443/api/v1/address
+Authorization: Bearer  
+Content-Type: application/json eyJhbGciOiJSUzI1NiIsInR5cCIgOiAiSldUIiwia2lkIiA6ICJTR3g3VXIyM2dScU5zWm1LT0xweTRhTmdzNlNNMWNSU3ExX3Z2ck54b1A4In0.eyJleHAiOjE2ODU3MTc0NTQsImlhdCI6MTY4NTcxNzE1NCwiYXV0aF90aW1lIjoxNjg1NzE3MTUzLCJqdGkiOiJjZmZlM2E1OS1kYmI4LTRkYzUtYjNlYy1hNGM2NWJiNGY3NzEiLCJpc3MiOiJodHRwOi8vbG9jYWxob3N0OjgwMDAvcmVhbG1zL3dpbnRlZCIsImF1ZCI6ImFjY291bnQiLCJzdWIiOiJhYmJjNjcwNS1kZjBkLTRiMzgtODFhNC01NDFiYWViMmZhYTAiLCJ0eXAiOiJCZWFyZXIiLCJhenAiOiJ3aW50ZWQtd2ViIiwic2Vzc2lvbl9zdGF0ZSI6IjkyZTg2MmFmLTdmY2EtNDkzYS04MDgwLTQyODJmYWE1YTdmNCIsImFjciI6IjEiLCJhbGxvd2VkLW9yaWdpbnMiOlsiaHR0cHM6Ly9sb2NhbGhvc3Q6NDIwMC8iXSwicmVhbG1fYWNjZXNzIjp7InJvbGVzIjpbIm9mZmxpbmVfYWNjZXNzIiwidW1hX2F1dGhvcml6YXRpb24iLCJBRE1JTiIsIlVTRVIiLCJkZWZhdWx0LXJvbGVzLXdpbnRlZCJdfSwicmVzb3VyY2VfYWNjZXNzIjp7ImFjY291bnQiOnsicm9sZXMiOlsibWFuYWdlLWFjY291bnQiLCJtYW5hZ2UtYWNjb3VudC1saW5rcyIsInZpZXctcHJvZmlsZSJdfX0sInNjb3BlIjoicHJvZmlsZSBlbWFpbCIsInNpZCI6IjkyZTg2MmFmLTdmY2EtNDkzYS04MDgwLTQyODJmYWE1YTdmNCIsImVtYWlsX3ZlcmlmaWVkIjp0cnVlLCJuYW1lIjoiUGFvbGEgR3VhcmFzY2kiLCJwcmVmZXJyZWRfdXNlcm5hbWUiOiJwYW9sYSIsImdpdmVuX25hbWUiOiJQYW9sYSIsImZhbWlseV9uYW1lIjoiR3VhcmFzY2kiLCJlbWFpbCI6InBhb2xhZ3VhcmFzY2lAZ21haWwuY29tIn0.XUBNP1vxeg0UjnJV_CdYKnfjxgLJoCzwEkbMo1zAKnhDqhpU-mryQS8jxsxCzA9l003TW4DnEysepfD57BIa1bc3iTihzSzNK8tKgDedLegX2BNTVKk7lE9KYY2ApCKIYLoi9Wo_wivPj8TefsWDRJ7bAfmjLLE5i73ccThtliWM9D8DdqibVYsLyiXJKTDvEVhzLDoVpNw5ZCOC4m3kteCkS5uG2tlez6juJZLejB9JggT-8qX4of9KzrCEdU2vpYmE91sVZ3faJXTfhot6ucwoTM95AZqTx-EPHnC-e8pNPqerb8mWKzfWgyN3j5n_30o_ZQUBNFDO8yIzfLeXgg
+
+{
+  "user": "abbc6705-df0d-4b38-81a4-541baeb2faa0",
+  "nome": "Paola",
+  "cognome": "Guarasci",
+  "via": "Via Busento",
+  "citta": "Rende",
+  "numeroCivico": "43",
+  "cap": "87036"
+}
+
 
 ###
-GET http://localhost:8080/api/v1/conversation
+
+#### ADDRESS #####################################################################
 
 ###
-GET http://localhost:8080/api/v1/conversation/646a5aee4e38042c9c199a67
+GET https://localhost:8443/api/v1/paymentmethod
 
 ###
-GET http://localhost:8080/api/v1/profile/username/paola
+GET https://localhost:8443/api/v1/conversation
+
 ###
-GET http://localhost:8080/api/v1/profile/username/margheritaepietro
+GET https://localhost:8443/api/v1/conversation/646a5aee4e38042c9c199a67
+
+###
+GET https://localhost:8443/api/v1/profile/username/paola
+###
+GET https://localhost:8443/api/v1/profile/username/margheritaepietro

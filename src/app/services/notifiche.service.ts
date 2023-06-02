@@ -7,7 +7,7 @@ import { Notifica } from '../models/Notifica';
 @Injectable({ providedIn: 'root' })
 export class NotificheService extends ResourceService<Notifica> {
   constructor(private http: HttpClient) {
-    super(http, Notifica, `http://localhost:8080/api/v1/notifica`);
+    super(http, Notifica, `/api/v1/notifica`);
   }
 
   getMine(): Observable<Notifica[]> {

@@ -25,7 +25,7 @@ export class ProductCardComponent implements OnInit {
       this.product.featured = 'https://fakeimg.pl/200x300';
     } else if (!this.product.featured && this.product.resources.length > 0) {
       this.product.featured =
-        'http://localhost:8080/api/v1/resource/image/' +
+        '/api/v1/resource/image/' +
         this.product.resources[0];
     }
     let originalPrice = parseFloat(this.product.price);

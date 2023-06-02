@@ -7,7 +7,7 @@ import { Observable } from 'rxjs';
 @Injectable({ providedIn: 'root' })
 export class InboxService extends ResourceService<Inbox> {
   constructor(private http: HttpClient) {
-    super(http, Inbox, `http://localhost:8080/api/v1/inbox`);
+    super(http, Inbox, `/api/v1/inbox`);
   }
 
   // todo ristrutturare alla fine sono tutti msg da inviare

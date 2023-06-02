@@ -7,7 +7,7 @@ import { CookieService } from 'ngx-cookie-service';
 })
 export class AuthService {
   public clientId = 'winted-web';
-  public redirectUri = 'http://localhost:4200/';
+  public redirectUri = 'https://localhost:4200';
   public authServer = 'http://localhost:8000';
   public clientSecret = '0tWCKy4mShRYeQjw8TMMISsGQDEQJmYB';
   public realm = 'winted';
