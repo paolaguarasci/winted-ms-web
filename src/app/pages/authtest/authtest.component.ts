@@ -28,7 +28,3 @@ export class AuthtestComponent {
     this.authService.logout();
   }
 }
-// http://localhost:8000/auth/realms/winted/protocol/openid-connect/auth?
-// response_type=code&
-// client_id=winted-web&
-// redirect_uri=https://localhost:4200/test"

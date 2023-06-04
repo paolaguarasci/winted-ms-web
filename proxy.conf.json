@@ -3,5 +3,10 @@
     "target": "https://localhost:8443",
     "secure": false,
     "changeOrigin": true
+  },
+  "/realm/*": {
+    "target": "https://localhost:8000",
+    "secure": false,
+    "changeOrigin": true
   }
 }
