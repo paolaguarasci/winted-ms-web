@@ -10,7 +10,7 @@ import { Product } from '../models/Product';
 @Injectable({ providedIn: 'root' })
 export class ProfileService extends ResourceService<User> {
   constructor(private http: HttpClient) {
-    super(http, User, `http://localhost:8080/api/v1/profile`);
+    super(http, User, `/api/v1/profile`);
   }
 
   getPreferred() {

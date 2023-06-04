@@ -12,7 +12,7 @@ import { MessaggioConversazione } from '../models/MessaggioConversazione';
 @Injectable({ providedIn: 'root' })
 export class ConversationService extends ResourceService<Conversazione> {
   constructor(private http: HttpClient) {
-    super(http, Conversazione, `http://localhost:8080/api/v1/conversation`);
+    super(http, Conversazione, `/api/v1/conversation`);
   }
 
   getPreview(): Observable<AnteprimaInbox[]> {

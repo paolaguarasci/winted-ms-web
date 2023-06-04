@@ -7,7 +7,7 @@ import { Address } from '../models/Address';
 @Injectable({ providedIn: 'root' })
 export class AddressService extends ResourceService<Address> {
   constructor(private http: HttpClient) {
-    super(http, Address, `http://localhost:8080/api/v1/address`);
+    super(http, Address, `/api/v1/address`);
   }
 
   getMine(): Observable<Address> {

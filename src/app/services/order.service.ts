@@ -9,7 +9,7 @@ import { Order } from '../models/Order';
 @Injectable({ providedIn: 'root' })
 export class OrderService extends ResourceService<Order> {
   constructor(private http: HttpClient) {
-    super(http, Order, `http://localhost:8080/api/v1/order`);
+    super(http, Order, `/api/v1/order`);
   }
 
   public buy(order: Order): Observable<Order> {

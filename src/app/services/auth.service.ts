@@ -7,8 +7,8 @@ import { CookieService } from 'ngx-cookie-service';
 })
 export class AuthService {
   public clientId = 'winted-web';
-  public redirectUri = 'http://localhost:4200/';
-  public authServer = 'http://localhost:8000';
+  public redirectUri = 'https://localhost:4200/';
+  public authServer = 'https://localhost:4200/';
   public clientSecret = '0tWCKy4mShRYeQjw8TMMISsGQDEQJmYB';
   public realm = 'winted';
 
@@ -18,7 +18,7 @@ export class AuthService {
   ) {}
 
   getServerLogin() {
-    return `http://localhost:8000/realms/winted/protocol/openid-connect/auth?response_type=code&client_id=${this.clientId}&redirect_uri=${this.redirectUri}`;
+    return `https://localhost:4200/realms/winted/protocol/openid-connect/auth?response_type=code&client_id=${this.clientId}&redirect_uri=${this.redirectUri}`;
   }
 
   retrieveToken(code) {
@@ -35,7 +35,7 @@ export class AuthService {
 
     this._http
       .post(
-        'http://localhost:8000/realms/winted/protocol/openid-connect/token',
+        'https://localhost:4200/realms/winted/protocol/openid-connect/token',
         params.toString(),
         { headers: headers }
       )

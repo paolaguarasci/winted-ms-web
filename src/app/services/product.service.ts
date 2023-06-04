@@ -8,7 +8,7 @@ import { OffertResponse } from '../models/OffertResponse';
 @Injectable({ providedIn: 'root' })
 export class ProductService extends ResourceService<Product> {
   constructor(private http: HttpClient) {
-    super(http, Product, `http://localhost:8080/api/v1/product`);
+    super(http, Product, `/api/v1/product`);
   }
 
   public override create(data): Observable<Product> {
@@ -22,7 +22,7 @@ export class ProductService extends ResourceService<Product> {
       formData.append('files', file);
     });
 
-    const url: string = 'http://localhost:8080/api/v1/product';
+    const url: string = '/api/v1/product';
 
     return this.http.post<any>(url, formData);
   }

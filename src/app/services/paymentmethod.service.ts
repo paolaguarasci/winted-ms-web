@@ -6,7 +6,7 @@ import { Observable } from 'rxjs';
 @Injectable({ providedIn: 'root' })
 export class PaymentMethodService extends ResourceService<PaymentMethod> {
   constructor(private http: HttpClient) {
-    super(http, PaymentMethod, `http://localhost:8080/api/v1/paymentmethod`);
+    super(http, PaymentMethod, `/api/v1/paymentmethod`);
   }
 
 
