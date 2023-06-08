@@ -5,6 +5,7 @@ import { ResourceService } from './resource.service';
 import { OffertResponse } from '../models/OffertResponse';
 import { Observable } from 'rxjs';
 import { Order } from '../models/Order';
+import { OrderUpdate } from '../models/OrderUpdate';
 
 @Injectable({ providedIn: 'root' })
 export class OrderService extends ResourceService<Order> {
@@ -18,5 +19,10 @@ export class OrderService extends ResourceService<Order> {
 
   public newCheckout(order: Order): Observable<Order> {
     return this.http.post<Order>(this.apiUrl + '/checkout', order);
+  }
+
+  public updateCheckout(id: string, order: OrderUpdate): Observable<Order> {
+    console.log("Richiesta inviata", order)
+    return this.http.put<Order>(this.apiUrl + '/checkout/'+id, order.toJson());
   }
 }
