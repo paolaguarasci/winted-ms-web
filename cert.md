@@ -120,3 +120,36 @@ e aggiungere la riga `"proxyConfig": "proxy.conf.json"` in `angular.json`
   }
 }
 ```
+
+
+openssl x509 -outform der -in your-cert.pem -out your-cert.crt 
+
+-extfile localhost.ext
+
+localhost.ext
+```conf
+[req]
+default_bits = 2048
+prompt = no
+default_md = sha256
+req_extensions = req_ext
+distinguished_name = some_dn
+
+[some_dn]
+C = US
+ST = Florida
+L = Jacksonville
+O = SomeOrg
+emailAddress = some@email.com
+CN = thedomain.com
+
+[req_ext]
+subjectAltName = @alt_names
+
+[alt_names]
+DNS.1 = otherdomain.com
+IP.1 = 1.2.3.4
+```
+
+
+-ext san=dns:localhost,ip:127.0.0.1
