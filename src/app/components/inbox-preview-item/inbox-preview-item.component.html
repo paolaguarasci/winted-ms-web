@@ -10,7 +10,9 @@
     </div>
     <div class="flex align-items-center justify-content-start text-left text-700">{{ anteprima.lastMessage }}</div>
     <div *ngIf="prodottoCorrelato" class="flex align-items-center justify-content-start text-left">
-      {{ prodottoCorrelato }}
+      <p-avatar *ngIf="prodottoCorrelato.featured" [image]="prodottoCorrelato.featured" size="normal"></p-avatar>
+      <!-- <p-image [src]="prodottoCorrelato.featured" alt="Image" width="200" height="300"></p-image> -->
+      {{ prodottoCorrelato.name }}
     </div>
   </div>
 </div>
