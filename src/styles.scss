@@ -10,6 +10,13 @@ app-v1-footer a:hover {
   text-decoration-line: underline;
 }
 
+
+app-v1-header-bar1 { 
+  i, p-avatar, img {
+    cursor: pointer;
+  }
+}
+
 app-v1-header-bar1 .p-dropdown.p-component {
   width: 100% !important;
 }
@@ -150,3 +157,4 @@ app-notifiche-drop-down {
     
   }
 }
+

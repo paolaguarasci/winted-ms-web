@@ -13,6 +13,7 @@ import { CheckoutComponent } from './pages/checkout/checkout.component';
 import { SearchComponent } from './pages/search/search.component';
 import { canactivateGuard } from './guards/canactivate.guard';
 import { NotificheComponent } from './pages/notifiche/notifiche.component';
+import { PreferitiComponent } from './pages/preferiti/preferiti.component';
 
 const routes: Routes = [
   {
@@ -24,6 +25,7 @@ const routes: Routes = [
       { path: 'profile', component: ProfileComponent },
       { path: 'profile/:id', component: ProfileComponent },
       { path: 'notifiche', component: NotificheComponent, canActivate: [canactivateGuard] },
+      { path: 'preferiti', component: PreferitiComponent, canActivate: [canactivateGuard] },
       { path: 'checkout', component: CheckoutComponent, canActivate: [canactivateGuard] },
     ],
   },
