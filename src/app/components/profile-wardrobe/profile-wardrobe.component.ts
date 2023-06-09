@@ -1,6 +1,7 @@
 import { Component, OnInit, Input } from '@angular/core';
 import { Product } from 'src/app/models/Product';
 import { User } from 'src/app/models/User';
+import { AuthService } from 'src/app/services/auth.service';
 import { ProductService } from 'src/app/services/product.service';
 import { ProfileService } from 'src/app/services/profile.service';
 
@@ -15,7 +16,9 @@ export class ProfileWardrobeComponent implements OnInit {
   numElement!: number;
   constructor(
     private profileService: ProfileService,
-    private productService: ProductService
+    private productService: ProductService,
+    private authService: AuthService
+
   ) {}
   ngOnInit(): void {
     this.productList = [];
