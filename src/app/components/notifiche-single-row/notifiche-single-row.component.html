@@ -1,4 +1,4 @@
-<div *ngIf="notifica.read" class="read p-3">
+<div *ngIf="notifica.read" class="read p-3 border-1 border-round-sm border-gray-300 mb-3">
   {{ notifica.content }}
   <div *ngIf="prodottoCorrelato" class="flex align-items-center justify-content-start text-left">
     <p-avatar *ngIf="prodottoCorrelato.featured" [image]="prodottoCorrelato.featured" size="normal" class="mr-2 mt-1"></p-avatar>
@@ -6,7 +6,7 @@
   </div>
 </div>
 
-<div *ngIf="!notifica.read" class="unread p-3"  (click)="handleRead()">
+<div *ngIf="!notifica.read" class="unread p-3 border-1 border-round-sm border-gray-300 mb-3"  (click)="handleRead()">
   {{ notifica.content }}
   <div *ngIf="prodottoCorrelato" class="flex align-items-center justify-content-start text-left">
     <p-avatar *ngIf="prodottoCorrelato.featured" [image]="prodottoCorrelato.featured" size="normal" class="mr-2 mt-1"></p-avatar>
