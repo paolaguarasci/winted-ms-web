@@ -11,15 +11,16 @@ export class NotificheDropDownComponent implements OnInit {
   @Input() notifiche!: Notifica[];
   @Output() numeroNotifiche: EventEmitter<string> = new EventEmitter<string>();
   unRead!: string;
+  venduto!: boolean;
 
   constructor(private notificheService: NotificheService) {}
   ngOnInit(): void {
     this.notifiche = [];
-    // this.notificheService.getMineNew().subscribe((res) => {
-    //   this.notifiche = res;
-    //   this.updateNumeroNotificheNonLette();
-    // });
-    this.dataDummy();
+    this.notificheService.getMineNew().subscribe((res) => {
+      this.notifiche = res;
+      this.updateNumeroNotificheNonLette();
+    });
+    // this.dataDummy();
   }
 
   // TODO Cancellare!
