@@ -45,8 +45,10 @@ export class ProductDetailsComponent implements OnInit {
   update() {
     this.productService.getById(this.productId).subscribe((res) => {
       this.product = res;
-      this.venduto = res.bought;
-
+      if (res.bought === "true") {
+        this.venduto = true;
+      }
+      console.log("============================================== Ventudo ", this.venduto)
       this.profileService.getPreferred().subscribe((res) => {
         let preferiti = res;
         if (preferiti.indexOf(this.productId) != -1) {

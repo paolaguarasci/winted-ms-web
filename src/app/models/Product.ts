@@ -4,8 +4,8 @@ import { User } from './User';
 export class Product extends Resource<Product> {
   public price!: string;
   public prefered!: number;
-  public draft!: boolean;
-  public bought!: boolean;
+  public draft!: string;
+  public bought!: string;
   public size!: string;
   public brand!: string;
   public owner!: string;

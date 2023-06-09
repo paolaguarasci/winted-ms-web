@@ -12,6 +12,7 @@ import { V3LayoutComponent } from './_layout/v3-layout/v3-layout.component';
 import { CheckoutComponent } from './pages/checkout/checkout.component';
 import { SearchComponent } from './pages/search/search.component';
 import { canactivateGuard } from './guards/canactivate.guard';
+import { NotificheComponent } from './pages/notifiche/notifiche.component';
 
 const routes: Routes = [
   {
@@ -22,6 +23,7 @@ const routes: Routes = [
       { path: 'search', component: SearchComponent, pathMatch: 'full' },
       { path: 'profile', component: ProfileComponent },
       { path: 'profile/:id', component: ProfileComponent },
+      { path: 'notifiche', component: NotificheComponent, canActivate: [canactivateGuard] },
       { path: 'checkout', component: CheckoutComponent, canActivate: [canactivateGuard] },
     ],
   },
@@ -36,7 +38,6 @@ const routes: Routes = [
   {
     path: '',
     component: V3LayoutComponent,
-
     children: [
       { path: 'sell', component: NewProductComponent, canActivate: [canactivateGuard] },
       { path: 'product/:id', component: ProductDetailsComponent },
