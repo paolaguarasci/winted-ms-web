@@ -31,7 +31,7 @@
   align-self: stretch;
   border-right: 1px solid #c6c6c6;
   padding: 0px;
-  max-width: min-content;
+  // max-width: min-content;
   overflow-x: hidden;
   overflow-y: scroll;
 }
@@ -91,5 +91,10 @@
 }
 
 .area1 {
+  width: 100%;
+}
+
+
+.noconv {
   width: 100%;
 }

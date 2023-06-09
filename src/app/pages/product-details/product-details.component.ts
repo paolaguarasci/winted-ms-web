@@ -43,9 +43,7 @@ export class ProductDetailsComponent implements OnInit {
     this.productService.getById(this.productId).subscribe((res) => {
       this.product = res;
 
-      this.productService.getSameById(this.productId).subscribe((res) => {
-        this.articoliSimili = res;
-      });
+
 
       this.profileService.getPreferred().subscribe((res) => {
         let preferiti = res;
@@ -59,6 +57,9 @@ export class ProductDetailsComponent implements OnInit {
         this.ownerProducts = [];
         this.productService.getByOwnerId(this.owner.id).subscribe((res) => {
           this.ownerProducts = res.filter((p) => p.id !== this.productId);
+        });
+        this.productService.getSameById(this.productId).subscribe((res) => {
+          this.articoliSimili = res.filter((articolo) => articolo.owner != this.owner.id);
         });
       });
     });

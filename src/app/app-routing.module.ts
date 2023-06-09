@@ -21,7 +21,7 @@ const routes: Routes = [
       { path: '', component: HomepageComponent, pathMatch: 'full' },
       { path: 'search', component: SearchComponent, pathMatch: 'full' },
       { path: 'profile', component: ProfileComponent },
-      { path: 'profile/:username', component: ProfileComponent },
+      { path: 'profile/:id', component: ProfileComponent },
       { path: 'checkout', component: CheckoutComponent },
     ],
   },

@@ -1,7 +1,8 @@
 <div class="card w-12">
-  <p class="text-3xl w-12" i18n>Feed</p>
+  <p *ngIf="!query" class="text-3xl w-12" i18n>Feed</p>
+  <p *ngIf="query" class="text-3xl w-12" i18n>{{query}}</p>
   <div class="flex flex-row flex-wrap card-container blue-container justify-content-between w-12">
-    <div *ngFor="let product of products;" class="flex align-items-center justify-content-center w-13rem my-3">
+    <div *ngFor="let product of products;" class="flex align-items-center justify-content-center my-3">
       <product-card [product]="product" [showUser]="showUser"></product-card>
     </div>
   </div>

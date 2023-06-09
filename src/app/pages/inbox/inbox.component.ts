@@ -4,7 +4,7 @@ import {
   MessaggioConversazioneTipi,
 } from './../../models/MessaggioConversazione';
 
-import { ActivatedRoute } from '@angular/router';
+import { ActivatedRoute, Router } from '@angular/router';
 import { ConversationService } from './../../services/conversation.service';
 import { Conversazione } from 'src/app/models/Conversazione';
 import { Inbox } from './../../models/Inbox';
@@ -15,6 +15,7 @@ import { ProfileService } from 'src/app/services/profile.service';
 import { ProductCardComponent } from 'src/app/components/product-card/product-card.component';
 import { Product } from 'src/app/models/Product';
 import { ProductService } from 'src/app/services/product.service';
+import { AuthService } from 'src/app/services/auth.service';
 
 @Component({
   selector: 'app-inbox',
@@ -29,16 +30,19 @@ export class InboxComponent implements OnInit {
   newMessage!: string;
   id!: any;
   prodottoCorrelato!: Product | null;
+  isNew!: boolean;
 
   constructor(
     private conversationService: ConversationService,
     private profileService: ProfileService,
     private route: ActivatedRoute,
-    private productService: ProductService
-
+    private router: Router,
+    private productService: ProductService,
+    private authService: AuthService
   ) {}
 
-  ngOnInit(): void {
+  async ngOnInit() {
+    this.isNew = false;
     this.prodottoCorrelato = null;
     this.conversazione = null;
     this.getLoggedUser();
@@ -47,7 +51,7 @@ export class InboxComponent implements OnInit {
       this.update();
       this.getPreview();
     });
-    this.route.queryParamMap.subscribe((params) => {
+    this.route.queryParamMap.subscribe(async (params) => {
       // let offer_to = params.get('offer_to');
       // let offer_price = params.get('offer_price');
       // let info_about = params.get('info_about');
@@ -58,6 +62,25 @@ export class InboxComponent implements OnInit {
       // if (info_about) {
       //   this.askInfo(info_about);
       // }
+
+      
+      if (params.get('new')) {
+        this.isNew = true;
+        let newConversationWith = params.get('new');
+
+        this.profileService.getLogged().subscribe((res) => {
+          this.loggedUser = res;
+          this.conversazione = new Conversazione({
+            messages: [],
+            user1: this.loggedUser?.id,
+            user2: newConversationWith ?? "",
+            altroUtente: newConversationWith ?? ""
+          })
+          this.getOther();
+          this.inboxPreview = [];
+          console.log("Nuova conversazione con ", newConversationWith)
+        })
+      }
     });
   }
 
@@ -107,10 +130,25 @@ export class InboxComponent implements OnInit {
     });
   }
 
-  sendTextMessage(event) {
+  sendMessage(event) {
     if (this.newMessage.length == 0) {
       return;
     }
+
+    if (this.isNew && this.conversazione) {
+      console.log("sono qui!")
+      this.conversationService.create(this.conversazione).subscribe((res) => {
+        this.conversazione  = res;
+        console.log(this.conversazione)
+        this.saveTextMessage(event);
+      })
+    } else {
+      this.saveTextMessage(event);
+    }
+  }
+
+  saveTextMessage(event) {
+
     let newMsg = new MessaggioConversazione({
       content: this.newMessage,
       from: this.loggedUser.id,
@@ -128,7 +166,7 @@ export class InboxComponent implements OnInit {
     }
   }
 
-  getLoggedUser() {
+  async getLoggedUser() {
     this.profileService.getLogged().subscribe((res) => {
       this.loggedUser = res;
     })
@@ -157,4 +195,21 @@ export class InboxComponent implements OnInit {
     //   console.log('Richiesta effettuata');
     // });
   }
+
+
+  // createNewConversation(altroUtente){
+  //   if (this.authService.checkCredentials()) {
+  //     let conversation = new Conversazione({
+  //       messages: [],
+  //       altroUtente: altroUtente,
+  //       prodottoCorrelato: "",
+  //     })
+  //     this.conversationService.create(conversation).subscribe((res) => {
+  //       this.router.navigate(['inbox', res.id])
+  //     })
+  //   } else {
+  //     alert("Ti devi loggare")
+  //   }
+
+  // }
 }

@@ -1,5 +1,5 @@
 import { Component, OnInit } from '@angular/core';
-import { ActivatedRoute, Route } from '@angular/router';
+import { ActivatedRoute, Route, Router } from '@angular/router';
 import { Product } from 'src/app/models/Product';
 import { User } from 'src/app/models/User';
 import { ProductService } from 'src/app/services/product.service';
@@ -17,13 +17,14 @@ export class SearchComponent implements OnInit {
   utenti!: User[] | any[];
 
   constructor(
-    private router: ActivatedRoute, 
+    private route: ActivatedRoute,
+    private router: Router,
     private productService: ProductService,
     private profileService: ProfileService
 
     ) {}
   ngOnInit(): void {
-    this.router.queryParamMap.subscribe((params) => {
+    this.route.queryParamMap.subscribe((params) => {
       this.fullTextSearch = params.get('s');
       this.searchMode = params.get('t');
       if(this.searchMode === 'cat') {
@@ -48,6 +49,14 @@ export class SearchComponent implements OnInit {
     this.productService.search(query).subscribe((res) => {
       this.prodotti = res
     })
+  }
+
+  goToUserProfile(utente: User) {
+    this.router.navigate(['profile', utente.id]);
+  }
+
+  goToProduct(product: Product) {
+    this.router.navigate(['product', product.id]);
   }
   
 }

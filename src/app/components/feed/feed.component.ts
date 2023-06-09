@@ -16,26 +16,12 @@ interface User {
 })
 export class FeedComponent implements OnInit {
   @Input() products!: Product[];
+  @Input() query!: any;
   showUser!: boolean;
 
   constructor(private currencyPipe: CurrencyPipe) {}
 
   ngOnInit(): void {
     this.showUser = true;
-    // this.products = [];
-    // for (let i = 0; i < 36; i++) {
-    //   this.products.push({
-    //     user: {
-    //       name: 'user',
-    //       image: 'https://i.pravatar.cc/300',
-    //     },
-    //     img: 'https://fakeimg.pl/200x300',
-    //     price:
-    //       this.currencyPipe.transform(10.0, 'EUR', 'symbol', '.2') ?? '',
-    //     prefered: 3,
-    //     size: $localize`14 anni / 164 cm`,
-    //     brand: 'H&M',
-    //   });
-    // }
   }
 }

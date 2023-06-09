@@ -23,18 +23,24 @@
           </div>
         </div>
       </div>
-      <div class="articolisimili my-3 p-3 border-round-sm text-600" *ngIf="this.ownerProducts.length > 0">
-        <product-card *ngFor="let product of ownerProducts;" [product]="product" [owner]="owner" [showUser]="true" />
+      <div class="flex flex-row flex-wrap card-container blue-container justify-content-left w-12">
+        <div *ngFor="let product of ownerProducts;"
+          class="flex align-items-center justify-content-center my-3">
+          <product-card [product]="product"></product-card>
+        </div>
       </div>
+      <!-- <div class="my-3 p-3 border-round-sm text-600" *ngIf="this.ownerProducts.length > 0">
+        <product-card *ngFor="let product of ownerProducts;" [product]="product" [owner]="owner" [showUser]="true" />
+      </div> -->
       <div class="articolisimili my-3 p-3 border-round-sm text-600 bg-white">
         <span>
           Articoli simili
         </span>
       </div>
 
-      <div class="flex flex-row flex-wrap card-container blue-container justify-content-between w-12">
+      <div class="flex flex-row flex-wrap card-container blue-container justify-content-left w-12">
         <div *ngFor="let product of articoliSimili;"
-          class="flex align-items-center justify-content-center w-13rem my-3">
+          class="flex align-items-center justify-content-center my-3">
           <product-card [product]="product" [showUser]="true"></product-card>
         </div>
       </div>

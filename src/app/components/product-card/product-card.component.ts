@@ -15,7 +15,7 @@ import { User } from 'src/app/models/User';
 })
 export class ProductCardComponent implements OnInit {
   @Input() product!: Product;
-  @Input() owner!: User;
+  @Input() owner!: any;
   @Input() showUser!: boolean;
 
   constructor(private currencyPipe: CurrencyPipe, private router: Router, private messageService: MessageService, private profileService: ProfileService) {}
@@ -31,8 +31,11 @@ export class ProductCardComponent implements OnInit {
     let originalPrice = parseFloat(this.product.price);
     this.product.price =
       this.currencyPipe.transform(originalPrice, 'EUR', 'symbol', '.2') ?? '';
-
-    if (this.owner === null && this.showUser === true) {
+    console.log("PRODOTTO", this.product)
+    console.log("OWNER", this.owner)
+    if (this.owner === undefined && this.showUser === true) {
+      console.log("cerco")
+      console.log("PRODOTTO", this.product)
       this.profileService.getById(this.product.owner).subscribe(res => this.owner=res)
     }
   }

@@ -9,6 +9,9 @@
     <div *ngIf="inboxPreview && inboxPreview.length > 0 && conversazione">
       <app-inbox-preview-item *ngFor="let anteprima of inboxPreview" [anteprima]="anteprima" [routerId]="this.id" [prodottoCorrelato]="prodottoCorrelato" />
     </div>
+    <div *ngIf="!inboxPreview || inboxPreview.length === 0 || !conversazione" class="h-4rem p-3">
+      No conversation
+    </div>
   </div>
   <div class="altroutente" *ngIf="otherUser">{{otherUser.username}}</div>
   <div class="prodotto" *ngIf="prodottoCorrelato">
@@ -19,7 +22,7 @@
     <p-button icon="pi pi-image" styleClass="p-button-lg p-button-rounded p-button-text myInputArea-1 mr-3"></p-button>
     <span class="p-input-icon-right myInputArea-2">
       <i class="pi pi-arrow-right"></i>
-      <input type="text" pInputText [(ngModel)]="newMessage" class="area1" (keydown.enter)="sendTextMessage($event)" />
+      <input type="text" pInputText [(ngModel)]="newMessage" class="area1" (keydown.enter)="sendMessage($event)" />
     </span>
   </div>
   <div class="conversazione">
