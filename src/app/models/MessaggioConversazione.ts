@@ -16,6 +16,7 @@ export class MessaggioConversazione extends Resource<MessaggioConversazione> {
   public tipo!: MessaggioConversazioneTipi;
   public timeAgo!: string;
   public visto!: boolean;
+  public messageType!: string;
 
   constructor(model?: Partial<MessaggioConversazione>) {
     super(model);

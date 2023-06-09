@@ -1,4 +1,4 @@
-<div *ngIf="!inviato;else ricevuto_template" class="flex justify-content-start flex-wrap card-container">
+<div *ngIf="!inviato && !isFromWinted" class="flex justify-content-start flex-wrap card-container">
   <div class="flex align-items-center justify-content-center">
     <p-avatar [image]="authorMsg.avatar" shape="circle"></p-avatar>
   </div>
@@ -8,14 +8,20 @@
   </div>
 </div>
 
-<ng-template #ricevuto_template>
-  <div class="flex justify-content-end flex-wrap card-container text-right">
-    <div
-      class="flex align-items-center justify-content-center border-1 border-black-alpha-30 mx-1 my-2 p-2 min-w-min max-w-30rem border-round-sm">
-      {{ msg.content }}
-    </div>
-    <div class="flex align-items-center justify-content-center">
-      <p-avatar [image]="authorMsg.avatar" shape="circle"></p-avatar>
-    </div>
+
+<div *ngIf="inviato && !isFromWinted" class="flex justify-content-end flex-wrap card-container text-right">
+  <div
+    class="flex align-items-center justify-content-center border-1 border-black-alpha-30 mx-1 my-2 p-2 min-w-min max-w-30rem border-round-sm">
+    {{ msg.content }}
   </div>
-</ng-template>
+  <div class="flex align-items-center justify-content-center">
+    <p-avatar [image]="authorMsg.avatar" shape="circle"></p-avatar>
+  </div>
+</div>
+
+<div *ngIf="isFromWinted" class="flex justify-content-center flex-wrap card-container w-12">
+  <div
+    class="flex w-12 align-items-center justify-content-center border-1 border-black-alpha-30 mx-1 my-2 p-2 min-w-min border-round-sm">
+    {{ msg.content }}
+  </div>
+</div>

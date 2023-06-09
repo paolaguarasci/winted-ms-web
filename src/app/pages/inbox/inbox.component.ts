@@ -113,11 +113,12 @@ export class InboxComponent implements OnInit {
     }
     let newMsg = new MessaggioConversazione({
       content: this.newMessage,
-      from: this.loggedUser.username,
-      to: this.otherUser.username,
+      from: this.loggedUser.id,
+      to: this.otherUser.id,
       tipo: MessaggioConversazioneTipi.testo,
       timestamp: '',
     })
+    
     this.newMessage = '';
     if (this.conversazione?.id) {
       this.conversationService.addMessage(this.conversazione?.id, newMsg).subscribe((result) => {
