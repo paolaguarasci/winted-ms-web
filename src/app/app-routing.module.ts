@@ -10,8 +10,8 @@ import { V1LayoutComponent } from './_layout/v1-layout/v1-layout.component';
 import { V2LayoutComponent } from './_layout/v2-layout/v2-layout.component';
 import { V3LayoutComponent } from './_layout/v3-layout/v3-layout.component';
 import { CheckoutComponent } from './pages/checkout/checkout.component';
-import { AuthtestComponent } from './pages/authtest/authtest.component';
 import { SearchComponent } from './pages/search/search.component';
+import { canactivateGuard } from './guards/canactivate.guard';
 
 const routes: Routes = [
   {
@@ -21,16 +21,16 @@ const routes: Routes = [
       { path: '', component: HomepageComponent, pathMatch: 'full' },
       { path: 'search', component: SearchComponent, pathMatch: 'full' },
       { path: 'profile', component: ProfileComponent },
-      { path: 'profile/:username', component: ProfileComponent },
-      { path: 'checkout', component: CheckoutComponent },
+      { path: 'profile/:id', component: ProfileComponent },
+      { path: 'checkout', component: CheckoutComponent, canActivate: [canactivateGuard] },
     ],
   },
   {
     path: '',
     component: V2LayoutComponent,
     children: [
-      { path: 'inbox', component: InboxComponent },
-      { path: 'inbox/:id', component: InboxComponent },
+      { path: 'inbox', component: InboxComponent, canActivate: [canactivateGuard] },
+      { path: 'inbox/:id', component: InboxComponent, canActivate: [canactivateGuard] },
     ],
   },
   {
@@ -38,11 +38,11 @@ const routes: Routes = [
     component: V3LayoutComponent,
 
     children: [
-      { path: 'sell', component: NewProductComponent },
+      { path: 'sell', component: NewProductComponent, canActivate: [canactivateGuard] },
       { path: 'product/:id', component: ProductDetailsComponent },
     ],
   },
-  { path: 'sell', component: NewProductComponent },
+  { path: 'sell', component: NewProductComponent, canActivate: [canactivateGuard] },
   { path: '**', redirectTo: '' },
 ];
 

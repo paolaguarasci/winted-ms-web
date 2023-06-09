@@ -132,3 +132,13 @@ app-checkout {
     width: 100%;
   }
 }
+
+product-card {
+  p-image img {
+    object-fit: cover;
+    width: 100%;
+    // height: 100%;
+    vertical-align: middle;
+    // border-radius: 5px;
+  }
+}

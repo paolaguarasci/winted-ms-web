@@ -34,7 +34,7 @@ export class AuthInterceptor implements HttpInterceptor {
     return next.handle(request).pipe(
       map((event: HttpEvent<any>) => {
         if (event instanceof HttpResponse) {
-          console.log('event--->>>', event);
+          // console.log('event--->>>', event);
         }
         return event;
       }),
@@ -42,7 +42,8 @@ export class AuthInterceptor implements HttpInterceptor {
         if (error.status === 401 && this.cookieService.get('access_token') !== "") {
           this.cookieService.delete('access_token');
           this.cookieService.delete('refresh_token');
-          location.reload();
+          // location.reload();
+          location.replace("/")
         }
         return throwError(() => new Error(error.message));
       })

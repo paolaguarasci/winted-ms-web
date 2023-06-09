@@ -14,15 +14,20 @@ export class InboxConversationItemComponent implements OnInit {
   @Input() otherUser!: User;
   authorMsg!: User;
   inviato!: boolean;
-
+  isFromWinted!: boolean;
+  
   ngOnInit(): void {
     this.inviato = false;
-    if (this.msg.from === this.loggedUser.id) {
-      this.inviato = true;
-      this.authorMsg = this.loggedUser;
-    } else {
+    if (this.msg.messageType === "SYSTEM") {
+      this.isFromWinted = true;
+    } 
+    if (this.msg.from !== this.loggedUser.id) {
       this.inviato = false;
       this.authorMsg = this.otherUser;
+    } else {
+      this.inviato = true;
+      this.authorMsg = this.loggedUser;
     }
+    
   }
 }

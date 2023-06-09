@@ -72,7 +72,7 @@
           styleClass="p-button-outlined p-button-secondary"></p-button>
       </div>
       <div *ngIf="loggedId !== profile.id">
-        <p-button label="Messaggio" styleClass="p-button-outlined p-button-primary ml-2"></p-button>
+        <p-button (click)="goToConverationWith()" label="Messaggio" styleClass="p-button-outlined p-button-primary ml-2"></p-button>
         <p-button label="Segui" styleClass="p-button p-button-primary ml-2"></p-button>
       </div>
     </div>

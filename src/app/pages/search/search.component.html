@@ -1,32 +1,28 @@
 <div class="mt-5">
-  <p>Ricerca: {{ fullTextSearch }} ({{ searchMode }})</p>
+  <!-- <p>Ricerca: {{ fullTextSearch }} ({{ searchMode }})</p> -->
 </div>
 
-<dir class="prodotti" *ngIf="searchMode==='cat'">
-  <div>
-    <h1>Prodotti</h1>
-  </div>
+<div class="prodotti" *ngIf="searchMode==='cat'">
   <div class="listaprodotti" *ngIf="prodotti && prodotti.length > 0">
-    <div class="prodotto" *ngFor="let prodotto of prodotti;">
-      <h3>{{ prodotto.name }}</h3>
-      {{ prodotto.description }}
+    <div class="flex align-items-center justify-content-start my-3 w-12">
+      <app-feed [products]="prodotti" [query]="fullTextSearch"></app-feed>
     </div>
   </div>
   <div class="noproduct" *ngIf="prodotti && prodotti.length == 0">
     Non ci sono prodotti che corrispondono ai criteri selezionati!
   </div>
-</dir>
+</div>
 
-<dir class="utenti" *ngIf="searchMode==='user'">
-  <div>
-    <h1>Utenti</h1>
-  </div>
+<div class="utenti" *ngIf="searchMode==='user'">
   <div class="listautenti" *ngIf="utenti && utenti.length > 0">
     <div class="utente" *ngFor="let utente of utenti;">
-      <h3>{{ utente.username }}</h3>
+      <div class="flex align-items-center justify-content-left mt-2" (click)="goToUserProfile(utente)">
+        <p-avatar [image]="utente.avatar" shape="circle" class="mr-2"></p-avatar>
+        <p>{{ utente.username }}</p>
+      </div>
     </div>
   </div>
   <div class="nouser" *ngIf="utenti && utenti.length == 0">
     Non ci sono utenti che corrispondono ai criteri selezionati!
   </div>
-</dir>
+</div>
