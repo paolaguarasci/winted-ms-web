@@ -11,6 +11,7 @@ import { NotificheService } from 'src/app/services/notifiche.service';
 export class NotificheDropDownComponent implements OnInit,OnChanges {
   notifiche!: Notifica[];
   @Output() numeroNotifiche: EventEmitter<string> = new EventEmitter<string>();
+  @Output() close: EventEmitter<boolean> = new EventEmitter<boolean>();
   unRead!: string;
   venduto!: boolean;
   @Input() full: boolean = false; 
@@ -27,6 +28,7 @@ export class NotificheDropDownComponent implements OnInit,OnChanges {
       this.updateNumeroNotificheNonLette();
     });
   }
+
   ngOnChanges() {
     console.log("ciao")
   }
@@ -44,6 +46,7 @@ export class NotificheDropDownComponent implements OnInit,OnChanges {
   }
 
   handleClickVediTutto() {
+    this.close.emit(true);
     this.router.navigate(['notifiche']);
   }
 }

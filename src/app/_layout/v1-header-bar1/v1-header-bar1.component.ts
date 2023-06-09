@@ -146,4 +146,8 @@ export class V1HeaderBar1Component implements OnInit, OnChanges {
     this.router.navigate(['search'], { queryParams: { t: this.selectedSearchModes.code, s: this.searchtext }});
     this.searchtext = ""
   }
+
+  closeOverlay(event) {
+    this.overlayNotificationAreaVisible = false
+  }
 }
