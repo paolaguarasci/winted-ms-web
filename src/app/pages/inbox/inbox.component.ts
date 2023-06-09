@@ -89,6 +89,13 @@ export class InboxComponent implements OnInit {
     if(this.conversazione?.prodottoCorrelato) {
       this.productService.getById(this.conversazione?.prodottoCorrelato).subscribe((res) => {
         this.prodottoCorrelato = res;
+        if (!this.prodottoCorrelato.featured && !this.prodottoCorrelato.resources) {
+          this.prodottoCorrelato.featured = 'https://fakeimg.pl/200x300';
+        } else if (!this.prodottoCorrelato.featured && this.prodottoCorrelato.resources.length > 0) {
+          this.prodottoCorrelato.featured =
+            '/api/v1/resource/image/' +
+            this.prodottoCorrelato.resources[0];
+        }
       })
     }
   }

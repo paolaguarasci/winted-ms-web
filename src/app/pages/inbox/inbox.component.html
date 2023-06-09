@@ -12,6 +12,7 @@
   </div>
   <div class="altroutente" *ngIf="otherUser">{{otherUser.username}}</div>
   <div class="prodotto" *ngIf="prodottoCorrelato">
+    <p-avatar *ngIf="prodottoCorrelato.featured" [image]="prodottoCorrelato.featured" size="normal"></p-avatar>
     {{ prodottoCorrelato.name }}
   </div>
   <div class="areatesto flex flex-row ">
