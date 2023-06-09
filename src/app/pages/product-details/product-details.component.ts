@@ -7,6 +7,7 @@ import { ProfileService } from 'src/app/services/profile.service';
 import { User } from 'src/app/models/User';
 import { OrderService } from 'src/app/services/order.service';
 import { Order } from 'src/app/models/Order';
+import { faL } from '@fortawesome/free-solid-svg-icons';
 
 @Component({
   selector: 'app-product-details',
@@ -20,7 +21,7 @@ export class ProductDetailsComponent implements OnInit {
   ownerProducts!: Product[];
   articoliSimili!: Product[];
   isPreferred!: boolean;
-
+  venduto!: boolean;
   constructor(
     private router: ActivatedRoute,
     private route: Router,
@@ -30,11 +31,13 @@ export class ProductDetailsComponent implements OnInit {
   ) {}
 
   ngOnInit(): void {
+    this.venduto = false;
     this.isPreferred = false;
     this.ownerProducts = [];
     this.articoliSimili = [];
     this.router.paramMap.subscribe((params) => {
       this.productId = params.get('id');
+
       this.update();
     });
   }
@@ -42,8 +45,7 @@ export class ProductDetailsComponent implements OnInit {
   update() {
     this.productService.getById(this.productId).subscribe((res) => {
       this.product = res;
-
-
+      this.venduto = res.bought;
 
       this.profileService.getPreferred().subscribe((res) => {
         let preferiti = res;

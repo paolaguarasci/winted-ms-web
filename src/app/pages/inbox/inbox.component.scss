@@ -65,6 +65,17 @@
   justify-self: stretch;
   align-self: stretch;
   border-bottom: 1px solid #c6c6c6;
+
+
+
+  grid-area: prodotto;
+    justify-self: stretch;
+    align-self: stretch;
+    display: flex;
+    border-bottom: 1px solid #c6c6c6;
+    align-items: center;
+    padding: 10px;
+    justify-content: center;
 }
 .areatesto {
   grid-area: areatesto;
@@ -97,4 +108,9 @@
 
 .noconv {
   width: 100%;
+}
+
+
+p-avatar {
+  margin-right: 10px;
 }

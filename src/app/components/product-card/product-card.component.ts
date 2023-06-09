@@ -17,10 +17,11 @@ export class ProductCardComponent implements OnInit {
   @Input() product!: Product;
   @Input() owner!: any;
   @Input() showUser!: boolean;
-
+  venduto!: boolean;
   constructor(private currencyPipe: CurrencyPipe, private router: Router, private messageService: MessageService, private profileService: ProfileService) {}
 
   ngOnInit(): void {
+    this.venduto = this.product.bought;
     if (!this.product.featured && !this.product.resources) {
       this.product.featured = 'https://fakeimg.pl/200x300';
     } else if (!this.product.featured && this.product.resources.length > 0) {

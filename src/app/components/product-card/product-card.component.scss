@@ -10,6 +10,23 @@
   // border-radius: 5px;
 }
 
-// .galleriamia {
-//   overflow: hidden;
-// }
+.galleriamia {
+  overflow: hidden;
+}
+
+.containerOverlay {
+  position: absolute;
+}
+.textOverlay {
+  position: absolute;
+  bottom: 132px;
+  left: 0px;
+  text-align: center;
+  font-size: larger;
+  font-weight: bold;
+  background-color: green;
+  height: 35px;
+  width: 100%;
+  color: white;
+  padding-top: 10px;
+}
