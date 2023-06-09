@@ -1,7 +1,7 @@
 import { ProfileService } from './../../services/profile.service';
 import { AuthService } from 'src/app/services/auth.service';
 import { ActivatedRoute, Router } from '@angular/router';
-import { Component, OnInit } from '@angular/core';
+import { Component, OnChanges, OnInit } from '@angular/core';
 import { faEnvelope } from '@fortawesome/free-regular-svg-icons';
 import { MenuItem, MessageService } from 'primeng/api';
 import { User } from 'src/app/models/User';
@@ -15,7 +15,7 @@ interface SearchModes {
   styleUrls: ['./v1-header-bar1.component.scss'],
   providers: [MessageService],
 })
-export class V1HeaderBar1Component implements OnInit {
+export class V1HeaderBar1Component implements OnInit, OnChanges {
   value!: string;
   searchModes!: SearchModes[];
   faEnvelope = faEnvelope;
@@ -104,7 +104,9 @@ export class V1HeaderBar1Component implements OnInit {
       },
     ];
   }
-
+  ngOnChanges() {
+    console.log("ciao")
+  }
   update() {
     this.messageService.add({
       severity: 'success',

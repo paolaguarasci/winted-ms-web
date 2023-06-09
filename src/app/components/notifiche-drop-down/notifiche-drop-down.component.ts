@@ -1,4 +1,5 @@
-import { Component, EventEmitter, Input, OnInit, Output } from '@angular/core';
+import { Component, EventEmitter, Input, OnChanges, OnInit, Output } from '@angular/core';
+import { ActivatedRoute, Router } from '@angular/router';
 import { Notifica } from 'src/app/models/Notifica';
 import { NotificheService } from 'src/app/services/notifiche.service';
 
@@ -7,47 +8,24 @@ import { NotificheService } from 'src/app/services/notifiche.service';
   templateUrl: './notifiche-drop-down.component.html',
   styleUrls: ['./notifiche-drop-down.component.scss'],
 })
-export class NotificheDropDownComponent implements OnInit {
-  @Input() notifiche!: Notifica[];
+export class NotificheDropDownComponent implements OnInit,OnChanges {
+  notifiche!: Notifica[];
   @Output() numeroNotifiche: EventEmitter<string> = new EventEmitter<string>();
   unRead!: string;
   venduto!: boolean;
 
-  constructor(private notificheService: NotificheService) {}
+  constructor(private notificheService: NotificheService, private router: Router) {}
+
   ngOnInit(): void {
     this.notifiche = [];
-    this.notificheService.getMineNew().subscribe((res) => {
+    this.notificheService.getMine().subscribe((res) => {
       this.notifiche = res;
       this.updateNumeroNotificheNonLette();
     });
-    // this.dataDummy();
   }
-
-  // TODO Cancellare!
-  dataDummy() {
-    this.notifiche.push(
-      new Notifica({
-        textMessage: 'Notifica di prova1',
-        read: true,
-      })
-    );
-
-    this.notifiche.push(
-      new Notifica({
-        textMessage: 'Notifica di prova2',
-        read: true,
-      })
-    );
-
-    this.notifiche.push(
-      new Notifica({
-        textMessage: 'Notifica di prova3',
-        read: false,
-      })
-    );
-    this.updateNumeroNotificheNonLette();
+  ngOnChanges() {
+    console.log("ciao")
   }
-
   updateNumeroNotificheNonLette() {
     this.unRead = '' + this.notifiche.filter((n) => !n.read).length;
     if (this.notifiche.length > 10) {
@@ -59,5 +37,9 @@ export class NotificheDropDownComponent implements OnInit {
   handleRead(status, notifica) {
     notifica.read = status;
     this.updateNumeroNotificheNonLette();
+  }
+
+  handleClickVediTutto() {
+    this.router.navigate(['notifiche']);
   }
 }

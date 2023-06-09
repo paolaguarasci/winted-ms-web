@@ -14,7 +14,7 @@ export class NotificheService extends ResourceService<Notifica> {
     return this.http.get<Notifica[]>(this.apiUrl);
   }
 
-  getMineNew(): Observable<Notifica[]> {
-    return this.http.get<Notifica[]>(this.apiUrl + '/new');
+  markRead(id: string, data: Notifica): Observable<Notifica> {
+    return this.http.put<Notifica>(this.apiUrl + '/' + id, data);
   }
 }

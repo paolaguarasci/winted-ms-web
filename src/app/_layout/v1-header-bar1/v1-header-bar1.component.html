@@ -65,7 +65,7 @@
             <i *ngIf="!(numNotifiche === '0')" (click)="toggleNotificationArea()" class="pi  pi-bell text-3xl" pBadge [value]="numNotifiche"></i>
             <i *ngIf="(numNotifiche === '0')" (click)="toggleNotificationArea()" class="pi  pi-bell text-3xl"></i>
 
-            <p-overlay [(visible)]="overlayNotificationAreaVisible" [responsive]="{ breakpoint: '640px', direction: 'bottom', contentStyleClass: 'h-20rem' }" contentStyleClass="p-4 surface-overlay shadow-2 border-round">
+            <p-overlay [(visible)]="overlayNotificationAreaVisible" [responsive]="{ breakpoint: '640px', direction: 'bottom', contentStyleClass: 'h-20rem' }" contentStyleClass="py-3 px-2 surface-overlay shadow-2 border-round">
               <app-notifiche-drop-down (numeroNotifiche)="updateNumNotifiche($event)"/>
             </p-overlay>
 

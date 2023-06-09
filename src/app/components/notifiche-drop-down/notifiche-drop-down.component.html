@@ -2,7 +2,9 @@
   <div class="singolanotifica" *ngFor="let notifica of notifiche;">
     <app-notifiche-single-row [notifica]="notifica" (readNotifica)="handleRead($event, notifica)" />
   </div>
-  <div class="buttonveditutto">
-
+  <div class="buttonveditutto w-12">
+    <div class="w-12">
+      <p-button class="block longbutton w-12 h-full p-1 text-xs" (click)="handleClickVediTutto()"
+      label="Vedi tutto"></p-button></div>
   </div>
 </div>
