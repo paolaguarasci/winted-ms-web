@@ -17,9 +17,6 @@ export class InboxConversationItemComponent implements OnInit {
   isFromWinted!: boolean;
   
   ngOnInit(): void {
-    console.log("CONVERSAZIONE ITEM loggedUser", this.loggedUser)
-    console.log("CONVERSAZIONE ITEM otherUser", this.otherUser)
-    console.log("CONVERSAZIONE ITEM msg", this.msg)
     this.inviato = false;
     if (this.msg.messageType === "SYSTEM") {
       this.isFromWinted = true;

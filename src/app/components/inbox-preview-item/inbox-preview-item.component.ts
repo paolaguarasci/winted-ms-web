@@ -17,7 +17,7 @@ export class InboxPreviewItemComponent implements OnInit {
   @Input() anteprima!: AnteprimaInbox;
   @Input() routerId!: string;
   otherUser!: User;
-  @Input() prodottoCorrelato!: Product | null;
+  prodottoCorrelato!: Product | null;
   previewImage!: String | null;
 
   constructor(private router: Router, 
@@ -25,8 +25,6 @@ export class InboxPreviewItemComponent implements OnInit {
     private profileService: ProfileService,
     private productService: ProductService) {}
   ngOnInit(): void {
-    console.log("PODOTTO CORRELATO ", this.prodottoCorrelato)
-    console.log("Anteprima ", this.anteprima)
     this.profileService.getById(this.anteprima.altroUtente).subscribe((res) => {
       this.otherUser = res;
     })
