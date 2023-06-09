@@ -13,6 +13,7 @@ export class NotificheDropDownComponent implements OnInit,OnChanges {
   @Output() numeroNotifiche: EventEmitter<string> = new EventEmitter<string>();
   unRead!: string;
   venduto!: boolean;
+  @Input() full: boolean = false; 
 
   constructor(private notificheService: NotificheService, private router: Router) {}
 
@@ -20,6 +21,9 @@ export class NotificheDropDownComponent implements OnInit,OnChanges {
     this.notifiche = [];
     this.notificheService.getMine().subscribe((res) => {
       this.notifiche = res;
+      if (!this.full) {
+        this.notifiche = res.slice(0,3);
+      }
       this.updateNumeroNotificheNonLette();
     });
   }
