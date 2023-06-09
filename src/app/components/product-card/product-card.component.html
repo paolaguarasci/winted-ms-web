@@ -4,7 +4,9 @@
       <p-avatar [image]=owner.avatar styleClass="mr-2" shape="circle"></p-avatar>
       {{ owner.username }}
     </div>
-    <div class=" flex flex-column border-round-sm border-1 border-gray-200 align-items-center justify-content-center mb-1" style="height: 300px;width: 200px;position: relative;" (click)="handleClick()">
+    <div
+      class=" flex flex-column border-round-sm border-1 border-gray-200 align-items-center justify-content-center mb-1"
+      style="height: 300px;width: 200px;position: relative;" (click)="handleClick()">
       <div class="containerOverlay">
         <p-image class="myimg" [src]="product.featured" alt="Image" height="300"></p-image>
         <div *ngIf="venduto" class="textOverlay">
@@ -13,7 +15,8 @@
       </div>
     </div>
     <div class="flex text-900 font-bold align-items-center justify-content-between h-1rem my-1">
-      {{product.price}}<span class="text-500" (click)="addToPreferred()">{{product.prefered}} <i class="pi pi-heart"></i> </span></div>
+      {{product.price}}<span class="text-500" (click)="addToPreferred()">{{product.prefered}} <i
+          class="pi pi-heart"></i> </span></div>
     <div class="flex align-items-center text-600 justify-content-start h-1rem my-1">
       {{product.size}}</div>
     <div class="flex align-items-center text-600 justify-content-start h-1rem my-1">
