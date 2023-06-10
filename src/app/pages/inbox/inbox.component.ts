@@ -149,6 +149,7 @@ export class InboxComponent implements OnInit {
     this.inboxPreview = [];
     this.conversationService.getPreview().subscribe((res) => {
       this.inboxPreview = res;
+      this.inboxPreview.reverse()
 
       if (this.isNew) {
         this.inboxPreview = [
@@ -162,7 +163,6 @@ export class InboxComponent implements OnInit {
           ...res,
         ];
       }
-
       if (!this.id && this.inboxPreview.length > 0 && !this.isNew) {
         this.id = this.inboxPreview[0].conversationId;
       }
@@ -250,7 +250,7 @@ export class InboxComponent implements OnInit {
           .addMessage(this.conversazione?.id, newMsg)
           .subscribe((result) => {
             this.newMessage = '';
-            this.conversazione = result;
+            this.router.navigate(['inbox', this.conversazione?.id]);
           });
       }
     }
