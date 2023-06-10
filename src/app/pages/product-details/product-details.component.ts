@@ -22,6 +22,10 @@ export class ProductDetailsComponent implements OnInit {
   articoliSimili!: Product[];
   isPreferred!: boolean;
   venduto!: boolean;
+  offertPrice!: number;
+  maxOffert!: number;
+  dialogOffertIsvisible: boolean = false;
+
   constructor(
     private router: ActivatedRoute,
     private route: Router,
@@ -31,6 +35,7 @@ export class ProductDetailsComponent implements OnInit {
   ) {}
 
   ngOnInit(): void {
+    this.offertPrice = 0;
     this.venduto = false;
     this.isPreferred = false;
     this.ownerProducts = [];
@@ -45,6 +50,7 @@ export class ProductDetailsComponent implements OnInit {
   update() {
     this.productService.getById(this.productId).subscribe((res) => {
       this.product = res;
+      this.maxOffert = parseFloat(res.price)
       if (res.bought === "true") {
         this.venduto = true;
       }
@@ -100,14 +106,19 @@ export class ProductDetailsComponent implements OnInit {
   }
 
   makeAnOffert() {
-    let offertPrice = 10;
-    this.route.navigate(['inbox'], {
-      queryParams: {
-        offer_to: this.productId,
-        offer_price: offertPrice,
-      },
-    });
+    if (this.offertPrice && this.offertPrice > 0) {
+      this.route.navigate(['inbox'], {
+        queryParams: {
+          offer_to: this.productId,
+          offer_price: this.offertPrice,
+        },
+      });
+      this.offertPrice = 0;
+    }
   }
+  toggleDialogOffert() {
+    this.dialogOffertIsvisible = !this.dialogOffertIsvisible;
+}
 
   buy() {
     let newOrder = new Order();

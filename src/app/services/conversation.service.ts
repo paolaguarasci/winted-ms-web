@@ -5,6 +5,7 @@ import { ResourceService } from './resource.service';
 import { Observable } from 'rxjs';
 import { AnteprimaInbox } from '../models/AnteprimaInbox';
 import { MessaggioConversazione } from '../models/MessaggioConversazione';
+import { OffertResponse } from '../models/OffertResponse';
 
 @Injectable({
   providedIn: 'root',
@@ -23,4 +24,10 @@ export class ConversationService extends ResourceService<Conversazione> {
     return this.http.post<Conversazione>(this.apiUrl + '/' + id + '/newmsg', message);
   }
 
+  makeAnOffert(productId, price): Observable<OffertResponse> {
+    return this.http.post<OffertResponse>(this.apiUrl + '/offert', {
+      product: productId,
+      price: price
+    });
+  }
 }

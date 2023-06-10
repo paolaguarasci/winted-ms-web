@@ -52,18 +52,18 @@ export class InboxComponent implements OnInit {
       this.getPreview();
     });
     this.route.queryParamMap.subscribe(async (params) => {
-      // let offer_to = params.get('offer_to');
-      // let offer_price = params.get('offer_price');
-      // let info_about = params.get('info_about');
-      // if (offer_to && offer_price) {
-      //   this.makeOffert(offer_to, offer_price);
-      // }
+      let offer_to = params.get('offer_to');
+      let offer_price = params.get('offer_price');
+      let info_about = params.get('info_about');
 
-      // if (info_about) {
-      //   this.askInfo(info_about);
-      // }
+      if (offer_to && offer_price) {
+        this.makeOffert(offer_to, offer_price);
+      }
 
-      
+      if (info_about) {
+        this.askInfo(info_about);
+      }
+
       if (params.get('new')) {
         this.isNew = true;
         let newConversationWith = params.get('new');
@@ -73,13 +73,13 @@ export class InboxComponent implements OnInit {
           this.conversazione = new Conversazione({
             messages: [],
             user1: this.loggedUser?.id,
-            user2: newConversationWith ?? "",
-            altroUtente: newConversationWith ?? ""
-          })
+            user2: newConversationWith ?? '',
+            altroUtente: newConversationWith ?? '',
+          });
           this.getOther();
           this.inboxPreview = [];
-          console.log("Nuova conversazione con ", newConversationWith)
-        })
+          console.log('Nuova conversazione con ', newConversationWith);
+        });
       }
     });
   }
@@ -109,17 +109,24 @@ export class InboxComponent implements OnInit {
 
   getProduct() {
     this.prodottoCorrelato = null;
-    if(this.conversazione?.prodottoCorrelato) {
-      this.productService.getById(this.conversazione?.prodottoCorrelato).subscribe((res) => {
-        this.prodottoCorrelato = res;
-        if (!this.prodottoCorrelato.featured && !this.prodottoCorrelato.resources) {
-          this.prodottoCorrelato.featured = 'https://fakeimg.pl/200x300';
-        } else if (!this.prodottoCorrelato.featured && this.prodottoCorrelato.resources.length > 0) {
-          this.prodottoCorrelato.featured =
-            '/api/v1/resource/image/' +
-            this.prodottoCorrelato.resources[0];
-        }
-      })
+    if (this.conversazione?.prodottoCorrelato) {
+      this.productService
+        .getById(this.conversazione?.prodottoCorrelato)
+        .subscribe((res) => {
+          this.prodottoCorrelato = res;
+          if (
+            !this.prodottoCorrelato.featured &&
+            !this.prodottoCorrelato.resources
+          ) {
+            this.prodottoCorrelato.featured = 'https://fakeimg.pl/200x300';
+          } else if (
+            !this.prodottoCorrelato.featured &&
+            this.prodottoCorrelato.resources.length > 0
+          ) {
+            this.prodottoCorrelato.featured =
+              '/api/v1/resource/image/' + this.prodottoCorrelato.resources[0];
+          }
+        });
     }
   }
 
@@ -136,47 +143,50 @@ export class InboxComponent implements OnInit {
     }
 
     if (this.isNew && this.conversazione) {
-      console.log("sono qui!")
+      console.log('sono qui!');
       this.conversationService.create(this.conversazione).subscribe((res) => {
-        this.conversazione  = res;
-        console.log(this.conversazione)
+        this.conversazione = res;
+        console.log(this.conversazione);
         this.saveTextMessage(event);
-      })
+      });
     } else {
       this.saveTextMessage(event);
     }
   }
 
   saveTextMessage(event) {
-
     let newMsg = new MessaggioConversazione({
       content: this.newMessage,
       from: this.loggedUser.id,
       to: this.otherUser.id,
       tipo: MessaggioConversazioneTipi.testo,
       timestamp: '',
-    })
-    
+    });
+
     this.newMessage = '';
     if (this.conversazione?.id) {
-      this.conversationService.addMessage(this.conversazione?.id, newMsg).subscribe((result) => {
-        this.newMessage = '';
-        this.conversazione = result;
-      });
+      this.conversationService
+        .addMessage(this.conversazione?.id, newMsg)
+        .subscribe((result) => {
+          this.newMessage = '';
+          this.conversazione = result;
+        });
     }
   }
 
   async getLoggedUser() {
     this.profileService.getLogged().subscribe((res) => {
       this.loggedUser = res;
-    })
+    });
   }
 
   getOther() {
     if (this.conversazione) {
-      this.profileService.getById(this.conversazione?.altroUtente).subscribe((res) => {
-        this.otherUser = res;
-      })
+      this.profileService
+        .getById(this.conversazione?.altroUtente)
+        .subscribe((res) => {
+          this.otherUser = res;
+        });
     }
   }
 
@@ -185,7 +195,8 @@ export class InboxComponent implements OnInit {
   }
 
   makeOffert(productId, price) {
-    // this.inboxService.makeAnOffert(productId, price).subscribe((res) => {
+    console.log('Offerta per il prodotto ', productId, ' al prezzo ', price);
+    // this.conversationService.makeAnOffert(productId, price).subscribe((res) => {
     //   console.log('Offerta effettuata');
     // });
   }
@@ -195,21 +206,4 @@ export class InboxComponent implements OnInit {
     //   console.log('Richiesta effettuata');
     // });
   }
-
-
-  // createNewConversation(altroUtente){
-  //   if (this.authService.checkCredentials()) {
-  //     let conversation = new Conversazione({
-  //       messages: [],
-  //       altroUtente: altroUtente,
-  //       prodottoCorrelato: "",
-  //     })
-  //     this.conversationService.create(conversation).subscribe((res) => {
-  //       this.router.navigate(['inbox', res.id])
-  //     })
-  //   } else {
-  //     alert("Ti devi loggare")
-  //   }
-
-  // }
 }
