@@ -71,6 +71,7 @@ import { AuthtestComponent } from './pages/authtest/authtest.component';
 import { AuthInterceptor } from './interceptor/AuthInterceptor';
 import { SearchComponent } from './pages/search/search.component';
 import { PreferitiComponent } from './pages/preferiti/preferiti.component';
+import { ConfirmPopupModule } from 'primeng/confirmpopup';
 
 @NgModule({
   declarations: [
@@ -147,7 +148,8 @@ import { PreferitiComponent } from './pages/preferiti/preferiti.component';
     GalleriaModule,
     DividerModule,
     RatingModule,
-    FontAwesomeModule
+    FontAwesomeModule,
+    ConfirmPopupModule
   ],
   providers: [    {
     provide: HTTP_INTERCEPTORS,
