@@ -3,6 +3,7 @@ import { Injectable } from '@angular/core';
 import { ResourceService } from './resource.service';
 import { User } from '../models/User';
 import { Product } from '../models/Product';
+import { Observable } from 'rxjs';
 
 @Injectable({
   providedIn: 'root',
@@ -13,8 +14,8 @@ export class ProfileService extends ResourceService<User> {
     super(http, User, `/api/v1/profile`);
   }
 
-  getPreferred() {
-    return this.http.get<Product[]>(this.apiUrl + '/preferred');
+  getPreferred(): Observable<String[]> {
+    return this.http.get<String[]>(this.apiUrl + '/preferred');
   }
 
   getWardrobe(username) {

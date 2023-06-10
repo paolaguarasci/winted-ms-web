@@ -30,7 +30,7 @@ export class MostWantedComponent implements OnInit {
         name: "titolo",
         owner: demoUser.id,
         price: this.currencyPipe.transform(10.0, 'EUR', 'symbol', '.2') ?? '',
-        prefered: 3,
+        preferred: 3,
         size: $localize`14 anni / 164 cm`,
         brand: "1",
       }));

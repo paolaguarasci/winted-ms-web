@@ -3,7 +3,7 @@ import { User } from './User';
 
 export class Product extends Resource<Product> {
   public price!: string;
-  public prefered!: number;
+  public preferred!: number;
   public draft!: string;
   public bought!: string;
   public size!: string;
@@ -18,8 +18,8 @@ export class Product extends Resource<Product> {
 
   constructor(model?: Partial<Product>) {
     super(model);
-    if (!model?.prefered) {
-      this.prefered = 0;
+    if (!model?.preferred) {
+      this.preferred = 0;
     }
   }
 }

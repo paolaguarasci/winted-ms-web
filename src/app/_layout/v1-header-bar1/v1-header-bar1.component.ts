@@ -150,4 +150,8 @@ export class V1HeaderBar1Component implements OnInit, OnChanges {
   closeOverlay(event) {
     this.overlayNotificationAreaVisible = false
   }
+
+  goToPreferred() {
+    this.router.navigate(['preferiti']);
+  }
 }

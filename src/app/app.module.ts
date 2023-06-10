@@ -70,6 +70,7 @@ import { ProfileComponent } from './pages/profile/profile.component';
 import { AuthtestComponent } from './pages/authtest/authtest.component';
 import { AuthInterceptor } from './interceptor/AuthInterceptor';
 import { SearchComponent } from './pages/search/search.component';
+import { PreferitiComponent } from './pages/preferiti/preferiti.component';
 
 @NgModule({
   declarations: [
@@ -112,7 +113,8 @@ import { SearchComponent } from './pages/search/search.component';
     NotificheComponent,
     NotificheSingleRowComponent,
     AuthtestComponent,
-    SearchComponent
+    SearchComponent,
+    PreferitiComponent
   ],
   imports: [
     BrowserModule,
