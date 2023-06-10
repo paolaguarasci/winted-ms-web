@@ -5,6 +5,7 @@ export enum MessaggioConversazioneTipi {
   testo = 'TESTO',
   immagini = 'IMG',
   domanda = 'DOMANDA',
+  offert = 'OFFERT'
 }
 
 export class MessaggioConversazione extends Resource<MessaggioConversazione> {

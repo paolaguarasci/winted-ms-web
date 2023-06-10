@@ -31,7 +31,9 @@ export class InboxComponent implements OnInit {
   id!: any;
   prodottoCorrelato!: Product | null;
   isNew!: boolean;
-
+  value: number = 0;
+  offertPrice!: string;
+  isOffert!: boolean;
   constructor(
     private conversationService: ConversationService,
     private profileService: ProfileService,
@@ -45,19 +47,58 @@ export class InboxComponent implements OnInit {
     this.isNew = false;
     this.prodottoCorrelato = null;
     this.conversazione = null;
+    this.isOffert = false;
     this.getLoggedUser();
+
     this.route.paramMap.subscribe((params) => {
-      this.id = params.get('id');
-      this.update();
-      this.getPreview();
+      if (params.get('id')) {
+        this.isNew = false;
+        this.prodottoCorrelato = null;
+        this.conversazione = null;
+        this.id = params.get('id');
+        this.update();
+        this.getPreview();
+      } else {
+        this.getPreview();
+      }
     });
+
     this.route.queryParamMap.subscribe(async (params) => {
+      this.isNew = false;
+      this.prodottoCorrelato = null;
+      this.conversazione = null;
+      this.isOffert = false;
       let offer_to = params.get('offer_to');
       let offer_price = params.get('offer_price');
       let info_about = params.get('info_about');
 
       if (offer_to && offer_price) {
-        this.makeOffert(offer_to, offer_price);
+        this.profileService.getLogged().subscribe((res) => {
+          this.loggedUser = res;
+          this.productService.getById(offer_to ?? '').subscribe((res2) => {
+            this.conversazione = new Conversazione({
+              messages: [],
+              user1: this.loggedUser?.id,
+              user2: res2.owner ?? '',
+              altroUtente: res2.owner ?? '',
+              prodottoCorrelato: offer_to ?? ''
+            });
+            console.log("nuova conv offerta ", this.conversazione)
+            this.value += 1;
+            // this.getOther();
+            this.getPreview();
+            this.inboxPreview.push({
+              altroUtente: this.conversazione.altroUtente,
+              timeAgo: 'now',
+              lastMessage: '',
+              prodottoCorrelato: this.conversazione.prodottoCorrelato,
+              conversationId: '',
+            });
+            console.log('Nuova conversazione con ', res2.owner);
+            this.makeOffert(offer_to, offer_price);
+          });
+        });
+
       }
 
       if (info_about) {
@@ -76,8 +117,17 @@ export class InboxComponent implements OnInit {
             user2: newConversationWith ?? '',
             altroUtente: newConversationWith ?? '',
           });
+          this.value += 1;
           this.getOther();
-          this.inboxPreview = [];
+          this.getPreview();
+          this.inboxPreview.push({
+            altroUtente: this.conversazione.altroUtente,
+            timeAgo: 'now',
+            lastMessage: '',
+            prodottoCorrelato: this.conversazione.prodottoCorrelato,
+            conversationId: '',
+          });
+
           console.log('Nuova conversazione con ', newConversationWith);
         });
       }
@@ -97,7 +147,21 @@ export class InboxComponent implements OnInit {
     this.inboxPreview = [];
     this.conversationService.getPreview().subscribe((res) => {
       this.inboxPreview = res;
-      if (!this.id && this.inboxPreview.length > 0) {
+
+      if (this.isNew) {
+        this.inboxPreview = [
+          {
+            altroUtente: this.conversazione?.altroUtente ?? '',
+            timeAgo: 'now',
+            lastMessage: '',
+            prodottoCorrelato: this.conversazione?.prodottoCorrelato ?? '',
+            conversationId: '',
+          },
+          ...res,
+        ];
+      }
+
+      if (!this.id && this.inboxPreview.length > 0 && !this.isNew) {
         this.id = this.inboxPreview[0].conversationId;
       }
       if (this.id) {
@@ -137,29 +201,67 @@ export class InboxComponent implements OnInit {
     });
   }
 
-  sendMessage(event) {
-    if (this.newMessage.length == 0) {
+  sendMessage(event, type = MessaggioConversazioneTipi.testo) {
+    if (
+      type === MessaggioConversazioneTipi.testo &&
+      this.newMessage.length == 0
+    ) {
       return;
     }
 
     if (this.isNew && this.conversazione) {
-      console.log('sono qui!');
       this.conversationService.create(this.conversazione).subscribe((res) => {
         this.conversazione = res;
         console.log(this.conversazione);
-        this.saveTextMessage(event);
+        if (type === MessaggioConversazioneTipi.testo) {
+          this.saveTextMessage(event);
+        } else if (type === MessaggioConversazioneTipi.offert) {
+          this.saveOffertMessage(event);
+        }
+        this.getPreview();
       });
+    } else if (this.isOffert && this.conversazione) {
+
+      this.conversationService.create(this.conversazione).subscribe((res) => {
+        this.conversazione = res;
+        console.log(this.conversazione);
+        this.saveOffertMessage(event);
+        this.getPreview();
+      });
+
     } else {
       this.saveTextMessage(event);
     }
   }
 
   saveTextMessage(event) {
+
     let newMsg = new MessaggioConversazione({
       content: this.newMessage,
       from: this.loggedUser.id,
       to: this.otherUser.id,
       tipo: MessaggioConversazioneTipi.testo,
+      timestamp: '',
+    });
+
+    this.newMessage = '';
+    if (this.conversazione?.id) {
+      this.conversationService
+        .addMessage(this.conversazione?.id, newMsg)
+        .subscribe((result) => {
+          this.newMessage = '';
+          this.conversazione = result;
+        });
+    }
+  }
+
+  saveOffertMessage(event) {
+    console.log("invio offerta")
+    let newMsg = new MessaggioConversazione({
+      content: "Vuoi accettare l'offera a " + this.offertPrice + "E ?",
+      from: this.loggedUser.id,
+      to: this.otherUser.id,
+      tipo: MessaggioConversazioneTipi.offert,
       timestamp: '',
     });
 
@@ -196,9 +298,9 @@ export class InboxComponent implements OnInit {
 
   makeOffert(productId, price) {
     console.log('Offerta per il prodotto ', productId, ' al prezzo ', price);
-    // this.conversationService.makeAnOffert(productId, price).subscribe((res) => {
-    //   console.log('Offerta effettuata');
-    // });
+    this.offertPrice = price;
+    this.isOffert = true;
+    this.sendMessage(null, MessaggioConversazioneTipi.offert);
   }
 
   askInfo(productId) {
