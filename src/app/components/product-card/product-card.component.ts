@@ -7,6 +7,7 @@ import { ProfileService } from 'src/app/services/profile.service';
 import { Router } from '@angular/router';
 import { User } from 'src/app/models/User';
 import { ProductService } from 'src/app/services/product.service';
+import { AuthService } from 'src/app/services/auth.service';
 
 @Component({
   selector: 'product-card',
@@ -25,7 +26,8 @@ export class ProductCardComponent implements OnInit {
     private router: Router,
     private messageService: MessageService,
     private profileService: ProfileService,
-    private productService: ProductService
+    private productService: ProductService,
+    private authService: AuthService
   ) {}
 
   ngOnInit(): void {
@@ -58,6 +60,7 @@ export class ProductCardComponent implements OnInit {
   }
 
   addToPreferred() {
+    if (this.authService.checkCredentials()){
     this.profileService.addPreferred(this.product.id).subscribe((res1) => {
       console.log('sono qui 1', res1);
 
@@ -98,5 +101,6 @@ export class ProductCardComponent implements OnInit {
           });
       }
     });
+  }
   }
 }
