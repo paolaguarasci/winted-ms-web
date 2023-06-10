@@ -1,3 +1,11 @@
 <div class="card mt-4">
-  <p>preferiti works!</p>
+  <div *ngIf="products && products.length > 0" class="flex flex-row flex-wrap card-container blue-container justify-content-left w-12">
+    <p class="text-3xl w-12" i18n>Preferiti</p>
+    <div *ngFor="let product of products;" class="flex align-items-center justify-content-center my-3">
+      <product-card [product]="product" [showUser]="true" (changePreferred)="onUpdate()"></product-card>
+    </div>
+  </div>
+  <div *ngIf="!products || products.length == 0" class="flex flex-row flex-wrap card-container blue-container justify-content-center w-12">
+    <p class="text-3xl w-12" i18n>Non hai preferiti</p>
+  </div>
 </div>

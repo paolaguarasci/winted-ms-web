@@ -2,7 +2,7 @@ import { Component, OnInit } from '@angular/core';
 interface Product{
   img: string,
   price: string,
-  prefered: number,
+  preferred: number,
   size: string,
   brand: string
 }
