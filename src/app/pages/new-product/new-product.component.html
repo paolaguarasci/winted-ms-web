@@ -2,7 +2,7 @@
 <div class="card w-9 mt-3">
   <div class="flex flex-column card-container justify-content-center align-items-center w-12">
     <form [formGroup]="formGroup " class="w-12">
-      <div class="formgrid bg-white grid mb-4 p-3">
+      <div *ngIf="!isEdit" class="formgrid bg-white grid mb-4 p-3">
         <div class="flex align-items-center justify-content-center my-3 w-12">
           <div class="card flex justify-content-center align-items-center w-12">
             <p-fileUpload [customUpload]="true" name="files[]" [multiple]="true" accept="image/*"
