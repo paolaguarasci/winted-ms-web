@@ -58,14 +58,26 @@
       </div>
 
 
-      <div class="formgrid grid text-right">
-        <div class="field col">
-          <p-button (onClick)="handleSaveInBozza()" label="Salva bozza" styleClass="p-button-lg p-button-outlined"
-            class="mr-2"></p-button>
-          <p-button (onClick)="handleSave()" label="Carica" styleClass="p-button-lg" class="ml-2"></p-button>
+      <div class="formgrid grid ">
+        <div class="flex justify-content-between flex-wrap card-container purple-container w-12">
+
+          <div class="flex-grow-1 align-items-center justify-content-center">
+            <p-button *ngIf="isEdit" (click)="confirm($event)" label="Cancella bozza"
+              styleClass="p-button-lg p-button-outlined p-button-danger" class="mr-2"></p-button>
+          </div>
+
+          <div class="flex-none align-items-center justify-content-center">
+            <p-button (onClick)="handleSaveInBozza()" label="Salva bozza" styleClass="p-button-lg p-button-outlined"
+              class="mr-2"></p-button>
+            <p-button (onClick)="handleSave()" label="Carica" styleClass="p-button-lg" class="ml-2"></p-button>
+          </div>
         </div>
       </div>
 
     </form>
   </div>
 </div>
+
+
+<p-toast></p-toast>
+<p-confirmPopup></p-confirmPopup>

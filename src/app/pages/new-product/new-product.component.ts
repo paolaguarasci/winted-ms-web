@@ -1,16 +1,15 @@
 import { Component, OnInit } from '@angular/core';
 import { FormControl, FormGroup } from '@angular/forms';
 
-import { MessageService } from 'primeng/api';
+import { MessageService, ConfirmationService } from 'primeng/api';
 import { ProductService } from 'src/app/services/product.service';
 import { ActivatedRoute, Router } from '@angular/router';
 import { Product } from 'src/app/models/Product';
-
 @Component({
   selector: 'app-new-product',
   templateUrl: './new-product.component.html',
   styleUrls: ['./new-product.component.scss'],
-  providers: [MessageService],
+  providers: [MessageService, ConfirmationService],
 })
 export class NewProductComponent implements OnInit {
   selectedFiles: any[] = [];
@@ -25,6 +24,7 @@ export class NewProductComponent implements OnInit {
   ];
   constructor(
     private messageService: MessageService,
+    private confirmationService: ConfirmationService,
     private productService: ProductService,
     private router: Router,
     private route: ActivatedRoute
@@ -88,10 +88,10 @@ export class NewProductComponent implements OnInit {
       });
     }
     if (this.isEdit) {
-      this.product.name = this.formGroup.get('title')?.value ?? ''
-      this.product.description = this.formGroup.get('description')?.value ?? ''
-      this.product.price = this.formGroup.get('price')?.value ?? 0
-      this.product.draft = this.isDraft ? "true" : "false"
+      this.product.name = this.formGroup.get('title')?.value ?? '';
+      this.product.description = this.formGroup.get('description')?.value ?? '';
+      this.product.price = this.formGroup.get('price')?.value ?? 0;
+      this.product.draft = this.isDraft ? 'true' : 'false';
       // this.product.selectedSize = this.formGroup.get('selectedSize')?.value?.key ?? '',
 
       this.productService.update(this.product).subscribe((res) => {
@@ -116,5 +116,31 @@ export class NewProductComponent implements OnInit {
   }
   dealWithFiles(event) {
     this.selectedFiles = event.currentFiles;
+  }
+
+  handleDeleteBozza() {
+    if (this.product && this.product.id) {
+      this.productService.delete(this.product.id).subscribe((res) => {
+        this.messageService.add({
+          severity: 'info',
+          summary: 'Bozza Cancellata!',
+        });
+        this.router.navigate(['profile']);
+      });
+    }
+  }
+
+  confirm(event: Event) {
+    if (event.target) {
+      this.confirmationService.confirm({
+        target: event.target,
+        message: ' Sei sicuro? E se poi te ne penti?',
+        icon: 'pi pi-exclamation-triangle',
+        acceptLabel: "Si",
+        rejectLabel: "No",
+        accept: () => this.handleDeleteBozza(),
+        reject: () => {},
+      });
+    }
   }
 }
