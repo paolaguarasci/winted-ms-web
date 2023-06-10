@@ -5,7 +5,9 @@ export enum MessaggioConversazioneTipi {
   testo = 'TESTO',
   immagini = 'IMG',
   domanda = 'DOMANDA',
-  offert = 'OFFERT'
+  offert_request = 'OFFERT_REQUEST',
+  offert_response = 'OFFERT_RESPONSE',
+  system = 'SYSTEM',
 }
 
 export class MessaggioConversazione extends Resource<MessaggioConversazione> {
@@ -17,7 +19,7 @@ export class MessaggioConversazione extends Resource<MessaggioConversazione> {
   public tipo!: MessaggioConversazioneTipi;
   public timeAgo!: string;
   public visto!: boolean;
-  public messageType!: string;
+  public messageType!: MessaggioConversazioneTipi;
 
   constructor(model?: Partial<MessaggioConversazione>) {
     super(model);

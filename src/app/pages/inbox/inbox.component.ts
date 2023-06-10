@@ -26,7 +26,7 @@ export class InboxComponent implements OnInit {
   conversazione!: Conversazione | null;
   inboxPreview!: AnteprimaInbox[];
   loggedUser!: User;
-  otherUser!: User;
+  otherUser!: User | null;
   newMessage!: string;
   id!: any;
   prodottoCorrelato!: Product | null;
@@ -55,6 +55,9 @@ export class InboxComponent implements OnInit {
         this.isNew = false;
         this.prodottoCorrelato = null;
         this.conversazione = null;
+        this.isOffert = false;
+        this.otherUser = null;
+
         this.id = params.get('id');
         this.update();
         this.getPreview();
@@ -81,9 +84,9 @@ export class InboxComponent implements OnInit {
               user1: this.loggedUser?.id,
               user2: res2.owner ?? '',
               altroUtente: res2.owner ?? '',
-              prodottoCorrelato: offer_to ?? ''
+              prodottoCorrelato: offer_to ?? '',
             });
-            console.log("nuova conv offerta ", this.conversazione)
+            console.log('nuova conv offerta ', this.conversazione);
             this.value += 1;
             // this.getOther();
             this.getPreview();
@@ -98,7 +101,6 @@ export class InboxComponent implements OnInit {
             this.makeOffert(offer_to, offer_price);
           });
         });
-
       }
 
       if (info_about) {
@@ -215,64 +217,90 @@ export class InboxComponent implements OnInit {
         console.log(this.conversazione);
         if (type === MessaggioConversazioneTipi.testo) {
           this.saveTextMessage(event);
-        } else if (type === MessaggioConversazioneTipi.offert) {
-          this.saveOffertMessage(event);
+        } else if (type === MessaggioConversazioneTipi.offert_request) {
+          this.saveOffertRequestMessage(event);
         }
         this.getPreview();
       });
     } else if (this.isOffert && this.conversazione) {
-
       this.conversationService.create(this.conversazione).subscribe((res) => {
         this.conversazione = res;
         console.log(this.conversazione);
-        this.saveOffertMessage(event);
+        this.saveOffertRequestMessage(event);
         this.getPreview();
       });
-
     } else {
       this.saveTextMessage(event);
     }
   }
 
   saveTextMessage(event) {
+    if (this.otherUser) {
+      let newMsg = new MessaggioConversazione({
+        content: this.newMessage,
+        from: this.loggedUser.id,
+        to: this.otherUser.id,
+        tipo: MessaggioConversazioneTipi.testo,
+        timestamp: '',
+      });
 
-    let newMsg = new MessaggioConversazione({
-      content: this.newMessage,
-      from: this.loggedUser.id,
-      to: this.otherUser.id,
-      tipo: MessaggioConversazioneTipi.testo,
-      timestamp: '',
-    });
-
-    this.newMessage = '';
-    if (this.conversazione?.id) {
-      this.conversationService
-        .addMessage(this.conversazione?.id, newMsg)
-        .subscribe((result) => {
-          this.newMessage = '';
-          this.conversazione = result;
-        });
+      this.newMessage = '';
+      if (this.conversazione?.id) {
+        this.conversationService
+          .addMessage(this.conversazione?.id, newMsg)
+          .subscribe((result) => {
+            this.newMessage = '';
+            this.conversazione = result;
+          });
+      }
     }
   }
 
-  saveOffertMessage(event) {
-    console.log("invio offerta")
-    let newMsg = new MessaggioConversazione({
-      content: "Vuoi accettare l'offera a " + this.offertPrice + "E ?",
-      from: this.loggedUser.id,
-      to: this.otherUser.id,
-      tipo: MessaggioConversazioneTipi.offert,
-      timestamp: '',
-    });
+  saveOffertRequestMessage(event) {
+    if (this.otherUser) {
+      console.log('invio offerta');
+      let newMsg = new MessaggioConversazione({
+        content: "Vuoi accettare l'offera a " + this.offertPrice + 'E ?',
+        from: this.loggedUser.id,
+        to: this.otherUser.id,
+        tipo: MessaggioConversazioneTipi.offert_request,
+        timestamp: '',
+      });
 
-    this.newMessage = '';
-    if (this.conversazione?.id) {
-      this.conversationService
-        .addMessage(this.conversazione?.id, newMsg)
-        .subscribe((result) => {
-          this.newMessage = '';
-          this.conversazione = result;
-        });
+      this.newMessage = '';
+      if (this.conversazione?.id) {
+        this.conversationService
+          .addMessage(this.conversazione?.id, newMsg)
+          .subscribe((result) => {
+            this.newMessage = '';
+            this.conversazione = result;
+          });
+      }
+    }
+  }
+
+  saveOffertResponseMessage(event, accepted: Boolean = false) {
+    if (this.otherUser) {
+      console.log('invio offerta');
+      let newMsg = new MessaggioConversazione({
+        content: 'Riufiuto!',
+        from: this.loggedUser.id,
+        to: this.otherUser.id,
+        tipo: MessaggioConversazioneTipi.offert_response,
+        timestamp: '',
+      });
+      if (accepted) {
+        newMsg.content = 'Accetto!';
+      }
+      this.newMessage = '';
+      if (this.conversazione?.id) {
+        this.conversationService
+          .addMessage(this.conversazione?.id, newMsg)
+          .subscribe((result) => {
+            this.newMessage = '';
+            this.conversazione = result;
+          });
+      }
     }
   }
 
@@ -300,12 +328,21 @@ export class InboxComponent implements OnInit {
     console.log('Offerta per il prodotto ', productId, ' al prezzo ', price);
     this.offertPrice = price;
     this.isOffert = true;
-    this.sendMessage(null, MessaggioConversazioneTipi.offert);
+    this.sendMessage(null, MessaggioConversazioneTipi.offert_request);
   }
 
   askInfo(productId) {
     // this.inboxService.askInfo(productId).subscribe((res) => {
     //   console.log('Richiesta effettuata');
     // });
+  }
+
+  handleOffert(event) {
+    if (event === 'false') {
+      this.saveOffertResponseMessage(false)
+
+    } else if (event === 'true') {
+      this.saveOffertResponseMessage(true)
+    }
   }
 }
