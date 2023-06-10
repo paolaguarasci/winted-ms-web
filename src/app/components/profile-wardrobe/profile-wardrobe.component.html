@@ -9,7 +9,7 @@
   </div>
 </div>
 
-<div>
+<div *ngIf="draftList && draftList.length > 0">
   <div class="p-2 text-xl mb-3">{{ numElementBozze }} articoli in bozza</div>
   <div class="wardrobeprodlist">
     <div class="flex flex-row flex-wrap card-container blue-container justify-content-start m-0 p-0">
