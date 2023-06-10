@@ -17,6 +17,7 @@ export class ProductService extends ResourceService<Product> {
     formData.append('name', data.title);
     formData.append('description', data.description);
     formData.append('price', data.price);
+    formData.append('draft', data.draft);
 
     data.files.forEach((file: File) => {
       formData.append('files', file);

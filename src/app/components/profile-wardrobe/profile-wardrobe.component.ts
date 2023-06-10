@@ -14,6 +14,9 @@ export class ProfileWardrobeComponent implements OnInit {
   @Input() user!: User;
   productList!: Product[];
   numElement!: number;
+  numElementBozze!: number;
+  draftList!: Product[];
+
   constructor(
     private profileService: ProfileService,
     private productService: ProductService,
@@ -23,8 +26,10 @@ export class ProfileWardrobeComponent implements OnInit {
   ngOnInit(): void {
     this.productList = [];
     this.productService.getByOwnerId(this.user.id).subscribe((res) => {
-      this.productList = res;
+      this.productList = res.filter(product => product.draft == "false");
+      this.draftList = res.filter(product => product.draft == "true");
       this.numElement = this.productList.length;
+      this.numElementBozze = this.draftList.length;
     });
   }
 }

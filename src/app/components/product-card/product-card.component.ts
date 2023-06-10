@@ -56,7 +56,11 @@ export class ProductCardComponent implements OnInit {
   }
 
   handleClick() {
-    this.router.navigate(['product', this.product.id]);
+    if (this.product.draft === "false") {
+      this.router.navigate(['product', this.product.id]);
+    } else {
+      this.router.navigate(['sell'], {queryParams: {draft: this.product.id}});
+    }
   }
 
   addToPreferred() {
