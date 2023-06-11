@@ -8,6 +8,7 @@ export class Order extends Resource<Order> {
   public address!: string;
   public paymentMethod!: string;
   public conversationId!: string;
+  public offerta!: any;
 
   constructor(model?: Partial<Order>) {
     super(model);

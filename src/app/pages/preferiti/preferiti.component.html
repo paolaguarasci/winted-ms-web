@@ -1,10 +1,10 @@
-<div class="card mt-4 h-full">
+<div class="card mt-4 h-full ">
   <p class="text-3xl w-12 text-700" i18n>Articoli preferiti</p>
-  <div class="preferiticontent flex flex-row flex-wrap card-container justify-content-left w-12">
-    <div *ngIf="products && products.length > 0">
-      <div *ngFor="let product of products;" class="flex align-items-center justify-content-left my-3">
-        <product-card [product]="product" [showUser]="true" (changePreferred)="onUpdate()"></product-card>
-      </div>
+  <div class="preferiticontent flex flex-row flex-wrap card-container justify-content-left w-12 ">
+    <div *ngIf="products && products.length > 0"
+      class="flex flex-row flex-wrap card-container justify-content-left w-12">
+      <product-card *ngFor="let product of products;" [product]="product" [showUser]="true"
+        (changePreferred)="onUpdate()"></product-card>
     </div>
     <div *ngIf="!products || products.length == 0"
       class="flex flex-column align-items-center justify-content-center w-12">

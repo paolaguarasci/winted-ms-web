@@ -17,3 +17,12 @@
 .myflex {
   flex-wrap: wrap;
 }
+
+.textpreview {
+  white-space: nowrap;
+  width: 140px;
+  height: 25px;
+  overflow: hidden;
+  text-overflow: ellipsis;
+}
+

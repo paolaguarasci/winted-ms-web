@@ -40,7 +40,8 @@
                 <div class="flex w-12">
                   <div class="flex-grow-1 flex align-items-center justify-content-start">
                     <div class="flex flex-column card-container ">
-                      <div *ngIf="address && address.nome" class="flex align-items-center justify-content-start mb-1 font-semibold">
+                      <div *ngIf="address && address.nome"
+                        class="flex align-items-center justify-content-start mb-1 font-semibold">
                         {{ address.nome }} {{ address.cognome }}
                       </div>
                       <div *ngIf="address && address.via" class="flex align-items-center justify-content-start mb-1">
@@ -54,7 +55,8 @@
                       </div>
                     </div>
                   </div>
-                  <div class="flex-none flex align-items-center justify-content-center" (click)="showDialogAddAddress()">
+                  <div class="flex-none flex align-items-center justify-content-center"
+                    (click)="showDialogAddAddress()">
                     <i class="pi pi-pencil" style="color: 'var(--primary-color)'"></i>
                   </div>
                 </div>
@@ -113,7 +115,8 @@
                       </div>
                     </div>
                   </div>
-                  <div class="flex-none flex align-items-center justify-content-center" (click)="showDialogAddPayment()">
+                  <div class="flex-none flex align-items-center justify-content-center"
+                    (click)="showDialogAddPayment()">
                     <i class="pi pi-pencil" style="color: 'var(--primary-color)'"></i>
                   </div>
                 </div>
@@ -130,7 +133,10 @@
           <div class="flex flex-column align-items-start justify-content-start ">
             <div *ngIf="product" class="flex w-12 mb-2">
               <div class="flex-grow-1 align-items-center justify-content-start flex pr-2">Ordine</div>
-              <div class="flex-none flex pl-2">{{ product.price | currency: 'EUR'}}</div>
+              <div *ngIf="!order.offerta" class="flex-none flex pl-2">{{ product.price | currency: 'EUR'}}</div>
+              <div *ngIf="order.offerta" class="flex-none flex pl-2 line-through">{{ product.price | currency: 'EUR'}}
+              </div>
+              <div *ngIf="order.offerta" class="flex-none flex pl-2">{{ order.offerta.price | currency: 'EUR'}}</div>
             </div>
             <div class="flex w-12 mb-2">
               <div class="flex-grow-1 flex align-items-center justify-content-start pr-2">Commissione per la protezione
@@ -143,11 +149,15 @@
             </div>
             <div *ngIf="product" class="flex w-12 my-3 font-semibold">
               <div class="flex-grow-1 flex align-items-center justify-content-start">Totale da pagare</div>
-              <div class="flex-none flex align-items-center justify-content-end ">{{ product.price | currency: 'EUR'}}
+              <div *ngIf="!order.offerta" class="flex-none flex align-items-center justify-content-end ">{{
+                product.price | currency: 'EUR'}}</div>
+              <div *ngIf="order.offerta" class="flex-none flex align-items-center justify-content-end ">{{
+                order.offerta.price | currency: 'EUR'}}
               </div>
             </div>
             <div class="flex w-12">
-              <p-button label="Paga ora" (click)="saveOrder()" [disabled]="!order.address || !order.paymentMethod"></p-button>
+              <p-button label="Paga ora" (click)="saveOrder()"
+                [disabled]="!order.address || !order.paymentMethod"></p-button>
             </div>
           </div>
         </div>
@@ -157,18 +167,12 @@
 </div>
 
 
-<p-dialog header="Header" [(visible)]="dialogAddAddressIsVisible" [style]="{width: '50vw'}">
-    <p>
-        Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do eiusmod tempor incididunt ut labore et dolore magna aliqua. Ut enim ad minim veniam, quis nostrud exercitation ullamco laboris nisi ut aliquip ex ea commodo
-        consequat. Duis aute irure dolor in reprehenderit in voluptate velit esse cillum dolore eu fugiat nulla pariatur. Excepteur sint occaecat cupidatat non proident, sunt in culpa qui officia deserunt mollit anim id est laborum.
-    </p>
-    <p-button (click)="handleAddAddress()" icon="pi pi-external-link" label="Add Address"></p-button>
+<p-dialog header="Edit indirizzo" [(visible)]="dialogAddAddressIsVisible" [style]="{width: '50vw'}">
+  <p>To be implemented! Ora salva un template</p>
+  <p-button (click)="handleAddAddress()" icon="pi pi-external-link" label="Add Address"></p-button>
 </p-dialog>
 
-<p-dialog header="Header" [(visible)]="dialogAddPaymentMethodIsVisible" [style]="{width: '50vw'}">
-  <p>
-      Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do eiusmod tempor incididunt ut labore et dolore magna aliqua. Ut enim ad minim veniam, quis nostrud exercitation ullamco laboris nisi ut aliquip ex ea commodo
-      consequat. Duis aute irure dolor in reprehenderit in voluptate velit esse cillum dolore eu fugiat nulla pariatur. Excepteur sint occaecat cupidatat non proident, sunt in culpa qui officia deserunt mollit anim id est laborum.
-  </p>
+<p-dialog header="Edit Metodo di pagamento" [(visible)]="dialogAddPaymentMethodIsVisible" [style]="{width: '50vw'}">
+  <p>To be implemented! Ora salva un template</p>
   <p-button (click)="handleAddPayment()" icon="pi pi-external-link" label="Add Payment Method"></p-button>
 </p-dialog>

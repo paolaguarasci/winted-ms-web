@@ -135,6 +135,7 @@ export class V1HeaderBar1Component implements OnInit, OnChanges {
   }
 
   updateNumNotifiche(event) {
+    console.log("header updateNumNotifiche ",event)
     this.numNotifiche = event;
   }
 

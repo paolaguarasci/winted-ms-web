@@ -1,8 +1,15 @@
 <div class="card my-3 w-12">
   <p class="text-3xl w-12 mb-3" i18n>Ricerche suggerite</p>
-  <div class="flex flex-row flex-wrap card-container blue-container w-12 justify-content-between">
+  <!-- <div class="flex flex-row flex-wrap card-container blue-container w-12 justify-content-between">
     <div *ngFor="let suggested of suggesteds;" class="flex align-items-center justify-content-center my-1">
       <app-recearch-suggested-single [name]="suggested.name" [view]="suggested.view"></app-recearch-suggested-single>
     </div>
+  </div> -->
+  <div class="flex align-items-center justify-content-start my-1">
+    <p-carousel class="caruselsuggested" [showIndicators]="false" [value]="suggesteds" [numVisible]="10" [numScroll]="1"  [circular]="true" [responsiveOptions]="responsiveOptions">
+      <ng-template let-suggested pTemplate="item">
+        <app-recearch-suggested-single [name]="suggested.name" [view]="suggested.view"></app-recearch-suggested-single>
+      </ng-template>
+    </p-carousel>
   </div>
 </div>

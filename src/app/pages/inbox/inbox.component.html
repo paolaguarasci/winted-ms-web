@@ -25,10 +25,12 @@
       <input type="text" pInputText [(ngModel)]="newMessage" class="area1" (keydown.enter)="sendMessage($event)" />
     </span>
   </div>
-  <div class="conversazione">
+  <div class="conversazione" id="convdata">
     <div *ngIf="loggedUser && otherUser && conversazione">
       <app-inbox-conversation-item *ngFor="let msg of conversazione.messages;" [msg]="msg" [loggedUser]="loggedUser"
-        [otherUser]="otherUser" />
+        [otherUser]="otherUser" 
+        (offertAccepted)="handleOffert($event)"
+        />
     </div>
   </div>
 </div>
