@@ -88,7 +88,7 @@ export class InboxComponent implements OnInit {
             });
             console.log('nuova conv offerta ', this.conversazione);
             this.value += 1;
-            // this.getOther();
+            this.getOther();
             this.getPreview();
             this.inboxPreview.push({
               altroUtente: this.conversazione.altroUtente,
@@ -212,7 +212,9 @@ export class InboxComponent implements OnInit {
     }
 
     if (this.isNew && this.conversazione) {
+      console.log("sono qui 1")
       this.conversationService.create(this.conversazione).subscribe((res) => {
+        console.log("sono qui 2")
         this.conversazione = res;
         console.log(this.conversazione);
         if (type === MessaggioConversazioneTipi.testo) {
@@ -224,10 +226,11 @@ export class InboxComponent implements OnInit {
       });
     } else if (this.isOffert && this.conversazione) {
       this.conversationService.create(this.conversazione).subscribe((res) => {
+        console.log("sono qui 3")
         this.conversazione = res;
         console.log(this.conversazione);
-        this.saveOffertRequestMessage(event);
         this.getPreview();
+        this.saveOffertRequestMessage(event);
       });
     } else {
       this.saveTextMessage(event);
@@ -249,7 +252,7 @@ export class InboxComponent implements OnInit {
       if (this.conversazione?.id) {
         this.conversationService
           .addMessage(this.conversazione?.id, newMsg)
-          .subscribe((result) => {
+          .subscribe((res) => {
             this.newMessage = '';
             this.router.navigate(['inbox', this.conversazione?.id]);
           });
@@ -258,6 +261,7 @@ export class InboxComponent implements OnInit {
   }
 
   saveOffertRequestMessage(event) {
+    console.log("sono qui 4")
     if (this.otherUser) {
       console.log('invio offerta');
       let newMsg = new MessaggioConversazione({
@@ -270,13 +274,12 @@ export class InboxComponent implements OnInit {
         needAnswer: true,
         offerta: this.offertPrice
       });
-
-      this.newMessage = '';
+      
       if (this.conversazione?.id) {
+        console.log("sono qui 5")
         this.conversationService
           .addMessage(this.conversazione?.id, newMsg)
           .subscribe((result) => {
-            this.newMessage = '';
             this.conversazione = result;
           });
       }

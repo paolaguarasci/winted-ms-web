@@ -73,6 +73,7 @@ import { SearchComponent } from './pages/search/search.component';
 import { PreferitiComponent } from './pages/preferiti/preferiti.component';
 import { ConfirmPopupModule } from 'primeng/confirmpopup';
 
+import { CarouselModule } from 'primeng/carousel';
 @NgModule({
   declarations: [
     AppComponent,
@@ -149,7 +150,8 @@ import { ConfirmPopupModule } from 'primeng/confirmpopup';
     DividerModule,
     RatingModule,
     FontAwesomeModule,
-    ConfirmPopupModule
+    ConfirmPopupModule,
+    CarouselModule
   ],
   providers: [    {
     provide: HTTP_INTERCEPTORS,

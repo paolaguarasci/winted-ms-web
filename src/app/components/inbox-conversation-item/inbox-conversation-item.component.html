@@ -1,4 +1,4 @@
-<div *ngIf="!inviato && !isFromWinted && !isOffert" class="flex justify-content-start flex-wrap card-container">
+<div *ngIf="!inviato && !isFromWinted && !isOffert && authorMsg" class="flex justify-content-start flex-wrap card-container">
   <div class="flex align-items-center justify-content-center">
     <p-avatar [image]="authorMsg.avatar" shape="circle"></p-avatar>
   </div>
@@ -9,7 +9,7 @@
 </div>
 
 
-<div *ngIf="inviato && !isFromWinted" class="flex justify-content-end flex-wrap card-container text-right">
+<div *ngIf="inviato && !isFromWinted && authorMsg" class="flex justify-content-end flex-wrap card-container text-right">
   <div
     class="flex align-items-center justify-content-center border-1 border-black-alpha-30 mx-1 my-2 p-2 min-w-min max-w-30rem border-round-sm">
     {{ msg.content }}
