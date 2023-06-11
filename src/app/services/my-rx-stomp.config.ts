@@ -2,7 +2,7 @@ import { RxStompConfig } from '@stomp/rx-stomp';
 
 export const myRxStompConfig: RxStompConfig = {
   // Which server?
-  brokerURL: 'wss://localhost:4200/stream/api/v1/message/websocket/greeting',
+  brokerURL: 'wss://localhost:4200/stream/api/v1/message/websocket',
 
   // Headers
   // Typical keys: login, passcode, host
