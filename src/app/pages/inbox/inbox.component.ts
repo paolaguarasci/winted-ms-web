@@ -16,6 +16,7 @@ import { ProductCardComponent } from 'src/app/components/product-card/product-ca
 import { Product } from 'src/app/models/Product';
 import { ProductService } from 'src/app/services/product.service';
 import { AuthService } from 'src/app/services/auth.service';
+import { RxStompService } from 'src/app/services/rxstomp.service';
 
 @Component({
   selector: 'app-inbox',
@@ -41,10 +42,16 @@ export class InboxComponent implements OnInit {
     private route: ActivatedRoute,
     private router: Router,
     private productService: ProductService,
-    private authService: AuthService
+    private authService: AuthService,
+    private rxStompService: RxStompService
   ) {}
 
   async ngOnInit() {
+
+    this.rxStompService.watch('/topic/demo').subscribe((message: any) => {
+      console.log("SOCKET MSG", message)
+    });
+
     this.isNew = false;
     this.prodottoCorrelato = null;
     this.conversazione = null;

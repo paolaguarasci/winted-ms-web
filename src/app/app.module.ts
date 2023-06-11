@@ -74,6 +74,8 @@ import { PreferitiComponent } from './pages/preferiti/preferiti.component';
 import { ConfirmPopupModule } from 'primeng/confirmpopup';
 
 import { CarouselModule } from 'primeng/carousel';
+import { RxStompService } from './services/rxstomp.service';
+import { rxStompServiceFactory } from './services/rx-stomp-service-factory';
 @NgModule({
   declarations: [
     AppComponent,
@@ -157,7 +159,13 @@ import { CarouselModule } from 'primeng/carousel';
     provide: HTTP_INTERCEPTORS,
     useClass: AuthInterceptor,
     multi: true
-  }],
+  },
+  {
+    provide: RxStompService,
+    useFactory: rxStompServiceFactory,
+  },
+
+],
   bootstrap: [AppComponent],
 })
 export class AppModule {}
