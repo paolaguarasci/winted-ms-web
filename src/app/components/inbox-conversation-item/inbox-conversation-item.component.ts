@@ -34,7 +34,7 @@ export class InboxConversationItemComponent implements OnInit {
     ) {
       this.msg.messageType = MessaggioConversazioneTipi.testo;
     }
-    if (this.msg.messageType === MessaggioConversazioneTipi.system) {
+    if (this.msg.messageType === MessaggioConversazioneTipi.system || this.msg.messageType === MessaggioConversazioneTipi.system_request) {
       this.isFromWinted = true;
     }
     if (this.msg.from !== this.loggedUser.id) {

@@ -8,6 +8,7 @@ export enum MessaggioConversazioneTipi {
   offert_request = 'OFFERT_REQUEST',
   offert_response = 'OFFERT_RESPONSE',
   system = 'SYSTEM',
+  system_request = 'SYSTEM_REQUEST'
 }
 
 export class MessaggioConversazione extends Resource<MessaggioConversazione> {
