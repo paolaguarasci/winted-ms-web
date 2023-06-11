@@ -20,6 +20,9 @@ export class MessaggioConversazione extends Resource<MessaggioConversazione> {
   public timeAgo!: string;
   public visto!: boolean;
   public messageType!: MessaggioConversazioneTipi;
+  public needAnswer!: boolean;
+  public isAnswerTo!: string;
+  public offerta!: string;
 
   constructor(model?: Partial<MessaggioConversazione>) {
     super(model);

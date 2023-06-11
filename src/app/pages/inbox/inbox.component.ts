@@ -149,7 +149,7 @@ export class InboxComponent implements OnInit {
     this.inboxPreview = [];
     this.conversationService.getPreview().subscribe((res) => {
       this.inboxPreview = res;
-      this.inboxPreview.reverse()
+      this.inboxPreview.reverse();
 
       if (this.isNew) {
         this.inboxPreview = [
@@ -240,6 +240,7 @@ export class InboxComponent implements OnInit {
         content: this.newMessage,
         from: this.loggedUser.id,
         to: this.otherUser.id,
+        messageType: MessaggioConversazioneTipi.testo,
         tipo: MessaggioConversazioneTipi.testo,
         timestamp: '',
       });
@@ -263,8 +264,11 @@ export class InboxComponent implements OnInit {
         content: "Vuoi accettare l'offera a " + this.offertPrice + 'E ?',
         from: this.loggedUser.id,
         to: this.otherUser.id,
+        messageType: MessaggioConversazioneTipi.offert_request,
         tipo: MessaggioConversazioneTipi.offert_request,
         timestamp: '',
+        needAnswer: true,
+        offerta: this.offertPrice
       });
 
       this.newMessage = '';
@@ -278,26 +282,28 @@ export class InboxComponent implements OnInit {
       }
     }
   }
-
-  saveOffertResponseMessage(event, accepted: Boolean = false) {
+//     this.offertAccepted.emit({answer: false, requestId: this.msg.id});
+  saveOffertResponseMessage(event, data) {
     if (this.otherUser) {
       console.log('invio offerta');
       let newMsg = new MessaggioConversazione({
-        content: 'Riufiuto!',
+        content: 'no',
         from: this.loggedUser.id,
         to: this.otherUser.id,
+        messageType: MessaggioConversazioneTipi.offert_response,
         tipo: MessaggioConversazioneTipi.offert_response,
         timestamp: '',
+        needAnswer: false, 
+        isAnswerTo: data['requestId'],
       });
-      if (accepted) {
-        newMsg.content = 'Accetto!';
+      if (data['answer']) {
+        newMsg.content = 'yes';
       }
-      this.newMessage = '';
+      console.log("Invio offerta response", newMsg)
       if (this.conversazione?.id) {
         this.conversationService
           .addMessage(this.conversazione?.id, newMsg)
           .subscribe((result) => {
-            this.newMessage = '';
             this.conversazione = result;
           });
       }
@@ -338,11 +344,16 @@ export class InboxComponent implements OnInit {
   }
 
   handleOffert(event) {
-    if (event === 'false') {
-      this.saveOffertResponseMessage(false)
-
-    } else if (event === 'true') {
-      this.saveOffertResponseMessage(true)
-    }
+      this.saveOffertResponseMessage(null, event);
   }
+
+  // checkIfRequestHaveResponse(messageid: string) {
+  //   let check = false;
+  //   let messageRequestIndex = this.conversazione?.messages.findIndex((message) => {
+  //     return message.id === messageid && message.messageType === MessaggioConversazioneTipi.offert_request
+  //   })
+  //   let nextMessages = this.conversazione?.messages.slice(messageRequestIndex);
+  //   let eventualeRisposta = nextMessages?.find((message))
+  // }
+
 }

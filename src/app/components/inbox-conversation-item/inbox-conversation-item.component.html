@@ -23,18 +23,9 @@
   <div
     class="flex w-12 align-items-center justify-content-center border-1 border-black-alpha-30 mx-1 my-2 p-2 min-w-min border-round-sm">
     {{ msg.content }}
-  </div>
-</div>
-
-
-<div *ngIf="!inviato && !isFromWinted && isOffert" class="flex justify-content-start flex-wrap card-container">
-  <div class="flex align-items-center justify-content-center">
-    <p-avatar [image]="authorMsg.avatar" shape="circle"></p-avatar>
-  </div>
-  <div
-    class="flex align-items-center justify-content-center border-1 border-black-alpha-30 mx-1 my-2 p-2 min-w-min max-w-30rem border-round-sm">
-    {{ msg.content }} 
-    <p-button (click)="rejectOffert()" icon="pi pi-times" styleClass="p-button-sm ml-2"></p-button> 
-    <p-button (click)="acceptOffert()" icon="pi pi-check" styleClass="p-button-sm ml-2"></p-button>
+    <p-button *ngIf="msg.needAnswer" (click)="rejectOffert()" icon="pi pi-times"
+      styleClass="p-button-sm ml-2"></p-button>
+    <p-button *ngIf="msg.needAnswer" (click)="acceptOffert()" icon="pi pi-check"
+      styleClass="p-button-sm ml-2"></p-button>
   </div>
 </div>

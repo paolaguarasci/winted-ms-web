@@ -15,7 +15,7 @@ export class InboxConversationItemComponent implements OnInit {
   @Input() msg!: MessaggioConversazione;
   @Input() loggedUser!: User;
   @Input() otherUser!: User;
-  @Output() offertAccepted: EventEmitter<string> = new EventEmitter<string>();
+  @Output() offertAccepted: EventEmitter<any> = new EventEmitter<any>();
   authorMsg!: User;
   inviato!: boolean;
   isFromWinted!: boolean;
@@ -24,6 +24,7 @@ export class InboxConversationItemComponent implements OnInit {
   ngOnInit(): void {
     this.inviato = false;
     this.isOffert = true;
+    this.isFromWinted = false;
     if (
       !this.msg.messageType ||
       this.msg.messageType == null ||
@@ -47,9 +48,9 @@ export class InboxConversationItemComponent implements OnInit {
   }
 
   rejectOffert() {
-    this.offertAccepted.emit('false');
+    this.offertAccepted.emit({answer: false, requestId: this.msg.id});
   }
   acceptOffert() {
-    this.offertAccepted.emit('true');
+    this.offertAccepted.emit({answer: true, requestId: this.msg.id});
   }
 }
