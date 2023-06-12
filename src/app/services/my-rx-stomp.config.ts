@@ -1,5 +1,10 @@
 import { RxStompConfig } from '@stomp/rx-stomp';
 
+// import { inject } from '@angular/core';
+// import { CookieService } from 'ngx-cookie-service';
+// const service = inject(CookieService)
+// const token = service.get('access_token')
+
 export const myRxStompConfig: RxStompConfig = {
   // Which server?
   brokerURL: 'wss://localhost:4200/stream/api/v1/message/websocket',
