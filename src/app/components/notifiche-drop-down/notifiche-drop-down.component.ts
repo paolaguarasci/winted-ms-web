@@ -1,7 +1,9 @@
 import { Component, EventEmitter, Input, OnChanges, OnInit, Output } from '@angular/core';
 import { ActivatedRoute, Router } from '@angular/router';
 import { Notifica } from 'src/app/models/Notifica';
+import { User } from 'src/app/models/User';
 import { NotificheService } from 'src/app/services/notifiche.service';
+import { ProfileService } from 'src/app/services/profile.service';
 import { RxStompService } from 'src/app/services/rxstomp.service';
 
 @Component({
@@ -18,11 +20,15 @@ export class NotificheDropDownComponent implements OnInit,OnChanges {
   venduto!: boolean;
   @Input() full: boolean = false;
   topicSubscription: any;
-  constructor(private notificheService: NotificheService, private router: Router, private rxStompService: RxStompService) {}
+  loggedUser!: User | null;
+  constructor(private notificheService: NotificheService, private router: Router, private rxStompService: RxStompService, private profileService: ProfileService) {}
 
   ngOnInit(): void {
     this.notifiche = [];
     this.notificheFull = [];
+    this.profileService.getLogged().subscribe((res) => {
+      this.conSocket(res.id)
+    })
     this.notificheService.getMine().subscribe((res) => {
       this.notificheFull = res;
       this.notifiche = res;
@@ -46,9 +52,10 @@ export class NotificheDropDownComponent implements OnInit,OnChanges {
     if(this.topicSubscription != undefined) {
       this.unsubsocket();
     }
-    this.topicSubscription = this.rxStompService.watch('/notify').subscribe((message: any) => {
+    this.topicSubscription = this.rxStompService.watch('/notify/'+id).subscribe((message: any) => {
       let msgFromServer = JSON.parse(message.body)
       console.log("SOCKET MSG", msgFromServer.message)
+      this.update();
     })
 }
 

@@ -77,7 +77,7 @@ export class AuthInterceptor implements HttpInterceptor {
 
       const token = this.cookieService.get('refresh_token');
 
-      if (token)
+      if (token) 
         return this.authService.refreshToken(token).pipe(
           switchMap((token: any) => {
             this.isRefreshing = false;
