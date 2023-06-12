@@ -16,6 +16,7 @@ import { ProductCardComponent } from 'src/app/components/product-card/product-ca
 import { Product } from 'src/app/models/Product';
 import { ProductService } from 'src/app/services/product.service';
 import { AuthService } from 'src/app/services/auth.service';
+import { RxStompService } from 'src/app/services/rxstomp.service';
 
 @Component({
   selector: 'app-inbox',
@@ -35,16 +36,22 @@ export class InboxComponent implements OnInit {
   offertPrice!: string;
   isOffert!: boolean;
   chatElement!: any;
+  socketSub!: any;
+  topicSubscription:any = null;
   constructor(
     private conversationService: ConversationService,
     private profileService: ProfileService,
     private route: ActivatedRoute,
     private router: Router,
     private productService: ProductService,
-    private authService: AuthService
+    private authService: AuthService,
+    private rxStompService: RxStompService
   ) {}
 
   async ngOnInit() {
+
+
+
     this.isNew = false;
     this.prodottoCorrelato = null;
     this.conversazione = null;
@@ -60,10 +67,11 @@ export class InboxComponent implements OnInit {
         this.conversazione = null;
         this.isOffert = false;
         this.otherUser = null;
-
         this.id = params.get('id');
+        
         this.update();
         this.getPreview();
+        this.conSocket(this.id);
       } else {
         this.getPreview();
       }
@@ -71,6 +79,7 @@ export class InboxComponent implements OnInit {
 
     this.route.queryParamMap.subscribe(async (params) => {
       this.isNew = false;
+
       this.prodottoCorrelato = null;
       this.conversazione = null;
       this.isOffert = false;
@@ -139,6 +148,16 @@ export class InboxComponent implements OnInit {
       }
     });
   }
+  
+  unsubsocket(){
+    if (this.topicSubscription) {
+      this.topicSubscription.unsubscribe();
+    }
+  }
+
+  ngOnDestroy() {
+    this.unsubsocket();
+  }
 
   update() {
     if (!this.id && this.inboxPreview && this.inboxPreview.length > 0) {
@@ -202,6 +221,17 @@ export class InboxComponent implements OnInit {
           }
         });
     }
+  }
+
+  conSocket(id) {
+      if(this.topicSubscription != undefined) {
+        this.unsubsocket();
+      }
+      this.topicSubscription = this.rxStompService.watch('/room/' + id).subscribe((message: any) => {
+        let msgFromServer = JSON.parse(message.body)
+        console.log("SOCKET MSG", msgFromServer.message)
+        this.getConversation(this.id);
+      })
   }
 
   getConversation(id) {

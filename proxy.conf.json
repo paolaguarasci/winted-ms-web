@@ -13,5 +13,12 @@
     "target": "https://localhost:8000",
     "secure": false,
     "changeOrigin": true
-  }
+  },
+  "/stream/*": {
+    "target": "wss://localhost:8443",
+    "secure": false,
+    "ws": true,
+    "logLevel": "debug",
+    "pathRewrite": {"^/stream": ""}
+    }
 }

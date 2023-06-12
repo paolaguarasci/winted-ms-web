@@ -60,15 +60,37 @@ export class AuthService {
   }
 
   refreshToken(refreshData: any): Observable<any> {
-    this.cookieService.delete('access_token');
-    this.cookieService.delete('refresh_token');
-    const body = new HttpParams()
-      .set('refresh_token', refreshData.refresh_token)
-      .set('grant_type', 'refresh_token');
-    return this._http.post<any>(this.authServer + 'oauth/token', body).pipe(
-      map((res) => {
-        this.saveToken(res);
-      })
-    );
+    // this.cookieService.delete('access_token');
+    // this.cookieService.delete('refresh_token');
+    // const body = new HttpParams()
+    //   .set('refresh_token', refreshData.refresh_token)
+    //   .set('grant_type', 'refresh_token');
+    // return this._http.post<any>(this.authServer + 'oauth/token', body).pipe(
+    //   map((res) => {
+    //     this.saveToken(res);
+    //   })
+    // );
+
+    let params = new URLSearchParams();
+    params.append('client_id', this.clientId);
+    params.append('client_secret', this.clientSecret);
+    params.append('grant_type', 'refresh_token');
+    params.append('refresh_token', this.cookieService.get('refresh_token'));
+
+    let headers = new HttpHeaders({
+      'Content-type': 'application/x-www-form-urlencoded; charset=utf-8',
+    });
+
+    return this._http
+      .post<any>(
+        'https://localhost:4200/realms/winted/protocol/openid-connect/token',
+        params.toString(),
+        { headers: headers }
+      )
+      .pipe(
+        map((res) => {
+          this.saveToken(res);
+        })
+      );
   }
 }
