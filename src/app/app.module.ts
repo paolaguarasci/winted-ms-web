@@ -76,6 +76,7 @@ import { V2FooterLightComponent } from './_layout/v2-footer-light/v2-footer-ligh
 import { V2LayoutComponent } from './_layout/v2-layout/v2-layout.component';
 import { V3LayoutComponent } from './_layout/v3-layout/v3-layout.component';
 import { rxStompServiceFactory } from './services/rx-stomp-service-factory';
+import { LoginComponent } from './pages/login/login.component';
 
 @NgModule({
   declarations: [
@@ -119,7 +120,8 @@ import { rxStompServiceFactory } from './services/rx-stomp-service-factory';
     NotificheSingleRowComponent,
     AuthtestComponent,
     SearchComponent,
-    PreferitiComponent
+    PreferitiComponent,
+    LoginComponent
   ],
   imports: [
     BrowserModule,
