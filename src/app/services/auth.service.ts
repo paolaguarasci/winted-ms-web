@@ -1,13 +1,16 @@
 import { HttpClient, HttpHeaders, HttpParams } from '@angular/common/http';
-import { Injectable } from '@angular/core';
 import { Observable, catchError, map, tap } from 'rxjs';
+
 import { CookieService } from 'ngx-cookie-service';
+import { Injectable } from '@angular/core';
+
 @Injectable({
   providedIn: 'root',
 })
 export class AuthService {
   public clientId = 'winted-web';
-  public redirectUri = 'https://localhost:4200/';
+  public redirectUri = 'https://localhost:4200/login?redirectUrl=';
+  public redirectAftherUri = 'https://localhost:4200/';
   public authServer = 'https://localhost:4200/';
   public clientSecret = '0tWCKy4mShRYeQjw8TMMISsGQDEQJmYB';
   public realm = 'winted';
@@ -17,29 +20,29 @@ export class AuthService {
     private cookieService: CookieService
   ) {}
 
-  getServerLogin() {
-    return `https://localhost:4200/realms/winted/protocol/openid-connect/auth?response_type=code&client_id=${this.clientId}&redirect_uri=${this.redirectUri}`;
+  getServerLogin(url) {
+    let reurl = this.redirectUri + url;
+    return `https://localhost:4200/realms/winted/protocol/openid-connect/auth?response_type=code&client_id=${this.clientId}&redirect_uri=${reurl}`;
   }
 
-  retrieveToken(code) {
+  retrieveToken(code, url) {
     let params = new URLSearchParams();
     params.append('grant_type', 'authorization_code');
     params.append('client_id', this.clientId);
-    params.append('redirect_uri', this.redirectUri);
+    params.append('redirect_uri', "https://localhost:4200/login?redirectUrl=" + url);
     params.append('code', code);
     params.append('client_secret', this.clientSecret);
 
     let headers = new HttpHeaders({
       'Content-type': 'application/x-www-form-urlencoded; charset=utf-8',
     });
-
-    this._http
+    console.log("Retrive token")
+    return this._http
       .post(
         'https://localhost:4200/realms/winted/protocol/openid-connect/token',
         params.toString(),
         { headers: headers }
-      )
-      .subscribe((data) => this.saveToken(data));
+      );
   }
 
   saveToken(token) {

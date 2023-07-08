@@ -1,10 +1,12 @@
-import { ProfileService } from './../../services/profile.service';
-import { AuthService } from 'src/app/services/auth.service';
 import { ActivatedRoute, Router } from '@angular/router';
 import { Component, OnChanges, OnInit } from '@angular/core';
-import { faEnvelope } from '@fortawesome/free-regular-svg-icons';
 import { MenuItem, MessageService } from 'primeng/api';
+
+import { AuthService } from 'src/app/services/auth.service';
+import { ProfileService } from './../../services/profile.service';
 import { User } from 'src/app/models/User';
+import { faEnvelope } from '@fortawesome/free-regular-svg-icons';
+
 interface SearchModes {
   name: string;
   code: string;
@@ -38,6 +40,11 @@ export class V1HeaderBar1Component implements OnInit, OnChanges {
   showDialog() {
     this.visible = true;
   }
+
+  closeDialog() {
+    this.visible = false;
+  }
+
   constructor(
     private messageService: MessageService,
     private router: Router,

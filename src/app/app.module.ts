@@ -5,7 +5,6 @@ import { AppComponent } from './app.component';
 import { AppRoutingModule } from './app-routing.module';
 import { ArmadioEvidenzaComponent } from './components/armadio-evidenza/armadio-evidenza.component';
 import { AuthInterceptor } from './interceptor/AuthInterceptor';
-import { AuthtestComponent } from './pages/authtest/authtest.component';
 import { AvatarModule } from 'primeng/avatar';
 import { BadgeModule } from 'primeng/badge';
 import { BrowserAnimationsModule } from '@angular/platform-browser/animations';
@@ -34,6 +33,7 @@ import { InboxPreviewItemComponent } from './components/inbox-preview-item/inbox
 import { InputNumberModule } from 'primeng/inputnumber';
 import { InputTextModule } from 'primeng/inputtext';
 import { InputTextareaModule } from 'primeng/inputtextarea';
+import { LoginComponent } from './pages/login/login.component';
 import { MegaMenuModule } from 'primeng/megamenu';
 import { MenuModule } from 'primeng/menu';
 import { MenubarModule } from 'primeng/menubar';
@@ -76,7 +76,6 @@ import { V2FooterLightComponent } from './_layout/v2-footer-light/v2-footer-ligh
 import { V2LayoutComponent } from './_layout/v2-layout/v2-layout.component';
 import { V3LayoutComponent } from './_layout/v3-layout/v3-layout.component';
 import { rxStompServiceFactory } from './services/rx-stomp-service-factory';
-import { LoginComponent } from './pages/login/login.component';
 
 @NgModule({
   declarations: [
@@ -118,7 +117,6 @@ import { LoginComponent } from './pages/login/login.component';
     NotificheDropDownComponent,
     NotificheComponent,
     NotificheSingleRowComponent,
-    AuthtestComponent,
     SearchComponent,
     PreferitiComponent,
     LoginComponent
