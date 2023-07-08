@@ -1,6 +1,6 @@
 import { ComponentFixture, TestBed } from '@angular/core/testing';
 
-import { V1ModalLoginComponent } from './v1-modal-login.component';
+import { V1ModalLoginComponent } from './modal-login.component';
 
 describe('V1ModalLoginComponent', () => {
   let component: V1ModalLoginComponent;

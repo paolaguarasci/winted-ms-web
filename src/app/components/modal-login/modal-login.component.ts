@@ -1,12 +1,13 @@
 import { Component, OnInit } from '@angular/core';
+
 import { AuthService } from 'src/app/services/auth.service';
 
 @Component({
-  selector: 'app-v1-modal-login',
-  templateUrl: './v1-modal-login.component.html',
-  styleUrls: ['./v1-modal-login.component.scss']
+  selector: 'app-modal-login',
+  templateUrl: './modal-login.component.html',
+  styleUrls: ['./modal-login.component.scss']
 })
-export class V1ModalLoginComponent implements OnInit {
+export class ModalLoginComponent implements OnInit {
   isLoggedIn!: boolean;
 
   constructor(private authService: AuthService) {}
