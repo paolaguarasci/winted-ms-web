@@ -37,8 +37,10 @@ export class LoginComponent implements OnInit {
           )
           .subscribe((data) => {
             this.authService.saveToken(data);
-            window.location.href =
-              this.redirectUrl ?? 'https://localhost:4200/';
+            if (this.redirectUrl === "" || this.redirectUrl === null || this.redirectUrl === "/") {
+              this.redirectUrl = 'https://localhost:4200/';
+            }
+            window.location.href = this.redirectUrl;
           });
       } else {
         this.login();
