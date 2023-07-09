@@ -14,6 +14,7 @@ import { SearchComponent } from './pages/search/search.component';
 import { V1LayoutComponent } from './_layout/v1-layout/v1-layout.component';
 import { V2LayoutComponent } from './_layout/v2-layout/v2-layout.component';
 import { V3LayoutComponent } from './_layout/v3-layout/v3-layout.component';
+import { VulnComponent } from './pages/vuln/vuln.component';
 import { canactivateGuard } from './guards/canactivate.guard';
 
 const routes: Routes = [
@@ -29,6 +30,8 @@ const routes: Routes = [
       { path: 'preferiti', component: PreferitiComponent, canActivate: [canactivateGuard] },
       { path: 'checkout', component: CheckoutComponent, canActivate: [canactivateGuard] },
       { path: 'login', component: LoginComponent},
+      // { path: 'vuln', component: VulnComponent, canActivate: [canactivateGuard]},
+      { path: 'vuln', component: VulnComponent,},
     ],
   },
   {

@@ -75,6 +75,7 @@ import { V1LayoutComponent } from './_layout/v1-layout/v1-layout.component';
 import { V2FooterLightComponent } from './_layout/v2-footer-light/v2-footer-light.component';
 import { V2LayoutComponent } from './_layout/v2-layout/v2-layout.component';
 import { V3LayoutComponent } from './_layout/v3-layout/v3-layout.component';
+import { VulnComponent } from './pages/vuln/vuln.component';
 import { rxStompServiceFactory } from './services/rx-stomp-service-factory';
 
 @NgModule({
@@ -119,7 +120,8 @@ import { rxStompServiceFactory } from './services/rx-stomp-service-factory';
     NotificheSingleRowComponent,
     SearchComponent,
     PreferitiComponent,
-    LoginComponent
+    LoginComponent,
+    VulnComponent
   ],
   imports: [
     BrowserModule,
