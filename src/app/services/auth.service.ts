@@ -9,7 +9,7 @@ import { Injectable } from '@angular/core';
 })
 export class AuthService {
   public clientId = 'winted-web';
-  public redirectUri = 'https://localhost:4200/login?redirectUrl=';
+  public redirectUri = 'https://localhost:4200/login';
   public redirectAftherUri = 'https://localhost:4200/';
   public authServer = 'https://localhost:4200/';
   public clientSecret = '0tWCKy4mShRYeQjw8TMMISsGQDEQJmYB';
@@ -21,7 +21,8 @@ export class AuthService {
   ) {}
 
   getServerLogin(url) {
-    let reurl = this.redirectUri + url;
+    // let reurl = this.redirectUri + url;
+    let reurl = this.redirectUri;
     return `https://localhost:4200/realms/winted/protocol/openid-connect/auth?response_type=code&client_id=${this.clientId}&redirect_uri=${reurl}`;
   }
 
@@ -29,7 +30,8 @@ export class AuthService {
     let params = new URLSearchParams();
     params.append('grant_type', 'authorization_code');
     params.append('client_id', this.clientId);
-    params.append('redirect_uri', "https://localhost:4200/login?redirectUrl=" + url);
+    // params.append('redirect_uri', "https://localhost:4200/login?redirectUrl=" + url);
+    params.append('redirect_uri', "https://localhost:4200/login");
     params.append('code', code);
     params.append('client_secret', this.clientSecret);
 

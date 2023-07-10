@@ -78,6 +78,9 @@ import { V3LayoutComponent } from './_layout/v3-layout/v3-layout.component';
 import { VulnComponent } from './pages/vuln/vuln.component';
 import { rxStompServiceFactory } from './services/rx-stomp-service-factory';
 
+import { Router, NavigationEnd } from '@angular/router';
+
+import { filter } from 'rxjs/operators';
 @NgModule({
   declarations: [
     AppComponent,
@@ -171,4 +174,11 @@ import { rxStompServiceFactory } from './services/rx-stomp-service-factory';
 ],
   bootstrap: [AppComponent],
 })
-export class AppModule {}
+export class AppModule {
+  constructor(private router: Router) {
+    router.events.pipe(filter(event => event instanceof NavigationEnd)).subscribe((event) => {
+      console.log(event['url']);
+      console.log(event['urlAfterRedirects']);
+    });
+  }
+}
