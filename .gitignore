@@ -45,3 +45,4 @@ Thumbs.db
 .scannerwork
 sonar-project.properties
 .env
+.angular
