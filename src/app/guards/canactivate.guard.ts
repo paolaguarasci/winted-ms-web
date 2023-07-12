@@ -13,6 +13,7 @@ export const canactivateGuard: CanActivateFn = async (route, state) => {
   if (await service.checkCredentials()) {
     return true;
   }
+
   // return router.createUrlTree(['/']);
 
   // not logged in so redirect to login page with the return url

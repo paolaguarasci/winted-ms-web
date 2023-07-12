@@ -40,6 +40,11 @@
               "src/theme.css",
               "src/styles.scss"
             ],
+            "allowedCommonJsDependencies": [
+              "lodash",
+              "base64-js",
+              "js-sha256"
+           ],
             "scripts": []
           },
           "configurations": {

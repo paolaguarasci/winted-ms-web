@@ -27,6 +27,8 @@
     "@stomp/rx-stomp": "^2.0.0",
     "axios": "^1.4.0",
     "axios-jwt": "^3.0.2",
+    "keycloak-angular": "^14.0.0",
+    "keycloak-js": "^21.1.2",
     "ngx-cookie-service": "^16.0.0",
     "primeflex": "^3.3.0",
     "primeicons": "^6.0.1",
