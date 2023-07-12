@@ -53,9 +53,9 @@ export class V1HeaderBar1Component implements OnInit, OnChanges {
     private profileService: ProfileService
   ) {}
 
-  ngOnInit() {
+  async ngOnInit() {
     this.numNotifiche = '0';
-    this.isLogged = this.authService.checkCredentials();
+    this.isLogged = await this.authService.checkCredentials();
     if (this.isLogged) {
       this.profileService
         .getLogged()

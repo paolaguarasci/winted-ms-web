@@ -1,7 +1,7 @@
 import { Component, OnInit } from '@angular/core';
 
-import { Product } from 'src/app/models/Product';
 import { AuthService } from 'src/app/services/auth.service';
+import { Product } from 'src/app/models/Product';
 import { ProductService } from 'src/app/services/product.service';
 
 @Component({
@@ -18,8 +18,8 @@ export class HomepageComponent implements OnInit {
     private authService: AuthService) {}
 
 
-  ngOnInit(): void {
-    this.isLogged = this.authService.checkCredentials();
+  async ngOnInit() {
+    this.isLogged = await this.authService.checkCredentials();
     this.productService.get().subscribe((results) => {
       this.products = results;
     });

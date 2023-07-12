@@ -1,13 +1,13 @@
 import { Component, EventEmitter, Input, OnInit, Output } from '@angular/core';
 
+import { AuthService } from 'src/app/services/auth.service';
 import { CurrencyPipe } from '@angular/common';
 import { MessageService } from 'primeng/api';
 import { Product } from 'src/app/models/Product';
+import { ProductService } from 'src/app/services/product.service';
 import { ProfileService } from 'src/app/services/profile.service';
 import { Router } from '@angular/router';
 import { User } from 'src/app/models/User';
-import { ProductService } from 'src/app/services/product.service';
-import { AuthService } from 'src/app/services/auth.service';
 
 @Component({
   selector: 'product-card',
@@ -63,8 +63,8 @@ export class ProductCardComponent implements OnInit {
     }
   }
 
-  addToPreferred() {
-    if (this.authService.checkCredentials()){
+  async addToPreferred() {
+    if (await this.authService.checkCredentials()){
     this.profileService.addPreferred(this.product.id).subscribe((res1) => {
       console.log('sono qui 1', res1);
 

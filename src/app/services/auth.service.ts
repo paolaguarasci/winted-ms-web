@@ -3,6 +3,7 @@ import { Observable, catchError, map, tap } from 'rxjs';
 
 import { CookieService } from 'ngx-cookie-service';
 import { Injectable } from '@angular/core';
+import { KeycloakService } from 'keycloak-angular';
 
 @Injectable({
   providedIn: 'root',
@@ -17,7 +18,8 @@ export class AuthService {
 
   constructor(
     private _http: HttpClient,
-    private cookieService: CookieService
+    private cookieService: CookieService,
+    private keycloak: KeycloakService
   ) {}
 
   getServerLogin(url) {
@@ -55,8 +57,9 @@ export class AuthService {
     window.location.href = this.redirectUri;
   }
 
-  checkCredentials() {
-    return this.cookieService.check('access_token');
+  async checkCredentials() {
+    // return this.cookieService.check('access_token');
+    return await this.keycloak.isLoggedIn();
   }
 
   logout() {

@@ -1,5 +1,8 @@
+import { APP_INITIALIZER, NgModule } from '@angular/core';
 import { FormsModule, ReactiveFormsModule } from '@angular/forms';
 import { HTTP_INTERCEPTORS, HttpClientModule } from '@angular/common/http';
+import { KeycloakAngularModule, KeycloakService } from 'keycloak-angular';
+import { NavigationEnd, Router } from '@angular/router';
 
 import { AppComponent } from './app.component';
 import { AppRoutingModule } from './app-routing.module';
@@ -40,7 +43,6 @@ import { MenubarModule } from 'primeng/menubar';
 import { ModalLoginComponent } from './components/modal-login/modal-login.component';
 import { MostWantedComponent } from './components/most-wanted/most-wanted.component';
 import { NewProductComponent } from './pages/new-product/new-product.component';
-import { NgModule } from '@angular/core';
 import { NotificheComponent } from './pages/notifiche/notifiche.component';
 import { NotificheDropDownComponent } from './components/notifiche-drop-down/notifiche-drop-down.component';
 import { NotificheSingleRowComponent } from './components/notifiche-single-row/notifiche-single-row.component';
@@ -76,11 +78,24 @@ import { V2FooterLightComponent } from './_layout/v2-footer-light/v2-footer-ligh
 import { V2LayoutComponent } from './_layout/v2-layout/v2-layout.component';
 import { V3LayoutComponent } from './_layout/v3-layout/v3-layout.component';
 import { VulnComponent } from './pages/vuln/vuln.component';
+import { filter } from 'rxjs/operators';
 import { rxStompServiceFactory } from './services/rx-stomp-service-factory';
 
-import { Router, NavigationEnd } from '@angular/router';
-
-import { filter } from 'rxjs/operators';
+function initializeKeycloak(keycloak: KeycloakService) {
+  return () =>
+    keycloak.init({
+      config: {
+        realm: 'winted',
+        url: 'https://localhost:8000',
+        clientId: 'winted-web'
+      },
+      initOptions: {
+        onLoad: 'check-sso',
+        silentCheckSsoRedirectUri:
+          window.location.origin + '/assets/silent-check-sso.html'
+      }
+    });
+}
 @NgModule({
   declarations: [
     AppComponent,
@@ -159,17 +174,26 @@ import { filter } from 'rxjs/operators';
     RatingModule,
     FontAwesomeModule,
     ConfirmPopupModule,
-    CarouselModule
+    CarouselModule,
+    KeycloakAngularModule
   ],
-  providers: [    {
-    provide: HTTP_INTERCEPTORS,
-    useClass: AuthInterceptor,
-    multi: true
-  },
+  providers: [    
+  //   {
+  //   provide: HTTP_INTERCEPTORS,
+  //   useClass: AuthInterceptor,
+  //   multi: true
+  // },
   {
     provide: RxStompService,
     useFactory: rxStompServiceFactory,
   },
+
+  {
+    provide: APP_INITIALIZER,
+    useFactory: initializeKeycloak,
+    multi: true,
+    deps: [KeycloakService]
+  }
 
 ],
   bootstrap: [AppComponent],
