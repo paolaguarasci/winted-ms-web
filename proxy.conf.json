@@ -9,6 +9,11 @@
     "secure": false,
     "changeOrigin": true
   },
+  "/realms/*": {
+    "target": "https://localhost:8000",
+    "secure": false,
+    "changeOrigin": true
+  },
   "/resources/xoxbr/*": {
     "target": "https://localhost:8000",
     "secure": false,

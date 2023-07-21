@@ -86,7 +86,7 @@ function initializeKeycloak(keycloak: KeycloakService) {
     keycloak.init({
       config: {
         realm: 'winted',
-        url: 'https://localhost:8000',
+        url: 'https://localhost:4200/',
         clientId: 'winted-web'
       },
       initOptions: {
@@ -177,7 +177,7 @@ function initializeKeycloak(keycloak: KeycloakService) {
     CarouselModule,
     KeycloakAngularModule
   ],
-  providers: [    
+  providers: [
   //   {
   //   provide: HTTP_INTERCEPTORS,
   //   useClass: AuthInterceptor,
