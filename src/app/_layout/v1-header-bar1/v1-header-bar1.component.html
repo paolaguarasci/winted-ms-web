@@ -16,7 +16,7 @@
       </div>
     </div>
   </div>
-  <div class="col-12 md:col-6 lg:col-6">
+  <div class="col-12 md:col-6 lg:col-5">
     <div class="flex flex-row justify-content-end align-items-center flex-wrap card-container m-3">
       <div class="p-inputgroup ">
         <span class="w-8rem">
@@ -26,7 +26,7 @@
       </div>
     </div>
   </div>
-  <div class="col-12 md:col-6 lg:col-4">
+  <div class="col-12 md:col-6 lg:col-5">
     <div class="card">
 
       <div *ngIf="!isLogged;then content else other_content"></div>
@@ -74,7 +74,9 @@
             class="headericon flex align-items-center justify-content-center w-2rem h-2rem font-bold text-gray border-round m-2" (click)="goToPreferred()">
             <i class="pi pi-heart" style="font-size: 1.5rem"></i>
           </div>
-
+          <div>
+            {{ kprofile?.username }}
+          </div>
           <div
             class="flex align-items-center justify-content-center w-2rem h-2rem font-bold text-gray border-round m-2">
             <p-avatar (click)="menu.toggle($event)" styleClass="profilemenu" *ngIf="userLogged"

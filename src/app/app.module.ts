@@ -1,4 +1,4 @@
-import { APP_INITIALIZER, NgModule } from '@angular/core';
+import { APP_INITIALIZER, NgModule, OnInit } from '@angular/core';
 import { FormsModule, ReactiveFormsModule } from '@angular/forms';
 import { HTTP_INTERCEPTORS, HttpClientModule } from '@angular/common/http';
 import { KeycloakAngularModule, KeycloakService } from 'keycloak-angular';
@@ -198,11 +198,20 @@ function initializeKeycloak(keycloak: KeycloakService) {
 ],
   bootstrap: [AppComponent],
 })
-export class AppModule {
+export class AppModule implements OnInit {
   constructor(private router: Router) {
     router.events.pipe(filter(event => event instanceof NavigationEnd)).subscribe((event) => {
       console.log(event['url']);
       console.log(event['urlAfterRedirects']);
     });
+
+
+
   }
+
+ngOnInit(): void {
+
+}
+
+
 }

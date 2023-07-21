@@ -14,11 +14,8 @@ export class LoginComponent implements OnInit {
   // isLoggedIn!: boolean;
   // redirectUrl!: string | null;
 
-
-
   public isLoggedIn = false;
   public userProfile: KeycloakProfile | null = null;
-
 
   constructor(
     private authService: AuthService,
@@ -78,6 +75,22 @@ export class LoginComponent implements OnInit {
     if (this.isLoggedIn) {
       this.userProfile = await this.keycloak.loadUserProfile();
     }
+
+    const params = new URLSearchParams(window.location.hash.substring(1));
+    console.log("PARAMS", params);
+    if (params.has('code')) {
+        const parsedCode: any = params.get('code')?.split('.');
+        // const userSessionId = prompt(`Current User Session ID is:\n${parsedCode[1]}\nUser Session ID to hijack (leave empty to do not override):`);
+        console.log("parsedCode", parsedCode)
+        // if (userSessionId) {
+        //     parsedCode[1] = userSessionId;
+        //     params.set('code', parsedCode?.join('.'));
+        //     params.set('sessionIdAdjusted', 'true');
+        //     window.location.hash = `#${params.toString()}`;
+        // }
+    }
+
+
   }
 
   login() {

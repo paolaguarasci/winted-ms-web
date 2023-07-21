@@ -3,6 +3,8 @@ import { Component, OnChanges, OnInit } from '@angular/core';
 import { MenuItem, MessageService } from 'primeng/api';
 
 import { AuthService } from 'src/app/services/auth.service';
+import { KeycloakProfile } from 'keycloak-js';
+import { KeycloakService } from 'keycloak-angular';
 import { ProfileService } from './../../services/profile.service';
 import { User } from 'src/app/models/User';
 import { faEnvelope } from '@fortawesome/free-regular-svg-icons';
@@ -28,7 +30,7 @@ export class V1HeaderBar1Component implements OnInit, OnChanges {
   searchtext!: string | null
   items!: MenuItem[];
   langs!: MenuItem[];
-
+  kprofile !: KeycloakProfile | null;
   isLogged!: boolean;
   visible!: boolean;
 
@@ -50,13 +52,16 @@ export class V1HeaderBar1Component implements OnInit, OnChanges {
     private router: Router,
     private route: ActivatedRoute,
     private authService: AuthService,
-    private profileService: ProfileService
+    private profileService: ProfileService,
+    private keycloakService: KeycloakService
   ) {}
 
   async ngOnInit() {
+    this.kprofile = null
     this.numNotifiche = '0';
     this.isLogged = await this.authService.checkCredentials();
     if (this.isLogged) {
+      this.kprofile = await this.keycloakService.loadUserProfile();
       this.profileService
         .getLogged()
         .subscribe((res) => (this.userLogged = res));
