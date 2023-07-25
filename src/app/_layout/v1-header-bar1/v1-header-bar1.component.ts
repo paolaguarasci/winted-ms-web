@@ -53,7 +53,7 @@ export class V1HeaderBar1Component implements OnInit, OnChanges {
     private route: ActivatedRoute,
     private authService: AuthService,
     private profileService: ProfileService,
-    private keycloakService: KeycloakService
+    // private keycloakService: KeycloakService
   ) {}
 
   async ngOnInit() {
@@ -61,7 +61,7 @@ export class V1HeaderBar1Component implements OnInit, OnChanges {
     this.numNotifiche = '0';
     this.isLogged = await this.authService.checkCredentials();
     if (this.isLogged) {
-      this.kprofile = await this.keycloakService.loadUserProfile();
+      // this.kprofile = await this.keycloakService.loadUserProfile();
       this.profileService
         .getLogged()
         .subscribe((res) => (this.userLogged = res));

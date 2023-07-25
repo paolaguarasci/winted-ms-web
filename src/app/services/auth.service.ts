@@ -19,7 +19,7 @@ export class AuthService {
   constructor(
     private _http: HttpClient,
     private cookieService: CookieService,
-    private keycloak: KeycloakService
+    // private keycloak: KeycloakService
   ) {}
 
   getServerLogin(url) {
@@ -57,9 +57,12 @@ export class AuthService {
     window.location.href = this.redirectUri;
   }
 
-  async checkCredentials() {
-    // return this.cookieService.check('access_token');
-    return await this.keycloak.isLoggedIn();
+  // async checkCredentials() {
+  //   return await this.keycloak.isLoggedIn();
+  // }
+
+  checkCredentials() {
+    return this.cookieService.check('access_token');
   }
 
   logout() {

@@ -11,17 +11,17 @@ import { KeycloakService } from 'keycloak-angular';
   styleUrls: ['./login.component.scss'],
 })
 export class LoginComponent implements OnInit {
-  // isLoggedIn!: boolean;
-  // redirectUrl!: string | null;
+  isLoggedIn!: boolean;
+  redirectUrl!: string | null;
 
-  public isLoggedIn = false;
-  public userProfile: KeycloakProfile | null = null;
+  // public isLoggedIn = false;
+  // public userProfile: KeycloakProfile | null = null;
 
   constructor(
     private authService: AuthService,
     private route: ActivatedRoute,
     private router: Router,
-    private readonly keycloak: KeycloakService
+    // private readonly keycloak: KeycloakService
   ) {}
 
   async ngOnInit() {
@@ -54,27 +54,27 @@ export class LoginComponent implements OnInit {
     //   }
     // });
 
-    // this.redirectUrl = 'https://localhost:4200/';
-    // this.isLoggedIn = this.authService.checkCredentials();
-    // let i = window.location.href.indexOf('code');
-    // if (!this.isLoggedIn && i != -1) {
-    //   this.authService
-    //     .retrieveToken(window.location.href.substring(i + 5), this.redirectUrl)
-    //     .subscribe((data) => {
-    //       this.authService.saveToken(data);
-    //       // window.location.href = this.redirectUrl ?? 'https://localhost:4200/';
-    //       window.location.href = 'https://localhost:4200';
-    //     });
-    // } else {
-    //   this.login();
-    // }
-
-
-    this.isLoggedIn = await this.keycloak.isLoggedIn();
-
-    if (this.isLoggedIn) {
-      this.userProfile = await this.keycloak.loadUserProfile();
+    this.redirectUrl = 'https://localhost:4200/';
+    this.isLoggedIn = this.authService.checkCredentials();
+    let i = window.location.href.indexOf('code');
+    if (!this.isLoggedIn && i != -1) {
+      this.authService
+        .retrieveToken(window.location.href.substring(i + 5), this.redirectUrl)
+        .subscribe((data) => {
+          this.authService.saveToken(data);
+          // window.location.href = this.redirectUrl ?? 'https://localhost:4200/';
+          window.location.href = 'https://localhost:4200';
+        });
+    } else {
+      this.login();
     }
+
+
+    // this.isLoggedIn = await this.keycloak.isLoggedIn();
+
+    // if (this.isLoggedIn) {
+    //   this.userProfile = await this.keycloak.loadUserProfile();
+    // }
 
     const params = new URLSearchParams(window.location.hash.substring(1));
     console.log("PARAMS", params);
@@ -94,7 +94,7 @@ export class LoginComponent implements OnInit {
   }
 
   login() {
-    // window.location.href = this.authService.getServerLogin(this.redirectUrl);
-    this.keycloak.login();
+    window.location.href = this.authService.getServerLogin("");
+    // this.keycloak.login();
   }
 }

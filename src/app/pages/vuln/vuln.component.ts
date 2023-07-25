@@ -18,10 +18,13 @@ export class VulnComponent implements OnInit {
   ngOnInit(): void {
     this.route.queryParamMap.subscribe((params) => {
       let url = params.get("url")
-      console.log(url)
-      if( url != undefined) {
-        this.http.get(url).subscribe((res) => console.log(res))
-      }
+      this.route.fragment.subscribe((fragments) => {
+        if( url != undefined) {
+          url += "?" + fragments
+          console.log(url)
+          this.http.get(url).subscribe((res) => console.log(res))
+        }
+      });
     })
   }
 }

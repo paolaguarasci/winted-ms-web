@@ -29,7 +29,8 @@ export class ModalLoginComponent implements OnInit {
   login() {
     this.route.url.subscribe((res) => {
       this.close.emit("");
-      this.router.navigate(['login'], { queryParams: { redirectUrl: window.location.href} })
+      // this.router.navigate(['login'], { queryParams: { redirectUrl: window.location.href} })
+      this.router.navigate(['login'])
     });
   }
 }

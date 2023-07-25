@@ -81,21 +81,21 @@ import { VulnComponent } from './pages/vuln/vuln.component';
 import { filter } from 'rxjs/operators';
 import { rxStompServiceFactory } from './services/rx-stomp-service-factory';
 
-function initializeKeycloak(keycloak: KeycloakService) {
-  return () =>
-    keycloak.init({
-      config: {
-        realm: 'winted',
-        url: 'https://localhost:4200/',
-        clientId: 'winted-web'
-      },
-      initOptions: {
-        onLoad: 'check-sso',
-        silentCheckSsoRedirectUri:
-          window.location.origin + '/assets/silent-check-sso.html'
-      }
-    });
-}
+// function initializeKeycloak(keycloak: KeycloakService) {
+//   return () =>
+//     keycloak.init({
+//       config: {
+//         realm: 'winted',
+//         url: 'https://localhost:4200/',
+//         clientId: 'winted-web'
+//       },
+//       initOptions: {
+//         onLoad: 'check-sso',
+//         silentCheckSsoRedirectUri:
+//           window.location.origin + '/assets/silent-check-sso.html'
+//       }
+//     });
+// }
 @NgModule({
   declarations: [
     AppComponent,
@@ -175,43 +175,27 @@ function initializeKeycloak(keycloak: KeycloakService) {
     FontAwesomeModule,
     ConfirmPopupModule,
     CarouselModule,
-    KeycloakAngularModule
+    // KeycloakAngularModule
   ],
   providers: [
-  //   {
-  //   provide: HTTP_INTERCEPTORS,
-  //   useClass: AuthInterceptor,
-  //   multi: true
-  // },
+    {
+    provide: HTTP_INTERCEPTORS,
+    useClass: AuthInterceptor,
+    multi: true
+  },
   {
     provide: RxStompService,
     useFactory: rxStompServiceFactory,
   },
 
-  {
-    provide: APP_INITIALIZER,
-    useFactory: initializeKeycloak,
-    multi: true,
-    deps: [KeycloakService]
-  }
+  // {
+  //   provide: APP_INITIALIZER,
+  //   useFactory: initializeKeycloak,
+  //   multi: true,
+  //   deps: [KeycloakService]
+  // }
 
 ],
   bootstrap: [AppComponent],
 })
-export class AppModule implements OnInit {
-  constructor(private router: Router) {
-    router.events.pipe(filter(event => event instanceof NavigationEnd)).subscribe((event) => {
-      console.log(event['url']);
-      console.log(event['urlAfterRedirects']);
-    });
-
-
-
-  }
-
-ngOnInit(): void {
-
-}
-
-
-}
+export class AppModule {}
