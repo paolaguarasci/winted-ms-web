@@ -133,6 +133,8 @@ export class CheckoutComponent implements OnInit {
   }
 
   updateCheckout() {
+    console.log("this.address", this.address)
+    console.log("this.paymentMethodId", this.paymentMethod)
     if (this.order.id) {
       this.orderService.updateCheckout(this.order.id, new OrderUpdate({
         addressId: this.address?.id ?? "",
